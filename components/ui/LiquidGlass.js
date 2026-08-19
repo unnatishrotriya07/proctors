@@ -25,6 +25,7 @@ export default function LiquidGlass({
   variant = 'card',
   interactive = true,
   hoverable = true,
+  hoverEffect,
   as: Component = 'div',
   ...props
 }) {
@@ -43,8 +44,9 @@ export default function LiquidGlass({
     setMousePos((prev) => ({ ...prev, active: false }));
   }, []);
 
+  const isHoverable = hoverEffect !== undefined ? hoverEffect : hoverable;
   const variantClass = styles[variant] || styles.card;
-  const hoverClass = hoverable ? styles.hoverable : '';
+  const hoverClass = isHoverable ? styles.hoverable : '';
   const combinedClasses = `${styles.liquidGlass} ${variantClass} ${hoverClass} ${className}`.trim();
 
   return (

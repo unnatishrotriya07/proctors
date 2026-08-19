@@ -11,9 +11,9 @@ export default function Difference() {
             Two students can arrive at the same mark by entirely different routes.
           </h2>
           <p className={styles.subtext}>
-            A test confirms whether an answer was correct. It rarely reveals whether the student understood why.
-            <br />With forty students in a classroom, there is seldom time to find out.
-            <br />Proctors makes that time.
+            A test confirms whether an answer was correct. It rarely reveals whether the student understood why.{' '}
+            <br className={styles.desktopBr} />With forty students in a classroom, there is seldom time to find out.{' '}
+            <br className={styles.desktopBr} />Proctors makes that time.
           </p>
         </div>
 

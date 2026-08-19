@@ -38,7 +38,7 @@ export default function PageLoader() {
 
   return (
     <div
-      className={`fixed inset-0 z-[99999] flex items-center justify-center bg-white/95 backdrop-blur-xl transition-opacity duration-500 ${
+      className={`fixed inset-0 z-[99999] flex items-center justify-center bg-white/20 backdrop-blur-sm transition-opacity duration-500 ${
         fading ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
       aria-live="polite"

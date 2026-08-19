@@ -164,12 +164,122 @@
   font-style: italic;
 }
 
+.desktopBr {
+  display: inline;
+}
+
 @media (max-width: 768px) {
-  .heading {
-    font-size: 28px;
+  .desktopBr {
+    display: none;
   }
+
+  .header {
+    margin-bottom: 24px;
+  }
+
+  .heading {
+    font-size: 24px;
+    line-height: 1.25;
+    margin-top: 8px;
+    margin-bottom: 12px;
+  }
+
+  .subtext {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
   .grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 14px;
+  }
+
+  .card {
+    padding: 16px 14px;
+  }
+
+  .cardHeader {
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+  }
+
+  .studentAvatar {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .studentName {
+    font-size: 14px;
+  }
+
+  .studentTag {
+    font-size: 10px;
+  }
+
+  .scoreBadge {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .cardContent {
+    gap: 10px;
+  }
+
+  .metricRow {
+    gap: 2px;
+  }
+
+  .metricLabel {
+    font-size: 9.5px;
+  }
+
+  .metricValue {
+    font-size: 13px;
+  }
+
+  .metricValueMuted,
+  .metricValueHighlight {
+    font-size: 12px;
+    line-height: 1.45;
+    padding: 6px 10px;
+  }
+
+  .tagAlert,
+  .tagSuccess {
+    font-size: 11px;
+  }
+
+  .visualCaption {
+    font-size: 12px;
+    margin-top: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 21px;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+
+  .subtext {
+    font-size: 13px;
+    line-height: 1.48;
+  }
+
+  .card {
+    padding: 14px 12px;
+  }
+
+  .cardContent {
+    gap: 8px;
+  }
+
+  .metricValueMuted,
+  .metricValueHighlight {
+    font-size: 11.5px;
+    line-height: 1.4;
+    padding: 5px 8px;
   }
 }

@@ -40,23 +40,23 @@ export function ContactCard({
 			{...props}
 		>
 			{/* Corner Crosshair Plus Marks */}
-			<PlusIcon className="absolute -top-3 -left-3 h-6 w-6 text-sky-500/70 z-10 select-none pointer-events-none" />
-			<PlusIcon className="absolute -top-3 -right-3 h-6 w-6 text-sky-500/70 z-10 select-none pointer-events-none" />
-			<PlusIcon className="absolute -bottom-3 -left-3 h-6 w-6 text-sky-500/70 z-10 select-none pointer-events-none" />
-			<PlusIcon className="absolute -right-3 -bottom-3 h-6 w-6 text-sky-500/70 z-10 select-none pointer-events-none" />
+			<PlusIcon className="hidden sm:block absolute -top-2.5 -left-2.5 h-5 w-5 text-sky-500/70 z-10 select-none pointer-events-none" />
+			<PlusIcon className="hidden sm:block absolute -top-2.5 -right-2.5 h-5 w-5 text-sky-500/70 z-10 select-none pointer-events-none" />
+			<PlusIcon className="hidden sm:block absolute -bottom-2.5 -left-2.5 h-5 w-5 text-sky-500/70 z-10 select-none pointer-events-none" />
+			<PlusIcon className="hidden sm:block absolute -right-2.5 -bottom-2.5 h-5 w-5 text-sky-500/70 z-10 select-none pointer-events-none" />
 
 			{/* Left Content / Info Section */}
-			<div className="flex flex-col justify-center md:col-span-7 p-6 sm:p-8 lg:p-9">
-				<div className="relative space-y-4">
+			<div className="flex flex-col justify-center md:col-span-7 p-4 sm:p-7 lg:p-9">
+				<div className="relative space-y-3 sm:space-y-4">
 					{eyebrow && (
-						<span className="inline-block font-mono text-xs font-semibold uppercase tracking-widest text-sky-600">
+						<span className="inline-block font-mono text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-sky-600">
 							{eyebrow}
 						</span>
 					)}
-					<h2 className="font-heading text-2xl font-bold md:text-3xl lg:text-[34px] text-slate-900 leading-snug">
+					<h2 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 leading-snug">
 						{title}
 					</h2>
-					<p className="text-slate-600 text-sm md:text-base leading-relaxed">
+					<p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed">
 						{description}
 					</p>
 
@@ -73,7 +73,7 @@ export function ContactCard({
 			{/* Right Form Section */}
 			<div
 				className={cn(
-					'flex h-full w-full items-center p-5 sm:p-7 md:col-span-5 border-t md:border-t-0 md:border-l border-white/60',
+					'flex h-full w-full items-center p-4 sm:p-6 md:col-span-5 border-t md:border-t-0 md:border-l border-white/60',
 					formSectionClassName,
 				)}
 			>

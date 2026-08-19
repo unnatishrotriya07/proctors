@@ -41,7 +41,21 @@
 
 @media (max-width: 900px) {
   .robotContainer {
-    height: 380px;
-    min-height: 320px;
+    height: 320px;
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .robotContainer {
+    height: 260px;
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .robotContainer {
+    height: 210px;
+    min-height: 180px;
   }
 }

@@ -4,16 +4,19 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  display: flex;
-  justify-content: center;
   pointer-events: none;
   padding: 0 20px;
 }
 
-.nav {
-  pointer-events: auto;
-  width: 100%;
+.navContainer {
   max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+  pointer-events: auto;
+}
+
+.nav {
+  width: 100%;
 }
 
 .inner {
@@ -43,7 +46,7 @@
   display: block;
 }
 
-.navRight {
+.desktopNav {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -109,6 +112,10 @@
   padding: 8px;
   margin-left: auto;
   border-radius: 8px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  touch-action: manipulation;
 }
 
 .hamburger span {
@@ -134,87 +141,125 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-.overlay {
+/* ─── Mobile Dropdown Overlay & Card ───────────────────────── */
+.mobileNavContainer {
   display: none;
 }
 
 @media (max-width: 768px) {
   .navWrapper {
-    top: 12px;
-    padding: 0 12px;
+    top: 10px;
+    padding: 0 10px;
   }
 
   .inner {
-    height: 52px;
-    padding: 0 10px 0 16px;
+    height: 48px;
+    padding: 0 8px 0 14px;
   }
 
-  .navRight {
+  .logoImg {
+    height: 20px;
+  }
+
+  .desktopNav {
     display: none;
-    position: fixed;
-    top: 72px;
-    left: 12px;
-    right: 12px;
-    
-    /* Liquid Glass Card for Mobile Menu */
-    background: radial-gradient(
-      140% 120% at 50% 0%,
-      rgba(255, 255, 255, 0.88) 0%,
-      rgba(255, 255, 255, 0.65) 50%,
-      rgba(240, 246, 255, 0.78) 100%
-    );
-    backdrop-filter: blur(28px) saturate(200%) contrast(104%);
-    -webkit-backdrop-filter: blur(28px) saturate(200%) contrast(104%);
-    
-    border: 1px solid rgba(255, 255, 255, 0.90);
-    border-radius: 24px;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 18px 18px 22px;
-    gap: 12px;
-    box-shadow: 
-      0 24px 52px rgba(15, 23, 42, 0.16),
-      inset 0 1.5px 1px rgba(255, 255, 255, 1);
-    pointer-events: auto;
-  }
-
-  .navRight.open {
-    display: flex;
-    animation: fadeUp 0.25s ease forwards;
-  }
-
-  .links {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 4px;
-  }
-
-  .link {
-    font-size: 15px;
-    padding: 10px 14px;
-    border-radius: 12px;
-  }
-
-  .ctaBtn {
-    text-align: center;
-    justify-content: center;
-    padding: 12px 18px;
-    font-size: 14px;
-    margin-top: 4px;
   }
 
   .hamburger {
     display: flex;
   }
 
-  .overlay {
+  .mobileNavContainer {
     display: block;
     position: fixed;
     inset: 0;
-    background: rgba(15, 23, 42, 0.18);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    z-index: 999;
+    z-index: 9999;
     pointer-events: auto;
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.22);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 1;
+  }
+
+  .mobileMenuCard {
+    position: fixed;
+    top: 64px;
+    left: 12px;
+    right: 12px;
+    z-index: 2;
+    
+    background: radial-gradient(
+      140% 120% at 50% 0%,
+      rgba(255, 255, 255, 0.96) 0%,
+      rgba(255, 255, 255, 0.88) 50%,
+      rgba(245, 248, 255, 0.94) 100%
+    );
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 14px 14px 18px;
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    
+    box-shadow: 
+      0 24px 52px rgba(15, 23, 42, 0.16),
+      inset 0 1.5px 1px rgba(255, 255, 255, 1);
+    
+    animation: fadeUp 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .mobileLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .mobileLink {
+    width: 100%;
+    text-align: left;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text-primary);
+    padding: 11px 14px;
+    border-radius: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: block;
+    transition: all 0.15s ease;
+    touch-action: manipulation;
+  }
+
+  .mobileLink:active,
+  .mobileLink:hover {
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--accent-dark);
+  }
+
+  .mobileCtaBtn {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 12px;
+    margin-top: 4px;
+    cursor: pointer;
+    touch-action: manipulation;
   }
 }

@@ -131,20 +131,74 @@
   }
 }
 
-@media (max-width: 600px) {
-  .heading {
-    font-size: 28px;
+@media (max-width: 768px) {
+  .header {
+    margin-bottom: 24px;
   }
+  .heading {
+    font-size: 24px;
+    line-height: 1.25;
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 600px) {
   .stepCard {
     /* 1 visible on mobile */
     flex: 0 0 100%;
+    padding: 16px 14px;
+    min-height: 130px;
+  }
+  .stepNum {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+  }
+  .stepName {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .stepDesc {
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+  .dots {
+    margin: 14px 0 24px;
   }
   .closingLine {
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-md) !important;
     text-align: left;
     align-items: flex-start;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    line-height: 1.45;
+    gap: 8px;
   }
   .closingDot {
-    margin-top: 6px;
+    margin-top: 5px;
+    width: 6px;
+    height: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 21px;
+  }
+  .header {
+    margin-bottom: 20px;
+  }
+  .stepCard {
+    padding: 14px 12px;
+  }
+  .stepName {
+    font-size: 15px;
+  }
+  .closingLine {
+    font-size: 12px;
+    padding: 8px 12px;
+    border-radius: var(--radius-md) !important;
   }
 }

@@ -96,8 +96,52 @@
 }
 
 @media (max-width: 768px) {
+  .footer {
+    padding: 36px 0 20px;
+  }
   .top {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .brandCol {
+    gap: 10px;
+  }
+  .logoImg {
+    height: 22px;
+  }
+  .tagline {
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .colTitle {
+    font-size: 10px;
+    margin-bottom: 8px;
+  }
+  .links {
+    gap: 6px;
+  }
+  .link,
+  .contactLink {
+    font-size: 13px;
+  }
+  .bottom {
+    padding-top: 14px;
+  }
+  .copyright {
+    font-size: 11.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 28px 0 16px;
+  }
+  .top {
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .tagline {
+    font-size: 12px;
   }
 }

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import styles from './RequestPilot.module.css';
 import LiquidGlass from '@/components/ui/LiquidGlass';
 import { ContactCard } from '@/components/ui/contact-card';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, AlertCircle } from 'lucide-react';
 
 export default function RequestPilot() {
   const [status, setStatus] = useState('idle'); // idle | success | error
@@ -11,24 +11,43 @@ export default function RequestPilot() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    // Honeypot check
     if (e.target.website && e.target.website.value) return;
 
     setLoading(true);
-    const data = new FormData(e.target);
+    setStatus('idle');
+
+    const form = e.target;
+    const payload = {
+      name:    form.name.value,
+      email:   form.email.value,
+      phone:   form.phone.value,
+      message: form.message.value,
+      // FormSubmit hidden config fields
+      _subject:  'New Pilot Request — Proctors',
+      _captcha:  'false',   // Disable redirect captcha for AJAX mode
+      _template: 'table',   // Clean table layout in the email
+      _replyto:  form.email.value,
+    };
 
     try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      const res = await fetch('https://formsubmit.co/ajax/unnatishrotriya@proctors.in', {
         method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept':        'application/json',
+        },
+        body: JSON.stringify(payload),
       });
+
       if (res.ok) {
         setStatus('success');
+        form.reset();
       } else {
-        setStatus('success'); // graceful fallback for frontend demo
+        setStatus('error');
       }
     } catch {
-      setStatus('success'); // graceful fallback for frontend demo
+      setStatus('error');
     } finally {
       setLoading(false);
     }
@@ -57,7 +76,7 @@ export default function RequestPilot() {
                 </div>
               ) : (
                 <form className={styles.form} onSubmit={handleSubmit} noValidate>
-                  {/* Honeypot */}
+                  {/* Honeypot — hidden from real users */}
                   <input
                     type="text"
                     name="website"
@@ -67,9 +86,9 @@ export default function RequestPilot() {
                   />
 
                   <div className={styles.field}>
-                    <label htmlFor="name" className={styles.label}>Name</label>
+                    <label htmlFor="pilot-name" className={styles.label}>Name</label>
                     <input
-                      id="name"
+                      id="pilot-name"
                       name="name"
                       type="text"
                       required
@@ -79,9 +98,9 @@ export default function RequestPilot() {
                   </div>
 
                   <div className={styles.field}>
-                    <label htmlFor="email" className={styles.label}>Email</label>
+                    <label htmlFor="pilot-email" className={styles.label}>Email</label>
                     <input
-                      id="email"
+                      id="pilot-email"
                       name="email"
                       type="email"
                       required
@@ -91,9 +110,9 @@ export default function RequestPilot() {
                   </div>
 
                   <div className={styles.field}>
-                    <label htmlFor="phone" className={styles.label}>Phone</label>
+                    <label htmlFor="pilot-phone" className={styles.label}>Phone</label>
                     <input
-                      id="phone"
+                      id="pilot-phone"
                       name="phone"
                       type="tel"
                       className={styles.input}
@@ -102,15 +121,22 @@ export default function RequestPilot() {
                   </div>
 
                   <div className={styles.field}>
-                    <label htmlFor="message" className={styles.label}>Message</label>
+                    <label htmlFor="pilot-message" className={styles.label}>Message</label>
                     <textarea
-                      id="message"
+                      id="pilot-message"
                       name="message"
                       rows={3}
                       className={styles.textarea}
                       placeholder="Tell us a little about your school or goals..."
                     />
                   </div>
+
+                  {status === 'error' && (
+                    <div className={styles.errorBanner}>
+                      <AlertCircle className={styles.errorIcon} />
+                      <span>Something went wrong. Please try again or email us directly at unnatishrotriya@proctors.in</span>
+                    </div>
+                  )}
 
                   <button
                     type="submit"

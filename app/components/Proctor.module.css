@@ -80,7 +80,7 @@
 @media (max-width: 960px) {
   .introGrid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 32px;
   }
 
   .introContent {
@@ -96,6 +96,56 @@
 
 @media (max-width: 768px) {
   .heading {
-    font-size: 28px;
+    font-size: 24px;
+    line-height: 1.25;
+    margin-top: 8px;
+    margin-bottom: 12px;
+  }
+  .subtext {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  .pillars {
+    gap: 12px;
+  }
+  .pillar {
+    gap: 12px;
+  }
+  .pillarNum {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+  .pillarTitle {
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+  .pillarDesc {
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+  .introGrid {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 21px;
+    margin-bottom: 10px;
+  }
+  .subtext {
+    font-size: 13px;
+    line-height: 1.48;
+    margin-bottom: 16px;
+  }
+  .pillarTitle {
+    font-size: 13.5px;
+  }
+  .pillarDesc {
+    font-size: 12px;
+  }
+  .introGrid {
+    gap: 20px;
   }
 }
