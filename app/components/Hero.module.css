@@ -1,0 +1,152 @@
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 120px 24px 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.headline {
+  font-family: var(--font-heading);
+  font-size: clamp(40px, 5.6vw, 66px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+.headlineSub {
+  background: linear-gradient(135deg, #0284c7 0%, #1b9ffe 50%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-style: italic;
+  font-weight: 800;
+}
+
+.subhead {
+  font-size: clamp(17px, 1.8vw, 19.5px);
+  line-height: 1.62;
+  color: var(--text-secondary);
+  max-width: 720px;
+  margin: 0 auto 36px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.secondaryBtn {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ── Institutional Trust Lockup ── */
+.trustLockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 16px 8px 10px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 9999px;
+  box-shadow: 
+    0 4px 20px -2px rgba(15, 23, 42, 0.04),
+    inset 0 1px 1px rgba(255, 255, 255, 0.85);
+  transition: all 0.25s ease;
+}
+
+.trustLockup:hover {
+  background: rgba(255, 255, 255, 0.65);
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 6px 24px -2px rgba(15, 23, 42, 0.07),
+    inset 0 1px 1px rgba(255, 255, 255, 1);
+}
+
+.trustItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trustCategory {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-dark);
+  background: rgba(27, 159, 254, 0.12);
+  border: 1px solid rgba(27, 159, 254, 0.22);
+  padding: 2.5px 8px;
+  border-radius: 9999px;
+}
+
+.trustValue {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: -0.01em;
+}
+
+.trustSep {
+  width: 1px;
+  height: 14px;
+  background: rgba(100, 116, 139, 0.22);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
+
+  .headline {
+    font-size: 36px;
+  }
+
+  .subhead {
+    font-size: 16.5px;
+  }
+
+  .trustLockup {
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 18px;
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .trustSep {
+    display: none;
+  }
+}

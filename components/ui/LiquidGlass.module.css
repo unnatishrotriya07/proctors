@@ -1,0 +1,205 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   LIQUID GLASS DESIGN SYSTEM (visionOS / Apple Liquid Glass Architecture)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.liquidGlass {
+  position: relative;
+  isolation: isolate;
+  
+  /* Layer 1: Core Liquid Glass Translucent Base */
+  background: radial-gradient(
+    140% 120% at 50% 0%,
+    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.42) 50%,
+    rgba(240, 246, 255, 0.58) 100%
+  );
+  
+  /* Layer 2: Deep Optical Refraction Blur & Saturation */
+  backdrop-filter: blur(28px) saturate(200%) contrast(104%) brightness(104%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%) contrast(104%) brightness(104%);
+  
+  /* Layer 3: Perimeter Glass Border & Thickness */
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: var(--radius-xl);
+  
+  /* Layer 4: Multi-Directional Specular Rim Lighting */
+  box-shadow: 
+    0 16px 40px -10px rgba(15, 23, 42, 0.08),
+    0 4px 14px -2px rgba(15, 23, 42, 0.03),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1.5px 2px 0 rgba(255, 255, 255, 0.35),
+    inset 1.5px 0 2px 0 rgba(255, 255, 255, 0.5),
+    inset -1.5px 0 2px 0 rgba(255, 255, 255, 0.5);
+    
+  transition: 
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    
+  overflow: hidden;
+}
+
+/* ─── Top Rim Refraction Line ────────────────────────────────────────── */
+.topRim {
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1.5px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.95) 30%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0.95) 70%,
+    transparent 100%
+  );
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.8));
+  pointer-events: none;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+/* ─── Dynamic Mouse Spotlight Reflection ──────────────────────────────── */
+.spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.20) 40%,
+    transparent 75%
+  );
+  opacity: var(--spotlight-opacity, 0);
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.25s ease;
+}
+
+/* ─── Inner Content ──────────────────────────────────────────────────── */
+.content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── Hoverable Physics ──────────────────────────────────────────────── */
+.hoverable:hover {
+  transform: translateY(-4px);
+  background: radial-gradient(
+    140% 120% at 50% 0%,
+    rgba(255, 255, 255, 0.84) 0%,
+    rgba(255, 255, 255, 0.52) 50%,
+    rgba(240, 246, 255, 0.72) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 
+    0 24px 56px -12px rgba(15, 23, 42, 0.12),
+    0 8px 20px -3px rgba(27, 159, 254, 0.08),
+    inset 0 2px 2.5px 0 rgba(255, 255, 255, 1),
+    inset 0 -1.5px 2px 0 rgba(255, 255, 255, 0.45),
+    inset 2px 0 2px 0 rgba(255, 255, 255, 0.6),
+    inset -2px 0 2px 0 rgba(255, 255, 255, 0.6);
+}
+
+.hoverable:hover .topRim {
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 1) 25%,
+    #ffffff 50%,
+    rgba(255, 255, 255, 1) 75%,
+    transparent 100%
+  );
+}
+
+/* ─── Variants ────────────────────────────────────────────────────────── */
+
+/* Standard Card */
+.card {
+  /* Default styling */
+}
+
+/* Elevated Featured Card */
+.elevated {
+  background: radial-gradient(
+    150% 130% at 50% -10%,
+    rgba(255, 255, 255, 0.82) 0%,
+    rgba(255, 255, 255, 0.52) 45%,
+    rgba(238, 246, 255, 0.72) 100%
+  );
+  box-shadow: 
+    0 24px 60px -12px rgba(15, 23, 42, 0.11),
+    0 8px 24px -4px rgba(15, 23, 42, 0.05),
+    inset 0 2px 2px 0 rgba(255, 255, 255, 1),
+    inset 0 -1.5px 2px 0 rgba(255, 255, 255, 0.4),
+    inset 1.5px 0 2px 0 rgba(255, 255, 255, 0.6),
+    inset -1.5px 0 2px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Floating Pill / Badge */
+.pill {
+  border-radius: 9999px;
+  box-shadow: 
+    0 8px 24px -4px rgba(15, 23, 42, 0.06),
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* Navigation Bar */
+.nav {
+  border-radius: 9999px;
+  background: radial-gradient(
+    130% 100% at 50% 0%,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(240, 246, 255, 0.65) 100%
+  );
+  box-shadow: 
+    0 16px 40px -8px rgba(15, 23, 42, 0.09),
+    0 4px 16px -2px rgba(15, 23, 42, 0.04),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Blue Accent Fluid Card */
+.blue {
+  border-top: 3.5px solid var(--accent);
+  background: radial-gradient(
+    130% 120% at 50% 0%,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(235, 248, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.75) 100%
+  );
+  box-shadow: 
+    0 18px 44px -8px rgba(27, 159, 254, 0.12),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 1),
+    inset 0 -1.5px 2px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Grey Neutral Fluid Card */
+.grey {
+  border-top: 3.5px solid var(--border-strong);
+  background: radial-gradient(
+    130% 120% at 50% 0%,
+    rgba(255, 255, 255, 0.78) 0%,
+    rgba(241, 245, 249, 0.48) 50%,
+    rgba(255, 255, 255, 0.68) 100%
+  );
+}
+
+/* Subtle Inset Card */
+.subtle {
+  background: rgba(255, 255, 255, 0.38);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 
+    0 4px 16px rgba(15, 23, 42, 0.03),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}

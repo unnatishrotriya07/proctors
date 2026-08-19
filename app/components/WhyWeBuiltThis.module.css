@@ -1,0 +1,40 @@
+.wrapper {
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.heading {
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 12px;
+  margin-bottom: 32px;
+  line-height: 1.25;
+}
+
+.contentBox {
+  padding: 40px 36px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.paragraph {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 28px;
+  }
+  .contentBox {
+    padding: 24px 20px;
+  }
+  .paragraph {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,76 @@
+.wrap {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.card {
+  padding: 22px 24px 16px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.lineAbove {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.svgContainer {
+  width: 100%;
+  overflow: visible;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.line {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.line.visible {
+  stroke-dashoffset: 0;
+}
+
+.area {
+  opacity: 0;
+  transition: opacity 1s ease 0.3s;
+}
+
+.area.visible {
+  opacity: 1;
+}
+
+.dot {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dotVisible {
+  opacity: 1;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  fill: var(--text-muted, #94a3b8);
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 18px 16px 14px;
+  }
+
+  .lineAbove {
+    font-size: 12.5px;
+  }
+}

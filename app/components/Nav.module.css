@@ -1,0 +1,220 @@
+.navWrapper {
+  position: fixed;
+  top: 18px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  padding: 0 20px;
+}
+
+.nav {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 960px;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+  padding: 0 14px 0 22px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.brand:hover {
+  transform: scale(1.02);
+}
+
+.logoImg {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+}
+
+.link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 8px 14px;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.link:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 
+    0 2px 8px rgba(15, 23, 42, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.ctaBtn {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #1b9ffe 0%, #0284c7 100%);
+  color: #ffffff;
+  box-shadow: 
+    0 4px 14px rgba(27, 159, 254, 0.38),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  transition: all 0.2s ease;
+}
+
+.ctaBtn:hover {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  transform: translateY(-1px);
+  box-shadow: 
+    0 6px 18px rgba(27, 159, 254, 0.48),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.ctaBtn:active {
+  transform: translateY(0);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  margin-left: auto;
+  border-radius: 8px;
+}
+
+.hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.25s ease;
+  transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navWrapper {
+    top: 12px;
+    padding: 0 12px;
+  }
+
+  .inner {
+    height: 52px;
+    padding: 0 10px 0 16px;
+  }
+
+  .navRight {
+    display: none;
+    position: fixed;
+    top: 72px;
+    left: 12px;
+    right: 12px;
+    
+    /* Liquid Glass Card for Mobile Menu */
+    background: radial-gradient(
+      140% 120% at 50% 0%,
+      rgba(255, 255, 255, 0.88) 0%,
+      rgba(255, 255, 255, 0.65) 50%,
+      rgba(240, 246, 255, 0.78) 100%
+    );
+    backdrop-filter: blur(28px) saturate(200%) contrast(104%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%) contrast(104%);
+    
+    border: 1px solid rgba(255, 255, 255, 0.90);
+    border-radius: 24px;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 18px 18px 22px;
+    gap: 12px;
+    box-shadow: 
+      0 24px 52px rgba(15, 23, 42, 0.16),
+      inset 0 1.5px 1px rgba(255, 255, 255, 1);
+    pointer-events: auto;
+  }
+
+  .navRight.open {
+    display: flex;
+    animation: fadeUp 0.25s ease forwards;
+  }
+
+  .links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+
+  .link {
+    font-size: 15px;
+    padding: 10px 14px;
+    border-radius: 12px;
+  }
+
+  .ctaBtn {
+    text-align: center;
+    justify-content: center;
+    padding: 12px 18px;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.18);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 999;
+    pointer-events: auto;
+  }
+}

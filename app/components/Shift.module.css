@@ -1,0 +1,247 @@
+.header {
+  text-align: center;
+  margin-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.heading {
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.subtext {
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 500px;
+  line-height: 1.7;
+}
+
+.subtext em {
+  font-style: normal;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ─── Comparison Grid ─── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 64px;
+}
+
+.col {
+  padding: 0;
+}
+
+.colTraditional {
+  background: rgba(248, 250, 252, 0.5);
+}
+
+.colProctors {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.colHeader {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.colBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 99px;
+}
+
+.colBadgeGrey {
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-strong);
+}
+
+.colBadgeBlue {
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  border: 1px solid var(--accent-border);
+}
+
+.colDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s ease;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.rowHighlight:hover {
+  background: var(--accent-soft);
+}
+
+.rowLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.rowValue {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.45;
+}
+
+.colProctors .rowValue {
+  color: var(--text-primary);
+}
+
+/* ─── Divider ─── */
+.divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+.dividerLine {
+  flex: 1;
+  width: 1px;
+  background: var(--border);
+}
+
+.dividerIcon {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  padding: 8px 0;
+  writing-mode: horizontal-tb;
+}
+
+/* ─── Flow ─── */
+.flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  overflow-x: auto;
+}
+
+.flowItem {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.flowStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  max-width: 120px;
+  flex-shrink: 0;
+}
+
+.flowNum {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent-dark);
+  letter-spacing: 0.05em;
+}
+
+.flowLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.flowArrow {
+  padding: 0 8px;
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .divider {
+    flex-direction: row;
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+  }
+
+  .dividerLine {
+    flex: 1;
+    width: auto;
+    height: 1px;
+  }
+
+  .flow {
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: flex-start;
+  }
+
+  .flowItem {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flowArrow {
+    transform: rotate(90deg);
+  }
+
+  .flowStep {
+    max-width: 140px;
+  }
+}
