@@ -1,0 +1,4 @@
+#!/bin/sh
+# ultracite
+npx lint-staged
+# ultracite end
