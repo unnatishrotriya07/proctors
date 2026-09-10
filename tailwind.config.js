@@ -19,14 +19,22 @@ module.exports = {
     },
     extend: {
       borderRadius: {
-        lg: "var(--radius, 0.75rem)",
-        md: "calc(var(--radius, 0.75rem) - 2px)",
-        sm: "calc(var(--radius, 0.75rem) - 4px)",
+        lg: "var(--radius-lg, 16px)",
+        md: "var(--radius-md, 10px)",
+        sm: "var(--radius-sm, 6px)",
+        xl: "var(--radius-xl, 24px)",
+      },
+      boxShadow: {
+        accent: "var(--shadow-accent)",
+        lg: "var(--shadow-lg)",
+        md: "var(--shadow-md)",
+        sm: "var(--shadow-sm)",
       },
       colors: {
         accent: {
-          DEFAULT: "hsl(var(--accent-hsl, 204 94% 55%))",
-          foreground: "hsl(var(--accent-foreground-hsl, 222.2 47.4% 11.2%))",
+          DEFAULT: "#1b9ffe",
+          dark: "#0284c7",
+          soft: "rgba(27, 159, 254, 0.12)",
         },
         background: "hsl(var(--background-hsl, 0 0% 100%))",
         border: "hsl(var(--border-hsl, 214.3 31.8% 91.4%))",

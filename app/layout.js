@@ -30,7 +30,7 @@ export const viewport = {
 
 export const metadata = {
   description:
-    "Proctors turns everyday curriculum assessment into a conversation, so schools can see not just what a student answered, but how they understand it.",
+    "Proctors gives every student a one-on-one AI assessment experience — grounded in your curriculum, aligned to NEP 2020, and generating HPC-ready insight reports your teachers can act on the same week.",
   icons: {
     apple: [{ url: "/apple-touch-icon.png" }],
     icon: [
@@ -44,20 +44,22 @@ export const metadata = {
   openGraph: {
     default: "Proctors",
     description:
-      "Proctors turns everyday curriculum assessment into a conversation, so schools can see not just what a student answered, but how they understand it.",
+      "Proctors gives every student a one-on-one AI assessment experience — grounded in your curriculum, aligned to NEP 2020, and generating HPC-ready insight reports your teachers can act on the same week.",
     locale: "en_IN",
     siteName: "Proctors",
-    title: "Proctors — Curriculum-Aligned AI Assessment for Schools",
+    title:
+      "Proctors — AI-Powered Conversational Assessment Platform for Schools",
     type: "website",
     url: "https://proctors.in",
   },
   robots: { follow: true, index: true },
-  title: "Proctors",
+  title: "Proctors — AI-Powered Conversational Assessment Platform for Schools",
   twitter: {
     card: "summary_large_image",
     description:
-      "Proctors turns everyday curriculum assessment into a conversation, so schools can see not just what a student answered, but how they understand it.",
-    title: "Proctors — Curriculum-Aligned AI Assessment for Schools",
+      "Proctors gives every student a one-on-one AI assessment experience — grounded in your curriculum, aligned to NEP 2020, and generating HPC-ready insight reports your teachers can act on the same week.",
+    title:
+      "Proctors — AI-Powered Conversational Assessment Platform for Schools",
   },
 };
 

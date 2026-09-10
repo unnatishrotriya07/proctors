@@ -14,9 +14,10 @@ export default function Nav() {
   }, []);
 
   const links = [
-    { href: "#proctor", label: "Proctor" },
+    { href: "#product", label: "Product" },
     { href: "#how-it-works", label: "How It Works" },
     { href: "#for-schools", label: "For Schools" },
+    { href: "#insight", label: "Insight" },
   ];
 
   const handleNavClick = (e, href) => {
@@ -77,11 +78,18 @@ export default function Nav() {
                   ))}
                 </ul>
                 <a
-                  className={`btn btn--primary ${styles.ctaBtn}`}
-                  href="#request-pilot"
-                  onClick={(e) => handleNavClick(e, "#request-pilot")}
+                  className={styles.signIn}
+                  href="#signin"
+                  onClick={(e) => handleNavClick(e, "#signin")}
                 >
-                  Book a Pilot
+                  Sign In
+                </a>
+                <a
+                  className={`btn btn--primary ${styles.ctaBtn}`}
+                  href="#book-walkthrough"
+                  onClick={(e) => handleNavClick(e, "#book-walkthrough")}
+                >
+                  Book a walkthrough
                 </a>
               </div>
 
@@ -122,13 +130,22 @@ export default function Nav() {
                   </button>
                 </li>
               ))}
+              <li>
+                <button
+                  className={styles.mobileLink}
+                  onClick={(e) => handleNavClick(e, "#signin")}
+                  type="button"
+                >
+                  Sign In
+                </button>
+              </li>
             </ul>
             <button
               className={`btn btn--primary ${styles.mobileCtaBtn}`}
-              onClick={(e) => handleNavClick(e, "#request-pilot")}
+              onClick={(e) => handleNavClick(e, "#book-walkthrough")}
               type="button"
             >
-              Book a Pilot
+              Book a walkthrough
             </button>
           </div>
         </div>

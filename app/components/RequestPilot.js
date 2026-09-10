@@ -1,17 +1,14 @@
 "use client";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
-import { ContactCard } from "@/components/ui/contact-card";
-import LiquidGlass from "@/components/ui/LiquidGlass";
 import styles from "./RequestPilot.module.css";
 
 export default function RequestPilot() {
-  const [status, setStatus] = useState("idle"); // idle | success | error
+  const [status, setStatus] = useState("idle");
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    // Honeypot check
     if (e.target.website?.value) {
       return;
     }
@@ -21,15 +18,15 @@ export default function RequestPilot() {
 
     const form = e.target;
     const payload = {
-      _captcha: "false", // Disable redirect captcha for AJAX mode
+      _captcha: "false",
       _replyto: form.email.value,
-      // FormSubmit hidden config fields
-      _subject: "New Pilot Request — Proctors",
-      _template: "table", // Clean table layout in the email
+      _subject: "New Walkthrough Request — Proctors",
+      _template: "table",
       email: form.email.value,
       message: form.message.value,
       name: form.name.value,
       phone: form.phone.value,
+      school: form.school?.value ?? "",
     };
 
     try {
@@ -59,31 +56,37 @@ export default function RequestPilot() {
   }
 
   return (
-    <section className={"section section--alt"} id="request-pilot">
+    <section className="section" id="book-walkthrough">
       <div className="container">
-        <div className={styles.wrapper}>
-          <LiquidGlass
-            className={styles.glassContainer}
-            hoverable={false}
-            variant="elevated"
-          >
-            <ContactCard
-              className="border-0 bg-transparent shadow-none"
-              description="We're running a free beta with a handful of schools right now. Spots are limited — not as a tactic, but because being selective is how we get this right."
-              eyebrow="Get Started"
-              title="See Proctor with your own curriculum."
-            >
+        <div className={`glass-panel reveal ${styles.panel}`}>
+          <div aria-hidden="true" className={styles.glow} />
+          <div className={styles.grid}>
+            <div className={styles.copy}>
+              <p className="label label--accent">Book a walkthrough</p>
+              <h2 className={styles.heading}>
+                Make every student visible in the learning journey.
+              </h2>
+              <p className={styles.lede}>
+                See how Proctors can fit into your curriculum, assessment
+                calendar, and teacher workflow.
+              </p>
+              <ul className={styles.ticks}>
+                <li>Grounded in your curriculum</li>
+                <li>Aligned to NEP 2020, HPC-ready</li>
+                <li>Insight teachers can use the same week</li>
+              </ul>
+            </div>
+            <div className={styles.formWrap}>
               {status === "success" ? (
-                <div className={styles.success}>
-                  <div className={styles.successIcon}>
-                    <CheckCircle2 className="h-8 w-8 text-emerald-600" />
-                  </div>
-                  <h3 className="font-bold font-heading text-2xl text-slate-900">
-                    Thank you.
-                  </h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    We&apos;ve received your pilot request and will reach out
-                    shortly to discuss bringing Proctor to your school.
+                <div className={styles.success} role="status">
+                  <CheckCircle2
+                    aria-hidden="true"
+                    className={styles.successIcon}
+                  />
+                  <h3>Thank you.</h3>
+                  <p>
+                    We&apos;ve received your walkthrough request and will reach
+                    out shortly to find a time that suits your school.
                   </p>
                 </div>
               ) : (
@@ -92,7 +95,6 @@ export default function RequestPilot() {
                   noValidate
                   onSubmit={handleSubmit}
                 >
-                  {/* Honeypot — hidden from real users */}
                   <input
                     aria-hidden="true"
                     name="website"
@@ -100,82 +102,93 @@ export default function RequestPilot() {
                     tabIndex={-1}
                     type="text"
                   />
-
                   <div className={styles.field}>
-                    <label className={styles.label} htmlFor="pilot-name">
+                    <label className="field-label" htmlFor="walk-name">
                       Name
                     </label>
                     <input
-                      className={styles.input}
-                      id="pilot-name"
+                      className="field-input"
+                      id="walk-name"
                       name="name"
                       placeholder="Your full name"
                       required
                       type="text"
                     />
                   </div>
-
+                  <div className={styles.row}>
+                    <div className={styles.field}>
+                      <label className="field-label" htmlFor="walk-email">
+                        Email
+                      </label>
+                      <input
+                        className="field-input"
+                        id="walk-email"
+                        name="email"
+                        placeholder="you@school.edu"
+                        required
+                        type="email"
+                      />
+                    </div>
+                    <div className={styles.field}>
+                      <label className="field-label" htmlFor="walk-phone">
+                        Phone
+                      </label>
+                      <input
+                        className="field-input"
+                        id="walk-phone"
+                        name="phone"
+                        placeholder="+91 98765 43210"
+                        type="tel"
+                      />
+                    </div>
+                  </div>
                   <div className={styles.field}>
-                    <label className={styles.label} htmlFor="pilot-email">
-                      Email
+                    <label className="field-label" htmlFor="walk-school">
+                      School
                     </label>
                     <input
-                      className={styles.input}
-                      id="pilot-email"
-                      name="email"
-                      placeholder="you@school.edu"
-                      required
-                      type="email"
+                      className="field-input"
+                      id="walk-school"
+                      name="school"
+                      placeholder="School name and city"
+                      type="text"
                     />
                   </div>
-
                   <div className={styles.field}>
-                    <label className={styles.label} htmlFor="pilot-phone">
-                      Phone
-                    </label>
-                    <input
-                      className={styles.input}
-                      id="pilot-phone"
-                      name="phone"
-                      placeholder="+91 98765 43210"
-                      type="tel"
-                    />
-                  </div>
-
-                  <div className={styles.field}>
-                    <label className={styles.label} htmlFor="pilot-message">
+                    <label className="field-label" htmlFor="walk-message">
                       Message
                     </label>
                     <textarea
-                      className={styles.textarea}
-                      id="pilot-message"
+                      className="field-input"
+                      id="walk-message"
                       name="message"
-                      placeholder="Tell us a little about your school or goals..."
+                      placeholder="Tell us about your grades, subjects and assessment goals…"
                       rows={3}
                     />
                   </div>
-
                   {status === "error" && (
-                    <div className={styles.errorBanner}>
-                      <AlertCircle className={styles.errorIcon} />
+                    <div className={styles.errorBanner} role="alert">
+                      <AlertCircle
+                        aria-hidden="true"
+                        className={styles.errorIcon}
+                      />
                       <span>
                         Something went wrong. Please try again or email us
                         directly at unnatishrotriya@proctors.in
                       </span>
                     </div>
                   )}
-
                   <button
-                    className={`btn btn--primary ${styles.submitBtn}`}
+                    className={`btn btn--primary ${styles.submit}`}
                     disabled={loading}
                     type="submit"
                   >
-                    {loading ? "Submitting…" : "Book a Pilot"}
+                    {loading ? "Submitting…" : "Book a walkthrough"}
                   </button>
                 </form>
               )}
-            </ContactCard>
-          </LiquidGlass>
+            </div>
+          </div>
         </div>
       </div>
     </section>

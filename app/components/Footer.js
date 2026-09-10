@@ -29,21 +29,21 @@ export default function Footer() {
               <img alt="Proctors" className={styles.logoImg} src="/logo.png" />
             </a>
             <p className={styles.tagline}>
-              Students learn their curriculum. Proctors helps them get better at
-              demonstrating what they learned.
+              Proctors helps schools understand how every student thinks,
+              learns, and communicates.
             </p>
           </div>
 
           <div className={styles.navCol}>
-            <p className={styles.colTitle}>Navigation</p>
+            <p className={styles.colTitle}>Product</p>
             <ul className={styles.links}>
               <li>
                 <a
                   className={styles.link}
-                  href="#proctor"
-                  onClick={(e) => handleNavClick(e, "#proctor")}
+                  href="#product"
+                  onClick={(e) => handleNavClick(e, "#product")}
                 >
-                  Proctor
+                  Product
                 </a>
               </li>
               <li>
@@ -62,6 +62,24 @@ export default function Footer() {
                   onClick={(e) => handleNavClick(e, "#for-schools")}
                 >
                   For Schools
+                </a>
+              </li>
+              <li>
+                <a
+                  className={styles.link}
+                  href="#insight"
+                  onClick={(e) => handleNavClick(e, "#insight")}
+                >
+                  Teacher Insight
+                </a>
+              </li>
+              <li>
+                <a
+                  className={styles.link}
+                  href="#book-walkthrough"
+                  onClick={(e) => handleNavClick(e, "#book-walkthrough")}
+                >
+                  Book a walkthrough
                 </a>
               </li>
             </ul>
