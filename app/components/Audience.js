@@ -4,37 +4,44 @@ import styles from "./Audience.module.css";
 
 const TABS = [
   {
-    id: "leaders",
-    label: "For School Leaders",
+    body: "Proctors gives principals and academic heads HPC-aligned evidence of communication, reasoning, and understanding — for every student, every chapter — auto-generated instead of hand-noted. Use it to demonstrate competency-based assessment compliance at board inspections, parent meetings, and academic reviews.",
+    id: "leadership",
+    label: "For School Leadership",
     points: [
-      "Consistent assessment visibility across grades",
-      "Curriculum-level insight for academic decisions",
-      "Clear implementation without new infrastructure",
-      "Better evidence for parent and board conversations",
+      "HPC-ready reports, auto-generated from assessment data",
+      "School-wide and class-level insight dashboard",
+      "Audit trail for every evaluated assessment",
     ],
-    title: "See how learning is progressing, school-wide.",
+    tagline:
+      "See what your board already expects — without adding manual documentation work.",
+    title: "Clarity for leadership.",
   },
   {
+    body: "A teacher creates an assessment in under two minutes. Proctor runs it for every student. The teacher receives per-student insight reports — what each student understood, where gaps exist, and how their communication compares — without a single extra paper to grade.",
     id: "teachers",
     label: "For Teachers",
     points: [
-      "Less manual interpretation of responses",
-      "More useful evidence on each student",
-      "Faster intervention planning",
-      "Clearer classroom conversations",
+      "Assessment assignment in < 2 minutes",
+      "Per-student reports in the same week",
+      "Human review override for flagged assessments",
+      "No additional grading workload",
     ],
-    title: "Start Monday with answers, not spreadsheets.",
+    tagline:
+      "Thirty diagnostic conversations you never have time to hold — turned into a report worth reading.",
+    title: "Time for teachers.",
   },
   {
+    body: "One question, one follow-up, no clock running. A student thinks out loud, explains what they know in their own words, and is never penalised for a wrong answer mid-explanation. For students who rarely get called on in a classroom of forty, this is often the first time someone has asked them to explain something — and actually waited to hear the answer.",
     id: "students",
     label: "For Students",
     points: [
-      "A more natural assessment experience",
-      "Space to explain their thinking",
-      "Less pressure from one-shot testing",
-      "Feedback that reflects how they learn",
+      "Voice or text — student's choice",
+      "Works on any device, no app required",
+      "Low-stakes, conversational format",
+      "Built around the chapter they already know",
     ],
-    title: "Show what you know, in your own words.",
+    tagline: "It feels like being asked — not tested.",
+    title: "Confidence for students.",
   },
 ];
 
@@ -43,15 +50,13 @@ export default function Audience() {
   const current = TABS.find((tab) => tab.id === active) ?? TABS[0];
 
   return (
-    <section className="section section--alt" id="for-schools">
+    <section className="section" id="for-schools">
       <div className="container">
         <div className="section-head section-head--center">
-          <p className="label label--accent">Who it serves</p>
-          <h2>Built for the whole school community.</h2>
-          <p>
-            Leaders get visibility, teachers get action, students get a fair
-            chance to show how they think.
-          </p>
+          <p className="label label--accent">Built For</p>
+          <h2>
+            Clarity for leadership. Time for teachers. Confidence for students.
+          </h2>
         </div>
         <div aria-label="Audience views" className={styles.tabs} role="tablist">
           {TABS.map((tab) => (
@@ -74,6 +79,8 @@ export default function Audience() {
           role="tabpanel"
         >
           <h3 className={styles.panelTitle}>{current.title}</h3>
+          <p className={styles.tagline}>{current.tagline}</p>
+          <p className={styles.body}>{current.body}</p>
           <ul className={styles.points}>
             {current.points.map((point) => (
               <li key={point}>{point}</li>

@@ -1,18 +1,20 @@
 import { GradientWave } from "@/components/ui/gradient-wave";
 import Audience from "./components/Audience";
-import Curriculum from "./components/Curriculum";
+import Difference from "./components/Difference";
+import EarlySignal from "./components/EarlySignal";
+import Features from "./components/Features";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import Nav from "./components/Nav";
 import PageLoader from "./components/PageLoader";
-import Platform from "./components/Platform";
-import Problem from "./components/Problem";
+import Pricing from "./components/Pricing";
 import RequestPilot from "./components/RequestPilot";
 import Reveal from "./components/Reveal";
 import Security from "./components/Security";
 import Showcase from "./components/Showcase";
-import TeacherInsight from "./components/TeacherInsight";
-import TrustStrip from "./components/TrustStrip";
+import Snapshot from "./components/Snapshot";
+import WhyNow from "./components/WhyNow";
+import Workflow from "./components/Workflow";
 
 export default function Home() {
   return (
@@ -30,14 +32,16 @@ export default function Home() {
       <main id="main">
         <Hero />
         <Reveal>
-          <TrustStrip />
-          <Problem />
-          <Platform />
+          <Snapshot />
+          <Difference />
+          <Features />
+          <Workflow />
           <Showcase />
-          <Curriculum />
-          <TeacherInsight />
+          <WhyNow />
           <Audience />
+          <EarlySignal />
           <Security />
+          <Pricing />
           <RequestPilot />
         </Reveal>
       </main>

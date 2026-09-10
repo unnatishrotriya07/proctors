@@ -53,36 +53,46 @@ export default function Hero() {
             Conversational assessment for modern schools
           </p>
           <h1 className={styles.headline}>
-            Understand every student,
-            <br /> not just every answer.
+            AI assessment that listens to how a student thinks —<br /> not just
+            what they write.
           </h1>
           <p className={styles.subhead}>
-            Proctors gives every student a one-on-one AI assessment experience
-            grounded in your curriculum, aligned to NEP 2020, and translated
-            into insight your teachers can use this week.
+            Proctor delivers a patient, one-on-one academic dialogue to every
+            student in your school — grounded in the chapter they just studied,
+            aligned to your board, and ready for your PARAKH Holistic Progress
+            Card. No extra curriculum. No extra teacher hours.
           </p>
           <div className={styles.actions}>
             <a
               className="btn btn--primary"
-              href="#book-walkthrough"
-              onClick={(e) => handleNavClick(e, "#book-walkthrough")}
+              href="#pilot"
+              onClick={(e) => handleNavClick(e, "#pilot")}
             >
-              Book a walkthrough
+              Book a Free Pilot →
             </a>
             <a
               className="btn btn--ghost"
               href="#how-it-works"
               onClick={(e) => handleNavClick(e, "#how-it-works")}
             >
-              See how it works <span aria-hidden="true">→</span>
+              See How Proctor Works ↓
             </a>
           </div>
-          <ul aria-label="Highlights" className={styles.miniTrust}>
-            <li>Curriculum-grounded</li>
+          <p className={styles.microcopy}>
+            ✦ Free for design-partner schools &nbsp;|&nbsp; ✦ Works on any
+            device &nbsp;|&nbsp; ✦ No new curriculum to prepare
+          </p>
+          <ul
+            aria-label="Compliance and alignment"
+            className={styles.miniTrust}
+          >
+            <li>CBSE &amp; State Board Aligned</li>
             <li aria-hidden="true">·</li>
-            <li>NEP 2020 aligned</li>
+            <li>NEP 2020 Compliant</li>
             <li aria-hidden="true">·</li>
-            <li>HPC-ready reporting</li>
+            <li>PARAKH / HPC Ready</li>
+            <li aria-hidden="true">·</li>
+            <li>NCERT-Grounded</li>
           </ul>
         </div>
 

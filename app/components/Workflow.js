@@ -6,30 +6,31 @@ import styles from "./Workflow.module.css";
 const steps = [
   {
     description:
-      "The student's chapter stays the same. Nothing new to prepare.",
+      "The student's chapter stays the same. Nothing new to study. No separate app to open.",
     name: "Learn",
     num: "01",
   },
   {
-    description: "Proctor poses one question, grounded in that same chapter.",
+    description:
+      "The teacher assigns a Proctor assessment in under two minutes, linked to the chapter just taught.",
     name: "Assess",
     num: "02",
   },
   {
     description:
-      "The student explains. Proctor follows up once, precisely where it matters.",
+      "Proctor asks one curriculum-grounded question. The student responds — by voice or text. Proctor follows up once, precisely where it matters.",
     name: "Converse",
     num: "03",
   },
   {
     description:
-      "Proctor considers how the student answered, not merely what they said.",
+      "The evaluation pipeline processes how the student answered — not merely what they said — mapping response quality against Bloom's-tagged learning outcomes.",
     name: "Understand",
     num: "04",
   },
   {
     description:
-      "The teacher receives a report; the student becomes more articulate about what they know.",
+      "The teacher receives a per-student insight report. The student, for the first time, has a record of how they explained what they know — and where their understanding needs work.",
     name: "Improve",
     num: "05",
   },
@@ -151,8 +152,8 @@ export default function Workflow() {
           >
             <span className={styles.closingDot} />
             <p>
-              The subject remains the same. The chapter remains the same. What
-              the school gets to see does not.
+              The subject stays the same. The chapter stays the same. What the
+              school gets to see does not.
             </p>
           </GlassCard>
         </div>

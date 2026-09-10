@@ -2,23 +2,24 @@ import styles from "./Security.module.css";
 
 const ITEMS = [
   {
-    description: "Your curriculum and configuration stay under school control.",
+    description:
+      "Data handling aligned to India's DPDP Act. Student records stay with your school — never sold or shared.",
+    title: "Student data privacy",
+  },
+  {
+    description:
+      "Your curriculum and configuration stay under school control, with role-based access.",
     title: "School-controlled setup",
   },
   {
     description:
-      "Teachers review generated insights before they reach reports.",
+      "Reports below a confidence threshold are flagged for teacher review — judgment stays with educators.",
     title: "Human oversight",
   },
   {
     description:
-      "Student data is handled with privacy-first practices and secure access.",
-    title: "Privacy & secure access",
-  },
-  {
-    description:
-      "AI supports teachers — assessment judgment stays with educators.",
-    title: "Responsible AI use",
+      "Secure tokenized access and responsible AI use — assessment judgment stays with teachers.",
+    title: "Secure access & responsible AI",
   },
 ];
 
@@ -29,10 +30,6 @@ export default function Security() {
         <div className="section-head section-head--center">
           <p className="label label--accent">Trust &amp; responsibility</p>
           <h2>Schools trust us with their students. We act like it.</h2>
-          <p>
-            A school-facing product needs a visible trust layer — here is how
-            Proctors approaches data, oversight and responsibility.
-          </p>
         </div>
         <ul className={styles.grid}>
           {ITEMS.map((item, i) => (

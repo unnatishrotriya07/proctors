@@ -12,7 +12,7 @@ const INSIGHTS = [
 
 export default function Showcase() {
   return (
-    <section className="section" id="product">
+    <section className="section" id="product-showcase">
       <div className="container">
         <div className="section-head section-head--center">
           <p className="label label--accent">Product</p>

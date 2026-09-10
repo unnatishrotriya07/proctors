@@ -48,10 +48,27 @@
 }
 
 .panelTitle {
-  margin-bottom: 20px;
+  margin-bottom: 8px;
   font-family: var(--font-display);
   font-size: 1.75rem;
   color: var(--text-primary);
+  text-align: center;
+}
+
+.tagline {
+  margin-bottom: 14px;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.body {
+  max-width: 640px;
+  margin: 0 auto 22px;
+  font-size: 0.975rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
   text-align: center;
 }
 

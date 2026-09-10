@@ -3,6 +3,13 @@ import { AlertCircle, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 import styles from "./RequestPilot.module.css";
 
+const INCLUDED = [
+  "Full platform access for one subject and grade band",
+  "AI-generated assessments from your existing curriculum",
+  "Per-student insight reports for your teaching team",
+  "Direct access to the founding team for feedback and support",
+];
+
 export default function RequestPilot() {
   const [status, setStatus] = useState("idle");
   const [loading, setLoading] = useState(false);
@@ -20,13 +27,15 @@ export default function RequestPilot() {
     const payload = {
       _captcha: "false",
       _replyto: form.email.value,
-      _subject: "New Walkthrough Request — Proctors",
+      _subject: "New Pilot Application — Proctors",
       _template: "table",
+      assessmentMethod: form.assessmentMethod.value,
       email: form.email.value,
-      message: form.message.value,
       name: form.name.value,
       phone: form.phone.value,
-      school: form.school?.value ?? "",
+      role: form.role.value,
+      school: form.school.value,
+      state: form.state.value,
     };
 
     try {
@@ -56,24 +65,26 @@ export default function RequestPilot() {
   }
 
   return (
-    <section className="section" id="book-walkthrough">
+    <section className="section" id="pilot">
       <div className="container">
         <div className={`glass-panel reveal ${styles.panel}`}>
           <div aria-hidden="true" className={styles.glow} />
           <div className={styles.grid}>
             <div className={styles.copy}>
-              <p className="label label--accent">Book a walkthrough</p>
+              <p className="label label--accent">Free Pilot</p>
               <h2 className={styles.heading}>
-                Make every student visible in the learning journey.
+                See Proctor with your school&apos;s own curriculum.
               </h2>
               <p className={styles.lede}>
-                See how Proctors can fit into your curriculum, assessment
-                calendar, and teacher workflow.
+                We&apos;re running a structured free pilot with a small cohort
+                of design-partner schools. Pilot schools receive full platform
+                access, hands-on onboarding support, and first-mover pricing
+                when the paid phase begins.
               </p>
               <ul className={styles.ticks}>
-                <li>Grounded in your curriculum</li>
-                <li>Aligned to NEP 2020, HPC-ready</li>
-                <li>Insight teachers can use the same week</li>
+                {INCLUDED.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
               </ul>
             </div>
             <div className={styles.formWrap}>
@@ -85,7 +96,7 @@ export default function RequestPilot() {
                   />
                   <h3>Thank you.</h3>
                   <p>
-                    We&apos;ve received your walkthrough request and will reach
+                    We&apos;ve received your pilot application and will reach
                     out shortly to find a time that suits your school.
                   </p>
                 </div>
@@ -103,26 +114,54 @@ export default function RequestPilot() {
                     type="text"
                   />
                   <div className={styles.field}>
-                    <label className="field-label" htmlFor="walk-name">
-                      Name
+                    <label className="field-label" htmlFor="pilot-school">
+                      School Name
                     </label>
                     <input
                       className="field-input"
-                      id="walk-name"
-                      name="name"
-                      placeholder="Your full name"
+                      id="pilot-school"
+                      name="school"
+                      placeholder="School name and city"
                       required
                       type="text"
                     />
                   </div>
                   <div className={styles.row}>
                     <div className={styles.field}>
-                      <label className="field-label" htmlFor="walk-email">
+                      <label className="field-label" htmlFor="pilot-name">
+                        Your Name
+                      </label>
+                      <input
+                        className="field-input"
+                        id="pilot-name"
+                        name="name"
+                        placeholder="Your full name"
+                        required
+                        type="text"
+                      />
+                    </div>
+                    <div className={styles.field}>
+                      <label className="field-label" htmlFor="pilot-role">
+                        Role
+                      </label>
+                      <input
+                        className="field-input"
+                        id="pilot-role"
+                        name="role"
+                        placeholder="Principal, Coordinator, Teacher…"
+                        required
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div className={styles.row}>
+                    <div className={styles.field}>
+                      <label className="field-label" htmlFor="pilot-email">
                         Email
                       </label>
                       <input
                         className="field-input"
-                        id="walk-email"
+                        id="pilot-email"
                         name="email"
                         placeholder="you@school.edu"
                         required
@@ -130,41 +169,43 @@ export default function RequestPilot() {
                       />
                     </div>
                     <div className={styles.field}>
-                      <label className="field-label" htmlFor="walk-phone">
+                      <label className="field-label" htmlFor="pilot-phone">
                         Phone
                       </label>
                       <input
                         className="field-input"
-                        id="walk-phone"
+                        id="pilot-phone"
                         name="phone"
                         placeholder="+91 98765 43210"
                         type="tel"
                       />
                     </div>
                   </div>
-                  <div className={styles.field}>
-                    <label className="field-label" htmlFor="walk-school">
-                      School
-                    </label>
-                    <input
-                      className="field-input"
-                      id="walk-school"
-                      name="school"
-                      placeholder="School name and city"
-                      type="text"
-                    />
-                  </div>
-                  <div className={styles.field}>
-                    <label className="field-label" htmlFor="walk-message">
-                      Message
-                    </label>
-                    <textarea
-                      className="field-input"
-                      id="walk-message"
-                      name="message"
-                      placeholder="Tell us about your grades, subjects and assessment goals…"
-                      rows={3}
-                    />
+                  <div className={styles.row}>
+                    <div className={styles.field}>
+                      <label className="field-label" htmlFor="pilot-state">
+                        State
+                      </label>
+                      <input
+                        className="field-input"
+                        id="pilot-state"
+                        name="state"
+                        placeholder="e.g. Maharashtra"
+                        type="text"
+                      />
+                    </div>
+                    <div className={styles.field}>
+                      <label className="field-label" htmlFor="pilot-assessment">
+                        Current Assessment Method
+                      </label>
+                      <input
+                        className="field-input"
+                        id="pilot-assessment"
+                        name="assessmentMethod"
+                        placeholder="Written tests, worksheets…"
+                        type="text"
+                      />
+                    </div>
                   </div>
                   {status === "error" && (
                     <div className={styles.errorBanner} role="alert">
@@ -183,8 +224,12 @@ export default function RequestPilot() {
                     disabled={loading}
                     type="submit"
                   >
-                    {loading ? "Submitting…" : "Book a walkthrough"}
+                    {loading ? "Submitting…" : "Apply for the Free Pilot →"}
                   </button>
+                  <p className={styles.privacy}>
+                    We don&apos;t share your data with anyone. Student records
+                    stay with your school.
+                  </p>
                 </form>
               )}
             </div>

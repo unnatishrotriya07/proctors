@@ -29,9 +29,12 @@ export default function Footer() {
               <img alt="Proctors" className={styles.logoImg} src="/logo.png" />
             </a>
             <p className={styles.tagline}>
-              Proctors helps schools understand how every student thinks,
-              learns, and communicates.
+              Students learn their curriculum. Proctors helps them get better at
+              demonstrating what they learned.
             </p>
+            <a className={styles.contactLink} href="mailto:hello@proctors.in">
+              hello@proctors.in
+            </a>
           </div>
 
           <div className={styles.navCol}>
@@ -40,10 +43,10 @@ export default function Footer() {
               <li>
                 <a
                   className={styles.link}
-                  href="#product"
-                  onClick={(e) => handleNavClick(e, "#product")}
+                  href="#features"
+                  onClick={(e) => handleNavClick(e, "#features")}
                 >
-                  Product
+                  Features
                 </a>
               </li>
               <li>
@@ -67,35 +70,102 @@ export default function Footer() {
               <li>
                 <a
                   className={styles.link}
-                  href="#insight"
-                  onClick={(e) => handleNavClick(e, "#insight")}
+                  href="#pricing"
+                  onClick={(e) => handleNavClick(e, "#pricing")}
                 >
-                  Teacher Insight
+                  Pricing
                 </a>
               </li>
               <li>
                 <a
                   className={styles.link}
-                  href="#book-walkthrough"
-                  onClick={(e) => handleNavClick(e, "#book-walkthrough")}
+                  href="#pilot"
+                  onClick={(e) => handleNavClick(e, "#pilot")}
                 >
-                  Book a walkthrough
+                  Book a Pilot
                 </a>
               </li>
             </ul>
           </div>
 
-          <div className={styles.contactCol}>
-            <p className={styles.colTitle}>Contact</p>
-            <a className={styles.contactLink} href="mailto:hello@proctors.in">
-              hello@proctors.in
-            </a>
+          <div className={styles.navCol}>
+            <p className={styles.colTitle}>Platform</p>
+            <ul className={styles.links}>
+              <li>
+                <span className={styles.linkStatic}>AI Assessment Engine</span>
+              </li>
+              <li>
+                <span className={styles.linkStatic}>NCERT Question Bank</span>
+              </li>
+              <li>
+                <span className={styles.linkStatic}>
+                  HPC Compliance Reports
+                </span>
+              </li>
+              <li>
+                <span className={styles.linkStatic}>Teacher Dashboard</span>
+              </li>
+              <li>
+                <span className={styles.linkStatic}>Human Review Panel</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className={styles.navCol}>
+            <p className={styles.colTitle}>Company</p>
+            <ul className={styles.links}>
+              <li>
+                <span className={styles.linkStatic}>About Proctors</span>
+              </li>
+              <li>
+                <span className={styles.linkStatic}>Our Approach</span>
+              </li>
+              <li>
+                <span className={styles.linkStatic}>Blog (coming soon)</span>
+              </li>
+              <li>
+                <span className={styles.linkStatic}>Careers (coming soon)</span>
+              </li>
+              <li>
+                <a className={styles.link} href="mailto:hello@proctors.in">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className={styles.navCol}>
+            <p className={styles.colTitle}>Compliance &amp; Legal</p>
+            <ul className={styles.links}>
+              <li>
+                <span className={styles.linkStatic}>
+                  Privacy Policy (DPDP Act aligned — coming soon)
+                </span>
+              </li>
+              <li>
+                <span className={styles.linkStatic}>
+                  Terms of Service (coming soon)
+                </span>
+              </li>
+              <li>
+                <span className={styles.linkStatic}>Student Data Policy</span>
+              </li>
+              <li>
+                <span className={styles.linkStatic}>Security Overview</span>
+              </li>
+            </ul>
           </div>
         </div>
 
         <div className={styles.bottom}>
-          <p className={styles.copyright}>© 2026 Proctors</p>
+          <p className={styles.copyright}>
+            © 2026 Proctors. All rights reserved.
+          </p>
         </div>
+        <p className={styles.complianceNote}>
+          Student data stays with your school. Proctors does not sell or share
+          student records. Data handling aligned to India&apos;s DPDP Act.
+        </p>
       </div>
     </footer>
   );

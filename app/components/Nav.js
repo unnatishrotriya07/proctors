@@ -15,9 +15,10 @@ export default function Nav() {
 
   const links = [
     { href: "#product", label: "Product" },
+    { href: "#features", label: "Features" },
     { href: "#how-it-works", label: "How It Works" },
     { href: "#for-schools", label: "For Schools" },
-    { href: "#insight", label: "Insight" },
+    { href: "#pricing", label: "Pricing" },
   ];
 
   const handleNavClick = (e, href) => {
@@ -86,10 +87,10 @@ export default function Nav() {
                 </a>
                 <a
                   className={`btn btn--primary ${styles.ctaBtn}`}
-                  href="#book-walkthrough"
-                  onClick={(e) => handleNavClick(e, "#book-walkthrough")}
+                  href="#pilot"
+                  onClick={(e) => handleNavClick(e, "#pilot")}
                 >
-                  Book a walkthrough
+                  Book a Pilot →
                 </a>
               </div>
 
@@ -142,10 +143,10 @@ export default function Nav() {
             </ul>
             <button
               className={`btn btn--primary ${styles.mobileCtaBtn}`}
-              onClick={(e) => handleNavClick(e, "#book-walkthrough")}
+              onClick={(e) => handleNavClick(e, "#pilot")}
               type="button"
             >
-              Book a walkthrough
+              Book a Pilot →
             </button>
           </div>
         </div>
