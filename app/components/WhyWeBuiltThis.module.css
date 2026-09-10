@@ -5,20 +5,20 @@
 }
 
 .heading {
-  font-size: 38px;
-  font-weight: 700;
-  color: var(--text-primary);
   margin-top: 12px;
   margin-bottom: 32px;
+  font-size: 38px;
+  font-weight: 700;
   line-height: 1.25;
+  color: var(--text-primary);
 }
 
 .contentBox {
-  padding: 40px 36px;
-  text-align: left;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding: 40px 36px;
+  text-align: left;
 }
 
 .paragraph {

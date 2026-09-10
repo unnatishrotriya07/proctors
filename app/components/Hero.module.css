@@ -1,20 +1,20 @@
 .hero {
   position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   min-height: 100vh;
   min-height: 100svh; /* mobile browser chrome aware */
   padding: 120px 24px 72px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
-  box-sizing: border-box;
 }
 
 .container {
+  width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  width: 100%;
 }
 
 .content {
@@ -25,92 +25,97 @@
 }
 
 .headline {
+  margin-bottom: 24px;
   font-family: var(--font-heading);
   font-size: clamp(40px, 5.6vw, 66px);
-  font-weight: 800;
-  line-height: 1.12;
-  letter-spacing: -0.03em;
+  font-weight: 750;
+  line-height: 1.1;
   color: var(--text-primary);
-  margin-bottom: 24px;
+  letter-spacing: -0.035em;
 }
 
 .headlineSub {
+  display: inline-block;
+  padding-right: 4px;
+  font-style: italic;
+  font-weight: 750;
+  -webkit-text-fill-color: transparent;
   background: linear-gradient(135deg, #0284c7 0%, #1b9ffe 50%, #6366f1 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-  font-style: italic;
-  font-weight: 800;
 }
 
 .subhead {
-  font-size: clamp(17px, 1.8vw, 19.5px);
-  line-height: 1.62;
-  color: var(--text-secondary);
   max-width: 720px;
   margin: 0 auto 36px;
+  font-family: var(--font-sans);
+  font-size: clamp(17px, 1.8vw, 19.5px);
+  font-weight: 400;
+  line-height: 1.62;
+  color: var(--text-secondary);
+  letter-spacing: -0.01em;
 }
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
   align-items: center;
   justify-content: center;
-  gap: 16px;
   margin-bottom: 40px;
-  flex-wrap: wrap;
 }
 
 .secondaryBtn {
   background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
 
 /* ── Institutional Trust Lockup ── */
 .trustLockup {
   display: inline-flex;
-  align-items: center;
   gap: 14px;
+  align-items: center;
   padding: 8px 16px 8px 10px;
   background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.75);
   border-radius: 9999px;
-  box-shadow: 
+  box-shadow:
     0 4px 20px -2px rgba(15, 23, 42, 0.04),
     inset 0 1px 1px rgba(255, 255, 255, 0.85);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
   transition: all 0.25s ease;
 }
 
 .trustLockup:hover {
   background: rgba(255, 255, 255, 0.65);
   border-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 
+  box-shadow:
     0 6px 24px -2px rgba(15, 23, 42, 0.07),
     inset 0 1px 1px rgba(255, 255, 255, 1);
 }
 
 .trustItem {
   display: inline-flex;
-  align-items: center;
   gap: 8px;
+  align-items: center;
 }
 
 .trustCategory {
-  font-family: var(--font-mono);
+  padding: 2.5px 8px;
+  font-family: var(--font-accent);
   font-size: 10px;
   font-weight: 700;
+  color: var(--accent-dark);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--accent-dark);
   background: rgba(27, 159, 254, 0.12);
   border: 1px solid rgba(27, 159, 254, 0.22);
-  padding: 2.5px 8px;
   border-radius: 9999px;
 }
 
 .trustValue {
+  font-family: var(--font-sans);
   font-size: 12.5px;
   font-weight: 600;
   color: var(--text-secondary);
@@ -139,17 +144,17 @@
   }
 
   .headline {
+    margin-bottom: 14px;
     font-size: 27px;
     line-height: 1.2;
-    margin-bottom: 14px;
     letter-spacing: -0.025em;
   }
 
   .subhead {
+    max-width: 520px;
+    margin-bottom: 22px;
     font-size: 14.5px;
     line-height: 1.5;
-    margin-bottom: 22px;
-    max-width: 520px;
   }
 
   .actions {
@@ -158,12 +163,12 @@
   }
 
   .trustLockup {
+    flex-wrap: wrap;
     gap: 8px;
+    justify-content: center;
+    max-width: 100%;
     padding: 6px 12px;
     border-radius: 9999px;
-    max-width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
   }
 
   .trustItem {
@@ -171,8 +176,8 @@
   }
 
   .trustCategory {
-    font-size: 9px;
     padding: 2px 6px;
+    font-size: 9px;
   }
 
   .trustValue {
@@ -192,33 +197,33 @@
   }
 
   .headline {
+    margin-bottom: 12px;
     font-size: 23px;
     line-height: 1.22;
-    margin-bottom: 12px;
   }
 
   .subhead {
+    margin-bottom: 18px;
     font-size: 13.5px;
     line-height: 1.48;
-    margin-bottom: 18px;
   }
 
   .actions {
-    gap: 8px;
-    margin-bottom: 20px;
-    width: 100%;
     flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 20px;
   }
 
   .actions .btn,
   .actions a {
-    width: 100%;
     justify-content: center;
+    width: 100%;
   }
 
   .trustLockup {
-    padding: 6px 10px;
     gap: 6px;
+    padding: 6px 10px;
   }
 
   .trustValue {

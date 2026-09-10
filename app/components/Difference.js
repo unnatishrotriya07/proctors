@@ -1,19 +1,25 @@
-import styles from './Difference.module.css';
-import GlassCard from '@/components/ui/GlassCard';
+import GlassCard from "@/components/ui/GlassCard";
+import styles from "./Difference.module.css";
 
 export default function Difference() {
   return (
-    <section id="difference" className="section">
+    <section className="section" id="difference">
       <div className="container">
         <div className={styles.header}>
           <p className="label label--accent">The Difference</p>
           <h2 className={styles.heading}>
-            Two students can arrive at the same mark by entirely different routes.
+            Two students can arrive at the same mark by entirely different
+            routes.
           </h2>
           <p className={styles.subtext}>
-            A test confirms whether an answer was correct. It rarely reveals whether the student understood why.{' '}
-            <br className={styles.desktopBr} />With forty students in a classroom, there is seldom time to find out.{' '}
-            <br className={styles.desktopBr} />Proctors makes that time.
+            A test confirms whether an answer was correct. It rarely reveals
+            whether the student understood why.{" "}
+            <br className={styles.desktopBr} />
+            With forty students in a classroom, there is seldom time to find
+            out. <br className={styles.desktopBr} />
+            <strong className={styles.emphasisText}>
+              Proctors makes that time.
+            </strong>
           </p>
         </div>
 
@@ -21,7 +27,7 @@ export default function Difference() {
         <div className={styles.comparisonWrapper}>
           <div className={styles.grid}>
             {/* Student A */}
-            <GlassCard variant="grey" className={styles.card}>
+            <GlassCard className={styles.card} variant="grey">
               <div className={styles.cardHeader}>
                 <div className={styles.studentBadge}>
                   <span className={styles.studentAvatar}>A</span>
@@ -36,11 +42,16 @@ export default function Difference() {
               <div className={styles.cardContent}>
                 <div className={styles.metricRow}>
                   <span className={styles.metricLabel}>Standard Test</span>
-                  <span className={styles.metricValue}>Correct keyword match</span>
+                  <span className={styles.metricValue}>
+                    Correct keyword match
+                  </span>
                 </div>
                 <div className={styles.metricRow}>
                   <span className={styles.metricLabel}>Probed Explanation</span>
-                  <span className={styles.metricValueMuted}>When asked to explain further, stalls or falls back on a memorized formula.</span>
+                  <span className={styles.metricValueMuted}>
+                    When asked to explain further, stalls or falls back on a
+                    memorized formula.
+                  </span>
                 </div>
                 <div className={styles.metricRow}>
                   <span className={styles.metricLabel}>Teacher Insight</span>
@@ -50,10 +61,14 @@ export default function Difference() {
             </GlassCard>
 
             {/* Student B */}
-            <GlassCard variant="blue" className={styles.card}>
+            <GlassCard className={styles.card} variant="blue">
               <div className={styles.cardHeader}>
                 <div className={styles.studentBadge}>
-                  <span className={`${styles.studentAvatar} ${styles.studentAvatarActive}`}>B</span>
+                  <span
+                    className={`${styles.studentAvatar} ${styles.studentAvatarActive}`}
+                  >
+                    B
+                  </span>
                   <div>
                     <span className={styles.studentName}>Student B</span>
                     <span className={styles.studentTag}>Concept-driven</span>
@@ -65,15 +80,22 @@ export default function Difference() {
               <div className={styles.cardContent}>
                 <div className={styles.metricRow}>
                   <span className={styles.metricLabel}>Standard Test</span>
-                  <span className={styles.metricValue}>Correct keyword match</span>
+                  <span className={styles.metricValue}>
+                    Correct keyword match
+                  </span>
                 </div>
                 <div className={styles.metricRow}>
                   <span className={styles.metricLabel}>Probed Explanation</span>
-                  <span className={styles.metricValueHighlight}>When asked to explain further, describes the principle clearly, in their own words.</span>
+                  <span className={styles.metricValueHighlight}>
+                    When asked to explain further, describes the principle
+                    clearly, in their own words.
+                  </span>
                 </div>
                 <div className={styles.metricRow}>
                   <span className={styles.metricLabel}>Teacher Insight</span>
-                  <span className={styles.tagSuccess}>Verified Conceptual Depth</span>
+                  <span className={styles.tagSuccess}>
+                    Verified Conceptual Depth
+                  </span>
                 </div>
               </div>
             </GlassCard>

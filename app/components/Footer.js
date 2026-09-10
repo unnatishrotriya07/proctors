@@ -1,15 +1,15 @@
-'use client';
-import styles from './Footer.module.css';
+"use client";
+import styles from "./Footer.module.css";
 
 export default function Footer() {
   const handleNavClick = (e, href) => {
-    if (href && href.startsWith('#')) {
+    if (href?.startsWith("#")) {
       e.preventDefault();
-      const targetId = href.substring(1);
+      const targetId = href.slice(1);
       const elem = document.getElementById(targetId);
       if (elem) {
-        elem.scrollIntoView({ behavior: 'smooth' });
-        window.history.pushState(null, '', href);
+        elem.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", href);
       }
     }
   };
@@ -20,20 +20,17 @@ export default function Footer() {
         <div className={styles.top}>
           <div className={styles.brandCol}>
             <a
-              href="#hero"
-              className={styles.brand}
               aria-label="Proctors Home"
-              onClick={(e) => handleNavClick(e, '#hero')}
+              className={styles.brand}
+              href="#hero"
+              onClick={(e) => handleNavClick(e, "#hero")}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/logo.png"
-                alt="Proctors"
-                className={styles.logoImg}
-              />
+              <img alt="Proctors" className={styles.logoImg} src="/logo.png" />
             </a>
             <p className={styles.tagline}>
-              Students learn their curriculum. Proctors helps them get better at demonstrating what they learned.
+              Students learn their curriculum. Proctors helps them get better at
+              demonstrating what they learned.
             </p>
           </div>
 
@@ -42,27 +39,27 @@ export default function Footer() {
             <ul className={styles.links}>
               <li>
                 <a
-                  href="#proctor"
                   className={styles.link}
-                  onClick={(e) => handleNavClick(e, '#proctor')}
+                  href="#proctor"
+                  onClick={(e) => handleNavClick(e, "#proctor")}
                 >
                   Proctor
                 </a>
               </li>
               <li>
                 <a
-                  href="#how-it-works"
                   className={styles.link}
-                  onClick={(e) => handleNavClick(e, '#how-it-works')}
+                  href="#how-it-works"
+                  onClick={(e) => handleNavClick(e, "#how-it-works")}
                 >
                   How It Works
                 </a>
               </li>
               <li>
                 <a
-                  href="#for-schools"
                   className={styles.link}
-                  onClick={(e) => handleNavClick(e, '#for-schools')}
+                  href="#for-schools"
+                  onClick={(e) => handleNavClick(e, "#for-schools")}
                 >
                   For Schools
                 </a>
@@ -72,7 +69,7 @@ export default function Footer() {
 
           <div className={styles.contactCol}>
             <p className={styles.colTitle}>Contact</p>
-            <a href="mailto:hello@proctors.in" className={styles.contactLink}>
+            <a className={styles.contactLink} href="mailto:hello@proctors.in">
               hello@proctors.in
             </a>
           </div>

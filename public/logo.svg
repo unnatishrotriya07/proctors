@@ -1,11 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 40" width="260" height="40" fill="none">
+<svg
+  fill="none"
+  height="40"
+  viewBox="0 0 260 40"
+  width="260"
+  xmlns="http://www.w3.org/2000/svg"
+>
   <text
+    fill="#0f172a"
+    font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif"
+    font-size="25"
+    font-weight="900"
+    letter-spacing="0.26em"
     x="0"
     y="28"
-    font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif"
-    font-weight="900"
-    font-size="25"
-    letter-spacing="0.26em"
-    fill="#0f172a"
-  >PROCTOR</text>
+  >
+    PROCTOR
+  </text>
 </svg>

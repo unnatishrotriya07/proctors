@@ -1,17 +1,17 @@
 .footer {
+  position: relative;
+  z-index: 1;
+  padding: 64px 0 32px;
   background: radial-gradient(
     140% 100% at 50% 0%,
     rgba(255, 255, 255, 0.78) 0%,
     rgba(255, 255, 255, 0.48) 50%,
     rgba(240, 246, 255, 0.65) 100%
   );
-  backdrop-filter: blur(28px) saturate(200%) contrast(104%);
-  -webkit-backdrop-filter: blur(28px) saturate(200%) contrast(104%);
   border-top: 1px solid rgba(255, 255, 255, 0.85);
   box-shadow: inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95);
-  padding: 64px 0 32px;
-  position: relative;
-  z-index: 1;
+  -webkit-backdrop-filter: blur(28px) saturate(200%) contrast(104%);
+  backdrop-filter: blur(28px) saturate(200%) contrast(104%);
 }
 
 .top {
@@ -34,24 +34,27 @@
 }
 
 .logoImg {
-  height: 26px;
   width: auto;
+  height: 26px;
   object-fit: contain;
 }
 
 .tagline {
+  font-family: var(--font-sans);
   font-size: 14px;
+  font-weight: 400;
   line-height: 1.6;
   color: var(--text-muted);
 }
 
 .colTitle {
+  margin-bottom: 16px;
+  font-family: var(--font-accent);
   font-size: 11px;
   font-weight: 700;
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--text-muted);
-  margin-bottom: 16px;
 }
 
 .links {
@@ -61,8 +64,9 @@
 }
 
 .link {
-  font-size: 14px;
-  font-weight: 500;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 450;
   color: var(--text-secondary);
   transition: color 0.15s ease;
 }
@@ -72,7 +76,8 @@
 }
 
 .contactLink {
-  font-size: 14px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
   font-weight: 500;
   color: var(--accent-dark);
   transition: color 0.15s ease;
@@ -83,15 +88,17 @@
 }
 
 .bottom {
-  padding-top: 24px;
-  border-top: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
 }
 
 .copyright {
-  font-size: 13px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 400;
   color: var(--text-muted);
 }
 
@@ -115,8 +122,8 @@
     line-height: 1.5;
   }
   .colTitle {
-    font-size: 10px;
     margin-bottom: 8px;
+    font-size: 10px;
   }
   .links {
     gap: 6px;

@@ -1,20 +1,20 @@
-'use client';
-import { useEffect, useRef, useState } from 'react';
-import GlassCard from '@/components/ui/GlassCard';
-import styles from './LearningChart.module.css';
+"use client";
+import { useEffect, useRef, useState } from "react";
+import GlassCard from "@/components/ui/GlassCard";
+import styles from "./LearningChart.module.css";
 
 const points = [
-  { week: 'W1', value: 24 },
-  { week: 'W2', value: 38 },
-  { week: 'W3', value: 52 },
-  { week: 'W4', value: 68 },
-  { week: 'W5', value: 80 },
-  { week: 'W6', value: 92 },
+  { value: 24, week: "W1" },
+  { value: 38, week: "W2" },
+  { value: 52, week: "W3" },
+  { value: 68, week: "W4" },
+  { value: 80, week: "W5" },
+  { value: 92, week: "W6" },
 ];
 
 const W = 520;
 const H = 140;
-const PAD = { top: 16, right: 24, bottom: 28, left: 24 };
+const PAD = { bottom: 28, left: 24, right: 24, top: 16 };
 const chartW = W - PAD.left - PAD.right;
 const chartH = H - PAD.top - PAD.bottom;
 
@@ -39,7 +39,7 @@ function getCurvedPath(pts) {
 
 function getAreaPath(pts) {
   const lineD = getCurvedPath(pts);
-  const lastX = pts[pts.length - 1][0];
+  const lastX = pts.at(-1)[0];
   const firstX = pts[0][0];
   const bottomY = PAD.top + chartH;
   return `${lineD} L ${lastX},${bottomY} L ${firstX},${bottomY} Z`;
@@ -52,11 +52,15 @@ export default function LearningChart() {
   useEffect(() => {
     const obs = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) setVisible(true);
+        if (entry.isIntersecting) {
+          setVisible(true);
+        }
       },
       { threshold: 0.2 }
     );
-    if (ref.current) obs.observe(ref.current);
+    if (ref.current) {
+      obs.observe(ref.current);
+    }
     return () => obs.disconnect();
   }, []);
 
@@ -64,20 +68,20 @@ export default function LearningChart() {
 
   return (
     <div className={styles.wrap} ref={ref}>
-      <GlassCard hoverEffect={false} className={styles.card}>
+      <GlassCard className={styles.card} hoverEffect={false}>
         <p className={styles.lineAbove}>
           Understanding deepens as conversations continue across a term.
         </p>
 
         <div className={styles.svgContainer}>
           <svg
-            viewBox={`0 0 ${W} ${H}`}
+            aria-label="Graph of student conceptual understanding progression"
             className={styles.svg}
             role="img"
-            aria-label="Graph of student conceptual understanding progression"
+            viewBox={`0 0 ${W} ${H}`}
           >
             <defs>
-              <linearGradient id="curveGrad" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient id="curveGrad" x1="0" x2="0" y1="0" y2="1">
                 <stop offset="0%" stopColor="#1b9ffe" stopOpacity="0.25" />
                 <stop offset="100%" stopColor="#1b9ffe" stopOpacity="0.0" />
               </linearGradient>
@@ -85,42 +89,42 @@ export default function LearningChart() {
 
             {/* Subtle baseline */}
             <line
-              x1={PAD.left}
-              y1={PAD.top + chartH}
-              x2={W - PAD.right}
-              y2={PAD.top + chartH}
               stroke="rgba(148, 163, 184, 0.2)"
               strokeWidth="1"
+              x1={PAD.left}
+              x2={W - PAD.right}
+              y1={PAD.top + chartH}
+              y2={PAD.top + chartH}
             />
 
             {/* Gradient Area Fill */}
             <path
+              className={`${styles.area} ${visible ? styles.visible : ""}`}
               d={getAreaPath(pts)}
               fill="url(#curveGrad)"
-              className={`${styles.area} ${visible ? styles.visible : ''}`}
             />
 
             {/* Glowing Main Curve */}
             <path
+              className={`${styles.line} ${visible ? styles.visible : ""}`}
               d={getCurvedPath(pts)}
               fill="none"
               stroke="#1b9ffe"
-              strokeWidth="2.5"
               strokeLinecap="round"
-              className={`${styles.line} ${visible ? styles.visible : ''}`}
+              strokeWidth="2.5"
             />
 
             {/* Dots */}
             {pts.map(([x, y], i) => (
               <circle
-                key={i}
+                className={`${styles.dot} ${visible ? styles.dotVisible : ""}`}
                 cx={x}
                 cy={y}
+                fill={i === pts.length - 1 ? "#1b9ffe" : "#ffffff"}
+                key={i}
                 r={i === pts.length - 1 ? 4.5 : 3}
-                fill={i === pts.length - 1 ? '#1b9ffe' : '#ffffff'}
                 stroke="#1b9ffe"
                 strokeWidth={i === pts.length - 1 ? 2 : 1.5}
-                className={`${styles.dot} ${visible ? styles.dotVisible : ''}`}
                 style={{ transitionDelay: `${0.4 + i * 0.08}s` }}
               />
             ))}
@@ -130,11 +134,11 @@ export default function LearningChart() {
               const x = pts[i][0];
               return (
                 <text
+                  className={styles.label}
                   key={i}
+                  textAnchor="middle"
                   x={x}
                   y={PAD.top + chartH + 18}
-                  textAnchor="middle"
-                  className={styles.label}
                 >
                   {p.week}
                 </text>

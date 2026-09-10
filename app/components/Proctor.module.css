@@ -12,21 +12,30 @@
 }
 
 .heading {
-  font-family: var(--font-heading);
-  font-size: clamp(30px, 3.5vw, 42px);
-  font-weight: 800;
-  color: var(--text-primary);
   margin-top: 12px;
   margin-bottom: 18px;
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 3.5vw, 42px);
+  font-weight: 750;
   line-height: 1.2;
-  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+}
+
+.headingItalic {
+  font-style: italic;
+  font-weight: 750;
+  color: var(--accent-dark);
 }
 
 .subtext {
-  font-size: 16.5px;
-  color: var(--text-secondary);
-  line-height: 1.65;
   margin-bottom: 32px;
+  font-family: var(--font-sans);
+  font-size: 16.5px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  letter-spacing: -0.01em;
 }
 
 /* ── Value Pillars ── */
@@ -43,38 +52,43 @@
 }
 
 .pillarNum {
-  font-family: var(--font-mono);
+  flex-shrink: 0;
+  padding: 3px 8px;
+  margin-top: 2px;
+  font-family: var(--font-accent);
   font-size: 11.5px;
   font-weight: 700;
   color: var(--accent-dark);
+  letter-spacing: 0.04em;
   background: var(--accent-soft);
   border: 1px solid var(--accent-border);
-  padding: 3px 8px;
   border-radius: 6px;
-  flex-shrink: 0;
-  margin-top: 2px;
 }
 
 .pillarTitle {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text-primary);
   margin-bottom: 4px;
+  font-family: var(--font-heading);
+  font-size: 16.5px;
+  font-weight: 650;
   line-height: 1.35;
+  color: var(--text-primary);
+  letter-spacing: -0.015em;
 }
 
 .pillarDesc {
+  font-family: var(--font-sans);
   font-size: 14px;
-  line-height: 1.55;
+  font-weight: 400;
+  line-height: 1.6;
   color: var(--text-secondary);
 }
 
 /* ── 3D Robot Container ── */
 .robotWrapper {
-  width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 @media (max-width: 960px) {
@@ -84,27 +98,27 @@
   }
 
   .introContent {
-    text-align: center;
     align-items: center;
+    text-align: center;
   }
 
   .pillars {
-    text-align: left;
     max-width: 540px;
+    text-align: left;
   }
 }
 
 @media (max-width: 768px) {
   .heading {
-    font-size: 24px;
-    line-height: 1.25;
     margin-top: 8px;
     margin-bottom: 12px;
+    font-size: 24px;
+    line-height: 1.25;
   }
   .subtext {
+    margin-bottom: 20px;
     font-size: 14px;
     line-height: 1.5;
-    margin-bottom: 20px;
   }
   .pillars {
     gap: 12px;
@@ -113,12 +127,12 @@
     gap: 12px;
   }
   .pillarNum {
-    font-size: 10px;
     padding: 2px 6px;
+    font-size: 10px;
   }
   .pillarTitle {
-    font-size: 14px;
     margin-bottom: 2px;
+    font-size: 14px;
   }
   .pillarDesc {
     font-size: 12.5px;
@@ -131,13 +145,13 @@
 
 @media (max-width: 480px) {
   .heading {
-    font-size: 21px;
     margin-bottom: 10px;
+    font-size: 21px;
   }
   .subtext {
+    margin-bottom: 16px;
     font-size: 13px;
     line-height: 1.48;
-    margin-bottom: 16px;
   }
   .pillarTitle {
     font-size: 13.5px;

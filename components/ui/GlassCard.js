@@ -1,1 +1,1 @@
-export { default, LiquidGlass as GlassCard } from './LiquidGlass';
+export { default, LiquidGlass as GlassCard } from "./LiquidGlass";

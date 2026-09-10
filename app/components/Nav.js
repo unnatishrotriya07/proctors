@@ -1,7 +1,7 @@
-'use client';
-import { useState, useEffect } from 'react';
-import styles from './Nav.module.css';
-import LiquidGlass from '@/components/ui/LiquidGlass';
+"use client";
+import { useEffect, useState } from "react";
+import LiquidGlass from "@/components/ui/LiquidGlass";
+import styles from "./Nav.module.css";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -9,27 +9,29 @@ export default function Nav() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const links = [
-    { label: 'Proctor', href: '#proctor' },
-    { label: 'How It Works', href: '#how-it-works' },
-    { label: 'For Schools', href: '#for-schools' },
+    { href: "#proctor", label: "Proctor" },
+    { href: "#how-it-works", label: "How It Works" },
+    { href: "#for-schools", label: "For Schools" },
   ];
 
   const handleNavClick = (e, href) => {
-    if (e) e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
     setMenuOpen(false);
-    if (href && href.startsWith('#')) {
-      const targetId = href.substring(1);
+    if (href?.startsWith("#")) {
+      const targetId = href.slice(1);
       const elem = document.getElementById(targetId);
       if (elem) {
         setTimeout(() => {
-          elem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          elem.scrollIntoView({ behavior: "smooth", block: "start" });
         }, 50);
-        window.history.pushState(null, '', href);
+        window.history.pushState(null, "", href);
       }
     }
   };
@@ -40,22 +42,22 @@ export default function Nav() {
         <div className={styles.navContainer}>
           <LiquidGlass
             as="nav"
-            variant="nav"
+            className={`${styles.nav} ${scrolled ? styles.scrolled : ""}`}
             hoverable={false}
-            className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}
+            variant="nav"
           >
             <div className={styles.inner}>
               <a
-                href="#hero"
-                className={styles.brand}
                 aria-label="Proctors Home"
-                onClick={(e) => handleNavClick(e, '#hero')}
+                className={styles.brand}
+                href="#hero"
+                onClick={(e) => handleNavClick(e, "#hero")}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/logo.png"
                   alt="Proctors"
                   className={styles.logoImg}
+                  src="/logo.png"
                 />
               </a>
 
@@ -65,8 +67,8 @@ export default function Nav() {
                   {links.map((l) => (
                     <li key={l.href}>
                       <a
-                        href={l.href}
                         className={styles.link}
+                        href={l.href}
                         onClick={(e) => handleNavClick(e, l.href)}
                       >
                         {l.label}
@@ -75,9 +77,9 @@ export default function Nav() {
                   ))}
                 </ul>
                 <a
-                  href="#request-pilot"
                   className={`btn btn--primary ${styles.ctaBtn}`}
-                  onClick={(e) => handleNavClick(e, '#request-pilot')}
+                  href="#request-pilot"
+                  onClick={(e) => handleNavClick(e, "#request-pilot")}
                 >
                   Book a Pilot
                 </a>
@@ -85,12 +87,14 @@ export default function Nav() {
 
               {/* Mobile Hamburger */}
               <button
-                className={`${styles.hamburger} ${menuOpen ? styles.active : ''}`}
-                onClick={() => setMenuOpen((prev) => !prev)}
                 aria-label="Toggle menu"
+                className={`${styles.hamburger} ${menuOpen ? styles.active : ""}`}
+                onClick={() => setMenuOpen((prev) => !prev)}
                 type="button"
               >
-                <span /><span /><span />
+                <span />
+                <span />
+                <span />
               </button>
             </div>
           </LiquidGlass>
@@ -101,18 +105,18 @@ export default function Nav() {
       {menuOpen && (
         <div className={styles.mobileNavContainer}>
           <div
+            aria-hidden="true"
             className={styles.overlay}
             onClick={() => setMenuOpen(false)}
-            aria-hidden="true"
           />
           <div className={styles.mobileMenuCard}>
             <ul className={styles.mobileLinks}>
               {links.map((l) => (
                 <li key={l.href}>
                   <button
-                    type="button"
                     className={styles.mobileLink}
                     onClick={(e) => handleNavClick(e, l.href)}
+                    type="button"
                   >
                     {l.label}
                   </button>
@@ -120,9 +124,9 @@ export default function Nav() {
               ))}
             </ul>
             <button
-              type="button"
               className={`btn btn--primary ${styles.mobileCtaBtn}`}
-              onClick={(e) => handleNavClick(e, '#request-pilot')}
+              onClick={(e) => handleNavClick(e, "#request-pilot")}
+              type="button"
             >
               Book a Pilot
             </button>
@@ -132,4 +136,3 @@ export default function Nav() {
     </>
   );
 }
-
