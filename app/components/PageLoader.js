@@ -4,17 +4,19 @@ import { useState, useEffect } from 'react';
 import { MorphingInfinity } from '@/components/ui/morphing-infinity';
 
 export default function PageLoader() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
     // Check if user has already visited in this session
     const hasVisited = sessionStorage.getItem('proctors_first_visit');
     if (hasVisited) {
-      setLoading(false);
       return;
     }
 
+    const initTimer = setTimeout(() => {
+      setLoading(true);
+    }, 0);
     // Lock scroll during initial 3-second loader
     document.body.style.overflow = 'hidden';
 
@@ -29,6 +31,7 @@ export default function PageLoader() {
     }, 3000);
 
     return () => {
+      clearTimeout(initTimer);
       clearTimeout(timer);
       document.body.style.overflow = '';
     };

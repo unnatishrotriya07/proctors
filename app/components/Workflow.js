@@ -7,27 +7,27 @@ const steps = [
   {
     num: '01',
     name: 'Learn',
-    description: "The student's chapter stays the same. Nothing new to prepare.",
+    description: "The student's chapter stays the same. Nothing new to study. No separate app to open.",
   },
   {
     num: '02',
     name: 'Assess',
-    description: 'Proctor poses one question, grounded in that same chapter.',
+    description: 'The teacher assigns a Proctor assessment in under two minutes, linked to the chapter just taught.',
   },
   {
     num: '03',
     name: 'Converse',
-    description: 'The student explains. Proctor follows up once, precisely where it matters.',
+    description: 'Proctor asks one curriculum-grounded question. The student responds — by voice or text. Proctor follows up once, precisely where it matters.',
   },
   {
     num: '04',
     name: 'Understand',
-    description: 'Proctor considers how the student answered, not merely what they said.',
+    description: 'The evaluation pipeline processes how the student answered — not merely what they said — mapping response quality against Bloom’s-tagged learning outcomes.',
   },
   {
     num: '05',
     name: 'Improve',
-    description: 'The teacher receives a report; the student becomes more articulate about what they know.',
+    description: 'The teacher receives a per-student insight report. The student, for the first time, has a record of how they explained what they know — and where their understanding needs work.',
   },
 ];
 
@@ -125,7 +125,7 @@ export default function Workflow() {
         <div className={styles.closingWrapper}>
           <GlassCard variant="pill" hoverEffect={false} className={styles.closingLine}>
             <span className={styles.closingDot} />
-            <p>The subject remains the same. The chapter remains the same. What the school gets to see does not.</p>
+            <p>The subject stays the same. The chapter stays the same. What the school gets to see does not.</p>
           </GlassCard>
         </div>
       </div>

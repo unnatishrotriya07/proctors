@@ -44,7 +44,7 @@ export default function Difference() {
                 </div>
                 <div className={styles.metricRow}>
                   <span className={styles.metricLabel}>Teacher Insight</span>
-                  <span className={styles.tagAlert}>Gap Not Yet Visible</span>
+                  <span className={styles.tagAlert}>Gap Not Visible</span>
                 </div>
               </div>
             </GlassCard>
@@ -73,7 +73,7 @@ export default function Difference() {
                 </div>
                 <div className={styles.metricRow}>
                   <span className={styles.metricLabel}>Teacher Insight</span>
-                  <span className={styles.tagSuccess}>Verified Conceptual Depth</span>
+                  <span className={styles.tagSuccess}>Conceptual Depth Verified</span>
                 </div>
               </div>
             </GlassCard>

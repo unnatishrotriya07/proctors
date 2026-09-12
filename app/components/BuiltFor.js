@@ -1,24 +1,40 @@
+'use client';
 import styles from './BuiltFor.module.css';
 import GlassCard from '@/components/ui/GlassCard';
+import { ArrowRight } from 'lucide-react';
 
 const audiences = [
   {
-    role: 'For Schools',
-    tag: 'Leadership & Compliance',
-    title: "See what your board already expects.",
-    body: 'HPC-aligned evidence — communication, reasoning, understanding — for every student, every chapter, generated instead of hand-noted.',
+    role: 'For School Leadership',
+    subtitle: 'See what your board already expects — without adding manual documentation work.',
+    body: 'Proctors gives principals and academic heads HPC-aligned evidence of communication, reasoning, and understanding — for every student, every chapter — auto-generated instead of hand-noted. Use it to demonstrate competency-based assessment compliance at board inspections, parent meetings, and academic reviews.',
+    bullets: [
+      'HPC-ready reports, auto-generated from assessment data',
+      'School-wide and class-level insight dashboard',
+      'Audit trail for every evaluated assessment',
+    ],
   },
   {
     role: 'For Teachers',
-    tag: 'Classroom & Diagnostics',
-    title: 'Thirty conversations you never have time for.',
-    body: 'Every student gets a diagnostic exchange, and you get a report worth reading the same week — not more grading to add to your evening.',
+    subtitle: 'Thirty diagnostic conversations you never have time to hold — turned into a report worth reading.',
+    body: 'A teacher creates an assessment in under two minutes. Proctor runs it for every student. The teacher receives per-student insight reports — what each student understood, where gaps exist, and how their communication compares — without a single extra paper to grade.',
+    bullets: [
+      'Assessment assignment in < 2 minutes',
+      'Per-student reports in the same week',
+      'Human review override for flagged assessments',
+      'No additional grading workload',
+    ],
   },
   {
     role: 'For Students',
-    tag: 'Experience & Learning',
-    title: 'It feels like being asked, not tested.',
-    body: 'One question, one thoughtful follow-up, no clock running. It feels like a conversation, because it is one.',
+    subtitle: 'It feels like being asked — not tested.',
+    body: 'One question, one follow-up, no clock running. A student thinks out loud, explains what they know in their own words, and is never penalised for a wrong answer mid-explanation. For students who rarely get called on in a classroom of forty, this is often the first time someone has asked them to explain something — and actually waited to hear the answer.',
+    bullets: [
+      "Voice or text — student's choice",
+      'Works on any device, no app required',
+      'Low-stakes, conversational format',
+      'Built around the chapter they already know',
+    ],
   },
 ];
 
@@ -29,7 +45,7 @@ export default function BuiltFor() {
         <div className={styles.header}>
           <p className="label label--accent">Built For</p>
           <h2 className={styles.heading}>
-            Clarity for leadership. Time for teachers. Encouragement for students.
+            Clarity for leadership. Time for teachers. Confidence for students.
           </h2>
         </div>
 
@@ -39,11 +55,17 @@ export default function BuiltFor() {
               <div className={styles.cardTop}>
                 <span className="badge badge--blue">{item.role}</span>
               </div>
-              <h3 className={styles.title}>{item.title}</h3>
+              <h3 className={styles.title}>{item.subtitle}</h3>
               <p className={styles.body}>{item.body}</p>
-              {item.outcome && (
-                <p className={styles.outcome}>→ {item.outcome}</p>
-              )}
+              
+              <ul className={styles.bulletsList}>
+                {item.bullets.map((b) => (
+                  <li key={b} className={styles.bulletItem}>
+                    <ArrowRight className={styles.bulletArrow} />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
             </GlassCard>
           ))}
         </div>
