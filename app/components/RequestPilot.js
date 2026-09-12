@@ -72,7 +72,6 @@ export default function RequestPilot() {
             <div className={styles.layoutGrid}>
               {/* Left Column: Offer Details & Pilot Scope */}
               <div className={styles.infoCol}>
-                <span className={styles.eyebrow}>Structured Free Pilot</span>
                 <h2 className={styles.title}>
                   See Proctor with your school&apos;s own curriculum.
                 </h2>

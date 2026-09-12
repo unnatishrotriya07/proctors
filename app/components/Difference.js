@@ -27,7 +27,7 @@ export default function Difference() {
                   <span className={styles.studentAvatar}>A</span>
                   <div>
                     <span className={styles.studentName}>Student A</span>
-                    <span className={styles.studentTag}>Recall-driven</span>
+                    <span className={styles.studentTag}>Recall-Driven</span>
                   </div>
                 </div>
                 <div className={styles.scoreBadge}>Score: 8/10</div>
@@ -36,11 +36,11 @@ export default function Difference() {
               <div className={styles.cardContent}>
                 <div className={styles.metricRow}>
                   <span className={styles.metricLabel}>Standard Test</span>
-                  <span className={styles.metricValue}>Correct keyword match</span>
+                  <span className={styles.metricValue}>Correct keyword</span>
                 </div>
                 <div className={styles.metricRow}>
-                  <span className={styles.metricLabel}>Probed Explanation</span>
-                  <span className={styles.metricValueMuted}>When asked to explain further, stalls or falls back on a memorized formula.</span>
+                  <span className={styles.metricLabel}>Probed</span>
+                  <span className={styles.metricValueMuted}>Stalls, falls back on a memorised formula</span>
                 </div>
                 <div className={styles.metricRow}>
                   <span className={styles.metricLabel}>Teacher Insight</span>
@@ -56,7 +56,7 @@ export default function Difference() {
                   <span className={`${styles.studentAvatar} ${styles.studentAvatarActive}`}>B</span>
                   <div>
                     <span className={styles.studentName}>Student B</span>
-                    <span className={styles.studentTag}>Concept-driven</span>
+                    <span className={styles.studentTag}>Concept-Driven</span>
                   </div>
                 </div>
                 <div className={styles.scoreBadge}>Score: 8/10</div>
@@ -65,11 +65,11 @@ export default function Difference() {
               <div className={styles.cardContent}>
                 <div className={styles.metricRow}>
                   <span className={styles.metricLabel}>Standard Test</span>
-                  <span className={styles.metricValue}>Correct keyword match</span>
+                  <span className={styles.metricValue}>Correct keyword</span>
                 </div>
                 <div className={styles.metricRow}>
-                  <span className={styles.metricLabel}>Probed Explanation</span>
-                  <span className={styles.metricValueHighlight}>When asked to explain further, describes the principle clearly, in their own words.</span>
+                  <span className={styles.metricLabel}>Probed</span>
+                  <span className={styles.metricValueHighlight}>Explains the principle clearly, in their own words</span>
                 </div>
                 <div className={styles.metricRow}>
                   <span className={styles.metricLabel}>Teacher Insight</span>

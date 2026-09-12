@@ -9,19 +9,16 @@ const highlights = [
     icon: Mic,
     title: 'Conversational AI',
     desc: 'Voice + text assessment delivered as a one-on-one dialogue — not a quiz, not a form.',
-    tag: 'Oral Diagnostics',
   },
   {
     icon: FileSpreadsheet,
     title: 'NCERT Question Engine',
     desc: "Questions auto-generated from your board's chapters, tagged by Bloom's Taxonomy level.",
-    tag: 'Board Aligned',
   },
   {
     icon: BarChart3,
     title: 'Insight Reports',
     desc: 'Per-student reports on conceptual depth, communication, and identified gaps — HPC-aligned.',
-    tag: 'HPC Ready',
   },
 ];
 
@@ -63,7 +60,6 @@ export default function PlatformSnapshot() {
                   <div className={styles.iconCircle}>
                     <Icon className={styles.cardIcon} />
                   </div>
-                  <span className={styles.badge}>{item.tag}</span>
                 </div>
                 <h3 className={styles.cardTitle}>{item.title}</h3>
                 <p className={styles.cardDesc}>{item.desc}</p>

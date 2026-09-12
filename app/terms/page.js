@@ -6,7 +6,7 @@ import { GradientWave } from '@/components/ui/gradient-wave';
 
 export const metadata = {
   title: 'Terms of Service — Proctors',
-  description: 'Terms and conditions governing the use of the Proctors AI-powered conversational assessment platform for schools.',
+  description: 'Terms of Service for Proctors — AI-Powered Conversational Assessment Platform for Schools.',
 };
 
 export default function TermsPage() {
@@ -31,120 +31,81 @@ export default function TermsPage() {
 
           <article className={styles.contentCard}>
             <header className={styles.header}>
-              <span className={styles.badge}>Institutional Agreement</span>
+              <span className={styles.badge}>Platform Terms</span>
               <h1 className={styles.title}>Terms of Service</h1>
               <div className={styles.metaRow}>
-                <span>Last Updated: September 2026</span>
-                <span>•</span>
-                <span>Proctors Technologies</span>
+                <span>Proctors — AI-Powered Conversational Assessment Platform for Schools</span>
               </div>
             </header>
 
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>1. Acceptance of Terms</h2>
+              <h2 className={styles.sectionTitle}>Platform Overview</h2>
               <p className={styles.text}>
-                These Terms of Service (&ldquo;Terms&rdquo;) constitute a binding agreement between Proctors (&ldquo;Proctors&rdquo;, &ldquo;Platform&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) and the educational institution, school, or authorized academic representative (&ldquo;School&rdquo;, &ldquo;you&rdquo;) accessing or deploying our conversational AI assessment software.
+                A curriculum-native AI assessment platform — built for Indian schools, scaled for classrooms of 40.
               </p>
               <p className={styles.text}>
-                By requesting a pilot, enrolling in an institutional program, or administering assessments through Proctors, you agree to comply with and be bound by these Terms.
-              </p>
-            </section>
-
-            <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>2. Platform Services &amp; Pilot Scope</h2>
-              <p className={styles.text}>
-                Proctors provides a curriculum-native oral assessment platform designed for K-12 classrooms. Services include:
-              </p>
-              <ul className={styles.list}>
-                <li className={styles.listItem}>
-                  <span className={styles.bulletDot} />
-                  <span>One-on-one structured voice and text academic dialogue grounded in standard syllabi (NCERT, CBSE, and State Boards).</span>
-                </li>
-                <li className={styles.listItem}>
-                  <span className={styles.bulletDot} />
-                  <span>Automated multi-tier evaluation pipeline mapping student response quality against Bloom&apos;s Taxonomy levels.</span>
-                </li>
-                <li className={styles.listItem}>
-                  <span className={styles.bulletDot} />
-                  <span>Teacher insight dashboards and PARAKH Holistic Progress Card (HPC) compliance documentation.</span>
-                </li>
-                <li className={styles.listItem}>
-                  <span className={styles.bulletDot} />
-                  <span>Human review panels allowing educators to inspect transcripts and override automated evaluations.</span>
-                </li>
-              </ul>
-            </section>
-
-            <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>3. School Authorization &amp; Student Access</h2>
-              <p className={styles.text}>
-                Assessments are delivered via 24-hour tokenized links assigned by class or individual student without requiring persistent student credentials.
-              </p>
-              <p className={styles.text}>
-                The School represents and warrants that it has the requisite institutional authority and parental consent where required under applicable educational regulations to administer academic assessments to its enrolled students.
+                The platform sits directly on top of the curriculum your school already teaches. After a chapter is covered in class, a teacher assigns a Proctor assessment. Every student — not just the fast ones, not just the ones who raise their hand — gets a private, voice-based AI dialogue built around that exact chapter. Proctor asks, listens, follows up, and produces a per-student insight report the teacher receives the same week.
               </p>
             </section>
 
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>4. Intellectual Property &amp; Curriculum Ownership</h2>
-              <p className={styles.text}>
-                <strong>School Materials:</strong> The School retains all rights, title, and interest in school-specific materials, student records, and student responses generated during assessment sessions.
-              </p>
-              <p className={styles.text}>
-                <strong>Proctors IP:</strong> The platform architecture, proprietary speech pipeline, AI evaluation state machines, diagnostic algorithms, user interfaces, and brand assets remain the exclusive intellectual property of Proctors.
-              </p>
-            </section>
-
-            <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>5. Educational Role of AI &amp; Teacher Judgment</h2>
+              <h2 className={styles.sectionTitle}>Standards &amp; Compliance</h2>
               <div className={styles.callout}>
-                Proctors is an academic diagnostic and evidence-gathering instrument designed to assist educators — not an autonomous grading authority.
+                CBSE &amp; State Board Aligned • NEP 2020 Compliant • PARAKH / HPC Ready • NCERT-Grounded
               </div>
-              <p className={styles.text}>
-                Diagnostic insights, conceptual depth scores, and compliance metrics produced by the platform are provided to inform classroom instruction. Final academic grades, report cards, and student evaluations remain under the sole judgment and responsibility of the School and its teachers.
-              </p>
             </section>
 
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>6. Acceptable Use Policy</h2>
+              <h2 className={styles.sectionTitle}>Design-Partner Pilot Terms</h2>
               <p className={styles.text}>
-                Users agree not to:
+                We&apos;re running a structured free pilot with a small cohort of design-partner schools. Pilot schools receive full platform access, hands-on onboarding support, and first-mover pricing when the paid phase begins.
+              </p>
+              <p className={styles.text} style={{ fontWeight: 600, marginTop: '16px', marginBottom: '8px' }}>
+                What the pilot includes:
               </p>
               <ul className={styles.list}>
                 <li className={styles.listItem}>
                   <span className={styles.bulletDot} />
-                  <span>Reverse engineer, decompile, or attempt to extract the source code or proprietary state machines of the platform.</span>
+                  <span>Full platform access for one subject and grade band</span>
                 </li>
                 <li className={styles.listItem}>
                   <span className={styles.bulletDot} />
-                  <span>Interfere with or bypass tokenized session security, rate limits, or audio processing endpoints.</span>
+                  <span>AI-generated assessments from your existing curriculum</span>
                 </li>
                 <li className={styles.listItem}>
                   <span className={styles.bulletDot} />
-                  <span>Submit false, unlawful, abusive, or non-educational content through assessment dialogues.</span>
+                  <span>Per-student insight reports for your teaching team</span>
+                </li>
+                <li className={styles.listItem}>
+                  <span className={styles.bulletDot} />
+                  <span>Direct access to the founding team for feedback and support</span>
                 </li>
               </ul>
             </section>
 
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>7. Service Availability &amp; Modifications</h2>
+              <h2 className={styles.sectionTitle}>Secure Assessment Distribution</h2>
               <p className={styles.text}>
-                We endeavor to maintain continuous platform availability. Scheduled maintenance or service updates are coordinated to minimize classroom disruption. Proctors reserves the right to enhance, modify, or update features to improve pedagogical accuracy and system reliability.
+                Assessments are delivered via 24-hour tokenized links with role-based access control — assigned by class or individual, with automated email invites. No student accounts to create. No app to download.
+              </p>
+              <p className={styles.text}>
+                Students access their assessment securely from any device, with nothing to install and no credentials to remember.
               </p>
             </section>
 
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>8. Termination &amp; Data Handling</h2>
+              <h2 className={styles.sectionTitle}>Human Review &amp; Teacher Oversight</h2>
               <p className={styles.text}>
-                Either party may terminate a pilot or subscription agreement with 30 days&apos; written notice. Upon termination, all school-specific records and student transcripts will be archived or permanently purged in accordance with our Privacy Policy.
+                Reports below a confidence threshold are automatically flagged and routed to a teacher review queue — with raw and cleaned transcripts, audio playback, and score-override capability. Every override is logged in an audit trail.
+              </p>
+              <p className={styles.text}>
+                No automated report leaves without a confidence check. The teacher&apos;s judgment is always the final layer.
               </p>
             </section>
 
             <div className={styles.contactBox}>
-              <p>
-                Questions regarding these Terms of Service may be directed to{' '}
-                <a href="mailto:hello@proctors.in">hello@proctors.in</a>.
-              </p>
+              <p>Contact: <a href="mailto:hello@proctors.in">hello@proctors.in</a></p>
+              <p style={{ marginTop: '4px' }}>© 2026 Proctors. All rights reserved.</p>
             </div>
           </article>
         </div>

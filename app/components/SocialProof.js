@@ -32,22 +32,18 @@ export default function SocialProof() {
               &ldquo;Proctor asked our students questions we hadn&apos;t thought to ask in class. The reports showed us gaps we&apos;d missed entirely.&rdquo;
             </blockquote>
             <p className={styles.author}>
-              — Academic Head, Partner School Network
+              — Academic Head, [School Name], [City]
             </p>
           </GlassCard>
 
-          {/* Classroom Diagnostic Data Point */}
+          {/* Data Point */}
           <GlassCard variant="default" className={styles.card}>
             <div className={styles.dataIconWrap}>
               <BarChart2 className={styles.dataIcon} />
             </div>
-            <div className={styles.dataStat}>84%</div>
-            <p className={styles.dataDesc}>
-              of assessments showed that students who scored identically on the written test demonstrated measurably different conceptual depth when asked to explain.
-            </p>
-            <p className={styles.author}>
-              — Early classroom diagnostic validation
-            </p>
+            <blockquote className={styles.quoteText}>
+              &ldquo;In [X]% of assessments, students who scored identically on the written test showed measurably different conceptual depth when asked to explain.&rdquo;
+            </blockquote>
           </GlassCard>
         </div>
 
