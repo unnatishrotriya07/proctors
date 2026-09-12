@@ -1,9 +1,18 @@
 'use client';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import styles from './Footer.module.css';
 
 export default function Footer() {
+  const router = useRouter();
+
   const handleNavClick = (e, href) => {
     if (href && href.startsWith('#')) {
+      if (typeof window !== 'undefined' && window.location.pathname !== '/') {
+        e.preventDefault();
+        router.push('/' + href);
+        return;
+      }
       e.preventDefault();
       const targetId = href.substring(1);
       const elem = document.getElementById(targetId);
@@ -146,24 +155,24 @@ export default function Footer() {
               <p className={styles.colTitle}>Compliance &amp; Legal</p>
               <ul className={styles.links}>
                 <li>
-                  <span className={styles.linkDisabled}>
-                    Privacy Policy (DPDP Act aligned <span className={styles.badgeSoon}>soon</span>)
-                  </span>
+                  <Link href="/privacy" className={styles.link}>
+                    Privacy Policy (DPDP Act)
+                  </Link>
                 </li>
                 <li>
-                  <span className={styles.linkDisabled}>
-                    Terms of Service <span className={styles.badgeSoon}>soon</span>
-                  </span>
+                  <Link href="/terms" className={styles.link}>
+                    Terms of Service
+                  </Link>
                 </li>
                 <li>
-                  <a href="#trust" className={styles.link} onClick={(e) => handleNavClick(e, '#trust')}>
+                  <Link href="/privacy#student-data" className={styles.link}>
                     Student Data Policy
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#trust" className={styles.link} onClick={(e) => handleNavClick(e, '#trust')}>
+                  <Link href="/privacy#security" className={styles.link}>
                     Security Overview
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
