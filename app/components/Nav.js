@@ -14,9 +14,11 @@ export default function Nav() {
   }, []);
 
   const links = [
-    { label: 'Proctor', href: '#proctor' },
+    { label: 'Product', href: '#product' },
+    { label: 'Features', href: '#features' },
     { label: 'How It Works', href: '#how-it-works' },
     { label: 'For Schools', href: '#for-schools' },
+    { label: 'Pricing', href: '#pricing' },
   ];
 
   const handleNavClick = (e, href) => {
