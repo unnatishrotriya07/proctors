@@ -25,14 +25,16 @@ class MiniGl {
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
     const gl = this.canvas.getContext("webgl", { antialias: true });
-    if (!gl) throw new Error("WebGL not supported");
+    if (!gl) {
+      throw new Error("WebGL not supported");
+    }
     this.gl = gl;
 
     const context = this.gl;
     const _miniGl = this;
 
     this.Uniform = class {
-      type: string = "float";
+      type = "float";
       value: any;
       typeFn: string;
       excludeFrom?: string;
@@ -43,29 +45,33 @@ class MiniGl {
         const typeMap: Record<string, string> = {
           float: "1f",
           int: "1i",
+          mat4: "Matrix4fv",
           vec2: "2fv",
           vec3: "3fv",
           vec4: "4fv",
-          mat4: "Matrix4fv",
         };
         this.typeFn = typeMap[this.type] || "1f";
       }
 
       update(location: any): void {
-        if (this.value === undefined || location === null) return;
+        if (this.value === undefined || location === null) {
+          return;
+        }
 
         const isMatrix = this.typeFn.indexOf("Matrix") === 0;
         const fn = `uniform${this.typeFn}`;
 
         if (isMatrix) {
-          (context as any)[fn](location, this.transpose || false, this.value);
+          (context as any)[fn](location, this.transpose, this.value);
         } else {
           (context as any)[fn](location, this.value);
         }
       }
 
       getDeclaration(name: string, type: string, length?: number): string {
-        if (this.excludeFrom === type) return "";
+        if (this.excludeFrom === type) {
+          return "";
+        }
 
         if (this.type === "array") {
           return (
@@ -92,7 +98,7 @@ class MiniGl {
 
     this.Attribute = class {
       type: number = context.FLOAT;
-      normalized: boolean = false;
+      normalized = false;
       buffer: WebGLBuffer;
       target!: number;
       size!: number;
@@ -153,8 +159,6 @@ class MiniGl {
         fragments: string,
         uniforms: any = {}
       ) {
-        const material = this;
-
         function getShader(type: number, source: string): WebGLShader {
           const shader = context.createShader(type)!;
           context.shaderSource(shader, source);
@@ -174,7 +178,7 @@ class MiniGl {
             .join("\n");
         }
 
-        material.uniforms = uniforms;
+        this.uniforms = uniforms;
         const prefix = "precision highp float;";
 
         const vertexSource = `
@@ -194,27 +198,25 @@ class MiniGl {
           ${fragments}
         `;
 
-        material.program = context.createProgram()!;
+        this.program = context.createProgram()!;
         context.attachShader(
-          material.program,
+          this.program,
           getShader(context.VERTEX_SHADER, vertexSource)
         );
         context.attachShader(
-          material.program,
+          this.program,
           getShader(context.FRAGMENT_SHADER, fragmentSource)
         );
-        context.linkProgram(material.program);
+        context.linkProgram(this.program);
 
-        if (
-          !context.getProgramParameter(material.program, context.LINK_STATUS)
-        ) {
-          console.error(context.getProgramInfoLog(material.program));
+        if (!context.getProgramParameter(this.program, context.LINK_STATUS)) {
+          console.error(context.getProgramInfoLog(this.program));
           throw new Error("Program linking error");
         }
 
-        context.useProgram(material.program);
-        material.attachUniforms(undefined, _miniGl.commonUniforms);
-        material.attachUniforms(undefined, material.uniforms);
+        context.useProgram(this.program);
+        this.attachUniforms(undefined, _miniGl.commonUniforms);
+        this.attachUniforms(undefined, this.uniforms);
       }
 
       attachUniforms(name: string | undefined, uniforms: any): void {
@@ -232,36 +234,36 @@ class MiniGl {
           );
         } else {
           this.uniformInstances.push({
-            uniform: uniforms,
             location: context.getUniformLocation(this.program, name),
+            uniform: uniforms,
           });
         }
       }
     };
 
     this.PlaneGeometry = class {
-      width: number = 1;
-      height: number = 1;
+      width = 1;
+      height = 1;
       attributes: any;
-      vertexCount: number = 0;
-      xSegCount: number = 0;
-      ySegCount: number = 0;
+      vertexCount = 0;
+      xSegCount = 0;
+      ySegCount = 0;
 
       constructor() {
         this.attributes = {
-          position: new _miniGl.Attribute({
-            target: context.ARRAY_BUFFER,
-            size: 3,
-          }),
-          uv: new _miniGl.Attribute({ target: context.ARRAY_BUFFER, size: 2 }),
-          uvNorm: new _miniGl.Attribute({
-            target: context.ARRAY_BUFFER,
-            size: 2,
-          }),
           index: new _miniGl.Attribute({
-            target: context.ELEMENT_ARRAY_BUFFER,
             size: 3,
+            target: context.ELEMENT_ARRAY_BUFFER,
             type: context.UNSIGNED_SHORT,
+          }),
+          position: new _miniGl.Attribute({
+            size: 3,
+            target: context.ARRAY_BUFFER,
+          }),
+          uv: new _miniGl.Attribute({ size: 2, target: context.ARRAY_BUFFER }),
+          uvNorm: new _miniGl.Attribute({
+            size: 2,
+            target: context.ARRAY_BUFFER,
           }),
         };
       }
@@ -341,7 +343,7 @@ class MiniGl {
         Object.entries(this.geometry.attributes).forEach(
           ([e, attribute]: [string, any]) => {
             this.attributeInstances.push({
-              attribute: attribute,
+              attribute,
               location: attribute.attach(e, this.material.program),
             });
           }
@@ -369,16 +371,16 @@ class MiniGl {
 
     const identityMatrix = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
     this.commonUniforms = {
-      projectionMatrix: new this.Uniform({
-        type: "mat4",
-        value: identityMatrix,
-      }),
+      aspectRatio: new this.Uniform({ type: "float", value: 1 }),
       modelViewMatrix: new this.Uniform({
         type: "mat4",
         value: identityMatrix,
       }),
+      projectionMatrix: new this.Uniform({
+        type: "mat4",
+        value: identityMatrix,
+      }),
       resolution: new this.Uniform({ type: "vec2", value: [1, 1] }),
-      aspectRatio: new this.Uniform({ type: "float", value: 1 }),
     };
   }
 
@@ -440,75 +442,75 @@ class Gradient {
 
   init(): void {
     const sectionColors = this.colors.map((hex) =>
-      normalizeColor(parseInt(hex.replace("#", "0x"), 16))
+      normalizeColor(Number.parseInt(hex.replace("#", "0x"), 16))
     );
 
     const uniforms = {
-      u_time: new this.minigl.Uniform({ value: 0 }),
-      u_shadow_power: new this.minigl.Uniform({ value: 5 }),
-      u_darken_top: new this.minigl.Uniform({ value: 0 }),
       u_active_colors: new this.minigl.Uniform({
-        value: [1, 1, 1, 1],
         type: "vec4",
-      }),
-      u_global: new this.minigl.Uniform({
-        value: {
-          noiseFreq: new this.minigl.Uniform({
-            value: [0.00014, 0.00029],
-            type: "vec2",
-          }),
-          noiseSpeed: new this.minigl.Uniform({ value: 0.000005 }),
-        },
-        type: "struct",
-      }),
-      u_vertDeform: new this.minigl.Uniform({
-        value: {
-          incline: new this.minigl.Uniform({ value: 0 }),
-          offsetTop: new this.minigl.Uniform({ value: -0.5 }),
-          offsetBottom: new this.minigl.Uniform({ value: -0.5 }),
-          noiseFreq: new this.minigl.Uniform({ value: [3, 4], type: "vec2" }),
-          noiseAmp: new this.minigl.Uniform({ value: 320 }),
-          noiseSpeed: new this.minigl.Uniform({ value: 10 }),
-          noiseFlow: new this.minigl.Uniform({ value: 3 }),
-          noiseSeed: new this.minigl.Uniform({ value: 5 }),
-        },
-        type: "struct",
-        excludeFrom: "fragment",
+        value: [1, 1, 1, 1],
       }),
       u_baseColor: new this.minigl.Uniform({
-        value: sectionColors[0],
-        type: "vec3",
         excludeFrom: "fragment",
+        type: "vec3",
+        value: sectionColors[0],
+      }),
+      u_darken_top: new this.minigl.Uniform({ value: 0 }),
+      u_global: new this.minigl.Uniform({
+        type: "struct",
+        value: {
+          noiseFreq: new this.minigl.Uniform({
+            type: "vec2",
+            value: [0.000_14, 0.000_29],
+          }),
+          noiseSpeed: new this.minigl.Uniform({ value: 0.000_005 }),
+        },
+      }),
+      u_shadow_power: new this.minigl.Uniform({ value: 5 }),
+      u_time: new this.minigl.Uniform({ value: 0 }),
+      u_vertDeform: new this.minigl.Uniform({
+        excludeFrom: "fragment",
+        type: "struct",
+        value: {
+          incline: new this.minigl.Uniform({ value: 0 }),
+          noiseAmp: new this.minigl.Uniform({ value: 320 }),
+          noiseFlow: new this.minigl.Uniform({ value: 3 }),
+          noiseFreq: new this.minigl.Uniform({ type: "vec2", value: [3, 4] }),
+          noiseSeed: new this.minigl.Uniform({ value: 5 }),
+          noiseSpeed: new this.minigl.Uniform({ value: 10 }),
+          offsetBottom: new this.minigl.Uniform({ value: -0.5 }),
+          offsetTop: new this.minigl.Uniform({ value: -0.5 }),
+        },
       }),
       u_waveLayers: new this.minigl.Uniform({
-        value: [],
         excludeFrom: "fragment",
         type: "array",
+        value: [],
       }),
     };
 
     for (let i = 1; i < sectionColors.length; i++) {
       uniforms.u_waveLayers.value.push(
         new this.minigl.Uniform({
+          type: "struct",
           value: {
             color: new this.minigl.Uniform({
-              value: sectionColors[i],
               type: "vec3",
+              value: sectionColors[i],
             }),
+            noiseCeil: new this.minigl.Uniform({ value: 0.63 + 0.07 * i }),
+            noiseFloor: new this.minigl.Uniform({ value: 0.1 }),
+            noiseFlow: new this.minigl.Uniform({ value: 6.5 + 0.3 * i }),
             noiseFreq: new this.minigl.Uniform({
+              type: "vec2",
               value: [
                 2 + i / sectionColors.length,
                 3 + i / sectionColors.length,
               ],
-              type: "vec2",
             }),
-            noiseSpeed: new this.minigl.Uniform({ value: 11 + 0.3 * i }),
-            noiseFlow: new this.minigl.Uniform({ value: 6.5 + 0.3 * i }),
             noiseSeed: new this.minigl.Uniform({ value: 5 + 10 * i }),
-            noiseFloor: new this.minigl.Uniform({ value: 0.1 }),
-            noiseCeil: new this.minigl.Uniform({ value: 0.63 + 0.07 * i }),
+            noiseSpeed: new this.minigl.Uniform({ value: 11 + 0.3 * i }),
           },
-          type: "struct",
         })
       );
     }
@@ -642,7 +644,9 @@ void main() {
   }
 
   animate = (timestamp: number): void => {
-    if (!this.isPlaying) return;
+    if (!this.isPlaying) {
+      return;
+    }
 
     this.time += Math.min(timestamp - this.last, 1000 / 15);
     this.last = timestamp;
@@ -669,13 +673,9 @@ void main() {
 }
 
 export interface GradientWaveProps {
-  colors?: string[]; // gradient colors
-  isPlaying?: boolean; // animation toggle
   className?: string; // custom Tailwind classes
-  shadowPower?: number; // strength of top darkening
+  colors?: string[]; // gradient colors
   darkenTop?: boolean; // enable/disable top shadow
-  noiseSpeed?: number; // global noise animation speed
-  noiseFrequency?: [number, number]; // global noise frequency
   deform?: {
     incline?: number;
     offsetTop?: number;
@@ -686,6 +686,10 @@ export interface GradientWaveProps {
     noiseFlow?: number;
     noiseSeed?: number;
   };
+  isPlaying?: boolean; // animation toggle
+  noiseFrequency?: [number, number]; // global noise frequency
+  noiseSpeed?: number; // global noise animation speed
+  shadowPower?: number; // strength of top darkening
 }
 
 export function GradientWave({
@@ -694,7 +698,7 @@ export function GradientWave({
   className = "",
   shadowPower = 8,
   darkenTop = false,
-  noiseSpeed = 0.00001,
+  noiseSpeed = 0.000_01,
   noiseFrequency = [0.0001, 0.0009],
   deform = { incline: 0.5, noiseAmp: 250, noiseFlow: 5 },
 }: GradientWaveProps) {
@@ -702,16 +706,18 @@ export function GradientWave({
   const gradientRef = useRef<Gradient | null>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current) {
+      return;
+    }
 
     const canvas = document.createElement("canvas");
     Object.assign(canvas.style, {
+      display: "block",
+      height: "100%",
+      left: "0",
       position: "absolute",
       top: "0",
-      left: "0",
       width: "100%",
-      height: "100%",
-      display: "block",
     });
     containerRef.current.appendChild(canvas);
 
@@ -733,7 +739,9 @@ export function GradientWave({
         ...deform,
       });
 
-      if (isPlaying) gradient.start();
+      if (isPlaying) {
+        gradient.start();
+      }
     } catch (error) {
       console.error("Failed to initialize gradient:", error);
     }
@@ -756,8 +764,8 @@ export function GradientWave({
 
   return (
     <div
+      className={`absolute inset-0 z-0 h-full w-full overflow-hidden ${className}`}
       ref={containerRef}
-      className={`absolute inset-0 z-0 w-full h-full overflow-hidden ${className}`}
     />
   );
 }

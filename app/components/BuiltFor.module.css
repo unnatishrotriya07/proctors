@@ -5,12 +5,12 @@
 }
 
 .heading {
+  margin-top: 12px;
   font-family: var(--font-heading);
   font-size: clamp(28px, 3.2vw, 38px);
-  font-weight: 800;
-  color: var(--text-primary);
-  margin-top: 12px;
+  font-weight: 700;
   line-height: 1.25;
+  color: var(--text-primary);
   letter-spacing: -0.02em;
 }
 
@@ -21,11 +21,11 @@
 }
 
 .card {
-  padding: 32px 26px;
   display: flex;
   flex-direction: column;
-  border-radius: 22px;
   height: 100%;
+  padding: 32px 26px;
+  border-radius: 22px;
 }
 
 .cardTop {
@@ -36,49 +36,51 @@
 }
 
 .title {
+  margin-bottom: 14px;
   font-family: var(--font-heading);
   font-size: 19px;
   font-weight: 700;
-  color: var(--text-primary);
   line-height: 1.35;
-  margin-bottom: 14px;
+  color: var(--text-primary);
 }
 
 .body {
+  flex: 1;
+  margin-bottom: 22px;
+  font-family: var(--font-sans);
   font-size: 14.5px;
+  font-weight: 400;
   line-height: 1.65;
   color: var(--text-secondary);
-  margin-bottom: 22px;
-  flex: 1;
 }
 
 .bulletsList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  padding: 0;
   padding-top: 18px;
+  margin: 0;
+  list-style: none;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
 }
 
 .bulletItem {
   display: flex;
-  align-items: flex-start;
   gap: 8px;
+  align-items: flex-start;
   font-size: 13.5px;
+  font-weight: 500;
   line-height: 1.48;
   color: #334155;
-  font-weight: 500;
 }
 
 .bulletArrow {
+  flex-shrink: 0;
   width: 14px;
   height: 14px;
-  color: var(--accent);
-  flex-shrink: 0;
   margin-top: 3px;
+  color: var(--accent);
 }
 
 @media (max-width: 960px) {
@@ -93,9 +95,9 @@
     margin-bottom: 28px;
   }
   .heading {
+    margin-top: 8px;
     font-size: 24px;
     line-height: 1.25;
-    margin-top: 8px;
   }
   .card {
     padding: 22px 18px;
@@ -104,10 +106,26 @@
     font-size: 17px;
   }
   .body {
-    font-size: 13.5px;
     margin-bottom: 16px;
+    font-size: 13.5px;
   }
   .bulletItem {
     font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 21px;
+  }
+  .card {
+    padding: 14px 12px;
+  }
+  .title {
+    font-size: 15px;
+  }
+  .body {
+    font-size: 12.5px;
+    line-height: 1.48;
   }
 }

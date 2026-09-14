@@ -5,26 +5,37 @@
 }
 
 .heading {
-  font-size: 38px;
-  font-weight: 700;
-  color: var(--text-primary);
   margin-top: 12px;
   margin-bottom: 20px;
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3.8vw, 40px);
+  font-weight: 700;
   line-height: 1.25;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
 }
 
 .subtext {
-  font-size: 17px;
-  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 16.5px;
+  font-weight: 400;
   line-height: 1.7;
+  color: var(--text-secondary);
+  letter-spacing: -0.01em;
+}
+
+.emphasisText {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 .comparisonWrapper {
-  max-width: 960px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .grid {
@@ -43,56 +54,63 @@
   align-items: center;
   justify-content: space-between;
   padding-bottom: 20px;
-  border-bottom: 1px solid var(--border);
   margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
 }
 
 .studentBadge {
   display: flex;
-  align-items: center;
   gap: 12px;
+  align-items: center;
 }
 
 .studentAvatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: var(--bg-raised);
-  color: var(--text-secondary);
-  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 38px;
+  height: 38px;
+  font-family: var(--font-heading);
   font-size: 15px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background: var(--bg-raised);
+  border-radius: 50%;
 }
 
 .studentAvatarActive {
-  background: var(--accent-soft);
   color: var(--accent-dark);
+  background: var(--accent-soft);
 }
 
 .studentName {
   display: block;
+  font-family: var(--font-heading);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 650;
   color: var(--text-primary);
+  letter-spacing: -0.015em;
 }
 
 .studentTag {
   display: block;
-  font-family: var(--font-mono);
+  font-family: var(--font-accent);
   font-size: 11px;
+  font-weight: 600;
   color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .scoreBadge {
-  font-size: 13px;
-  font-weight: 700;
-  font-family: var(--font-mono);
-  background: var(--bg-raised);
   padding: 6px 12px;
-  border-radius: 99px;
+  font-family: var(--font-accent);
+  font-size: 12.5px;
+  font-weight: 700;
   color: var(--text-secondary);
+  letter-spacing: 0.02em;
+  background: var(--bg-raised);
+  border-radius: 99px;
 }
 
 .cardContent {
@@ -108,60 +126,74 @@
 }
 
 .metricLabel {
-  font-family: var(--font-mono);
+  font-family: var(--font-accent);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 650;
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--text-muted);
 }
 
 .metricValue {
-  font-size: 15px;
-  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14.5px;
   font-weight: 500;
+  color: var(--text-primary);
 }
 
 .metricValueMuted {
-  font-size: 14px;
+  padding: 8px 12px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-style: italic;
+  font-weight: 450;
+  line-height: 1.55;
   color: #b91c1c;
   background: rgba(239, 68, 68, 0.08);
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
   border-left: 3px solid #ef4444;
+  border-radius: var(--radius-sm);
 }
 
 .metricValueHighlight {
-  font-size: 14px;
+  padding: 8px 12px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-style: italic;
+  font-weight: 450;
+  line-height: 1.55;
   color: #0369a1;
   background: rgba(27, 159, 254, 0.08);
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
   border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
 }
 
 .tagAlert {
   display: inline-block;
+  font-family: var(--font-accent);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 650;
   color: #b91c1c;
+  letter-spacing: 0.02em;
 }
 
 .tagSuccess {
   display: inline-block;
+  font-family: var(--font-accent);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 650;
   color: #0284c7;
+  letter-spacing: 0.02em;
 }
 
 .visualCaption {
   margin-top: 28px;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-style: italic;
+  font-weight: 500;
   color: var(--text-muted);
   text-align: center;
-  font-style: italic;
+  letter-spacing: 0.01em;
 }
 
 .desktopBr {
@@ -178,10 +210,10 @@
   }
 
   .heading {
-    font-size: 24px;
-    line-height: 1.25;
     margin-top: 8px;
     margin-bottom: 12px;
+    font-size: 24px;
+    line-height: 1.25;
   }
 
   .subtext {
@@ -218,8 +250,8 @@
   }
 
   .scoreBadge {
-    font-size: 11px;
     padding: 4px 8px;
+    font-size: 11px;
   }
 
   .cardContent {
@@ -240,9 +272,9 @@
 
   .metricValueMuted,
   .metricValueHighlight {
+    padding: 6px 10px;
     font-size: 12px;
     line-height: 1.45;
-    padding: 6px 10px;
   }
 
   .tagAlert,
@@ -251,16 +283,16 @@
   }
 
   .visualCaption {
-    font-size: 12px;
     margin-top: 14px;
+    font-size: 12px;
   }
 }
 
 @media (max-width: 480px) {
   .heading {
+    margin-bottom: 10px;
     font-size: 21px;
     line-height: 1.25;
-    margin-bottom: 10px;
   }
 
   .subtext {
@@ -278,8 +310,8 @@
 
   .metricValueMuted,
   .metricValueHighlight {
+    padding: 5px 8px;
     font-size: 11.5px;
     line-height: 1.4;
-    padding: 5px 8px;
   }
 }

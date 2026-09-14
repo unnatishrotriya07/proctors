@@ -1,28 +1,31 @@
-import styles from './WhatItIsnt.module.css';
-import GlassCard from '@/components/ui/GlassCard';
+import GlassCard from "@/components/ui/GlassCard";
+import styles from "./WhatItIsnt.module.css";
 
 const items = [
   {
-    title: 'Not a school ERP',
-    description: 'We don\'t manage fees, attendance, or transport.',
+    description: "We don't manage fees, attendance, or transport.",
+    title: "Not a school ERP",
   },
   {
-    title: 'Not a general-purpose AI chatbot',
-    description: 'Every question Proctor asks has a curriculum purpose behind it.',
+    description:
+      "Every question Proctor asks has a curriculum purpose behind it.",
+    title: "Not a general-purpose AI chatbot",
   },
   {
-    title: 'Not an exam-monitoring tool',
-    description: 'Despite the name, this was never built around catching cheating.',
+    description:
+      "Despite the name, this was never built around catching cheating.",
+    title: "Not an exam-monitoring tool",
   },
   {
-    title: 'Not a personality assessment',
-    description: 'Proctors looks at how a student responds to a question — never at who they are.',
+    description:
+      "Proctors looks at how a student responds to a question — never at who they are.",
+    title: "Not a personality assessment",
   },
 ];
 
 export default function WhatItIsnt() {
   return (
-    <section id="what-it-isnt" className={`section section--alt`}>
+    <section className={"section section--alt"} id="what-it-isnt">
       <div className="container">
         <div className={styles.header}>
           <p className="label label--accent">What Proctors Isn&apos;t</p>
@@ -33,7 +36,7 @@ export default function WhatItIsnt() {
 
         <div className={styles.grid}>
           {items.map((item, i) => (
-            <GlassCard key={i} className={styles.card}>
+            <GlassCard className={styles.card} key={i}>
               <div className={styles.iconWrap}>
                 <span className={styles.crossIcon}>✕</span>
               </div>

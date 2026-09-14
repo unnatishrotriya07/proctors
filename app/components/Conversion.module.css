@@ -6,36 +6,36 @@
 }
 
 .content {
+  position: sticky;
+  top: 88px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  position: sticky;
-  top: 88px;
 }
 
 .heading {
   font-size: clamp(26px, 3vw, 38px);
   font-weight: 800;
-  color: var(--text-primary);
   line-height: 1.2;
+  color: var(--text-primary);
 }
 
 .subtext {
   font-size: 16px;
-  color: var(--text-secondary);
   line-height: 1.7;
+  color: var(--text-secondary);
 }
 
 .loginPrompt {
+  padding-top: 8px;
   font-size: 14px;
   color: var(--text-muted);
-  padding-top: 8px;
   border-top: 1px solid var(--border);
 }
 
 .loginLink {
-  color: var(--accent-dark);
   font-weight: 600;
+  color: var(--accent-dark);
   transition: opacity 0.15s ease;
 }
 
@@ -45,13 +45,13 @@
 
 /* ─── Form ─── */
 .formWrap {
-  background: rgba(255, 255, 255, 0.90);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  padding: 36px;
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
-  padding: 36px;
   box-shadow: var(--shadow-card);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
 }
 
 .form {
@@ -80,16 +80,18 @@
 }
 
 .input {
+  width: 100%;
   padding: 10px 14px;
+  font-size: 14px;
+  color: var(--text-primary);
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.95);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.95);
-  color: var(--text-primary);
-  font-size: 14px;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
-  appearance: none;
-  -webkit-appearance: none;
-  width: 100%;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .input:focus {
@@ -110,58 +112,58 @@
 }
 
 .checkbox {
+  flex-shrink: 0;
   width: 16px;
   height: 16px;
-  border: 1px solid var(--border-strong);
-  border-radius: 4px;
-  flex-shrink: 0;
   margin-top: 2px;
   accent-color: var(--accent);
   cursor: pointer;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
 }
 
 .consentLabel {
   font-size: 12px;
-  color: var(--text-muted);
   line-height: 1.5;
+  color: var(--text-muted);
   cursor: pointer;
 }
 
 /* ─── Submit ─── */
 .submit {
-  width: 100%;
   justify-content: center;
+  width: 100%;
   padding: 14px 24px;
   font-size: 15px;
 }
 
 .submit:disabled {
-  opacity: 0.65;
   cursor: not-allowed;
+  opacity: 0.65;
 }
 
 /* ─── Success ─── */
 .success {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
   gap: 12px;
+  align-items: center;
   padding: 40px 24px;
+  text-align: center;
 }
 
 .successIcon {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #dcfce7;
-  color: #16a34a;
-  font-size: 20px;
-  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 48px;
+  height: 48px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #16a34a;
+  background: #dcfce7;
   border: 1px solid #bbf7d0;
+  border-radius: 50%;
 }
 
 .success h3 {
@@ -172,23 +174,23 @@
 
 .success p {
   font-size: 14px;
-  color: var(--text-secondary);
   line-height: 1.6;
+  color: var(--text-secondary);
 }
 
 /* ─── Error ─── */
 .errorMsg {
+  padding: 10px 14px;
   font-size: 13px;
   color: #dc2626;
   background: #fef2f2;
   border: 1px solid #fecaca;
   border-radius: var(--radius-sm);
-  padding: 10px 14px;
 }
 
 .errorMsg a {
-  color: var(--accent-dark);
   font-weight: 600;
+  color: var(--accent-dark);
 }
 
 @media (max-width: 900px) {

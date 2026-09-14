@@ -1,24 +1,24 @@
-'use client';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import styles from './Footer.module.css';
+"use client";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import styles from "./Footer.module.css";
 
 export default function Footer() {
   const router = useRouter();
 
   const handleNavClick = (e, href) => {
-    if (href && href.startsWith('#')) {
-      if (typeof window !== 'undefined' && window.location.pathname !== '/') {
+    if (href?.startsWith("#")) {
+      if (typeof window !== "undefined" && window.location.pathname !== "/") {
         e.preventDefault();
-        router.push('/' + href);
+        router.push(`/${href}`);
         return;
       }
       e.preventDefault();
-      const targetId = href.substring(1);
+      const targetId = href.slice(1);
       const elem = document.getElementById(targetId);
       if (elem) {
-        elem.scrollIntoView({ behavior: 'smooth' });
-        window.history.pushState(null, '', href);
+        elem.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", href);
       }
     }
   };
@@ -30,24 +30,21 @@ export default function Footer() {
         <div className={styles.top}>
           <div className={styles.brandCol}>
             <a
-              href="#hero"
-              className={styles.brand}
               aria-label="Proctors Home"
-              onClick={(e) => handleNavClick(e, '#hero')}
+              className={styles.brand}
+              href="#hero"
+              onClick={(e) => handleNavClick(e, "#hero")}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/logo.png"
-                alt="Proctors"
-                className={styles.logoImg}
-              />
+              <img alt="Proctors" className={styles.logoImg} src="/logo.png" />
             </a>
             <p className={styles.tagline}>
-              Students learn their curriculum. Proctors helps them get better at demonstrating what they learned.
+              Students learn their curriculum. Proctors helps them get better at
+              demonstrating what they learned.
             </p>
             <div className={styles.brandContact}>
               <span className={styles.contactLabel}>Contact:</span>
-              <a href="mailto:hello@proctors.in" className={styles.contactLink}>
+              <a className={styles.contactLink} href="mailto:hello@proctors.in">
                 hello@proctors.in
               </a>
             </div>
@@ -59,27 +56,47 @@ export default function Footer() {
               <p className={styles.colTitle}>Product</p>
               <ul className={styles.links}>
                 <li>
-                  <a href="#features" className={styles.link} onClick={(e) => handleNavClick(e, '#features')}>
+                  <a
+                    className={styles.link}
+                    href="#features"
+                    onClick={(e) => handleNavClick(e, "#features")}
+                  >
                     Features
                   </a>
                 </li>
                 <li>
-                  <a href="#how-it-works" className={styles.link} onClick={(e) => handleNavClick(e, '#how-it-works')}>
+                  <a
+                    className={styles.link}
+                    href="#how-it-works"
+                    onClick={(e) => handleNavClick(e, "#how-it-works")}
+                  >
                     How It Works
                   </a>
                 </li>
                 <li>
-                  <a href="#for-schools" className={styles.link} onClick={(e) => handleNavClick(e, '#for-schools')}>
+                  <a
+                    className={styles.link}
+                    href="#for-schools"
+                    onClick={(e) => handleNavClick(e, "#for-schools")}
+                  >
                     For Schools
                   </a>
                 </li>
                 <li>
-                  <a href="#pricing" className={styles.link} onClick={(e) => handleNavClick(e, '#pricing')}>
+                  <a
+                    className={styles.link}
+                    href="#pricing"
+                    onClick={(e) => handleNavClick(e, "#pricing")}
+                  >
                     Pricing
                   </a>
                 </li>
                 <li>
-                  <a href="#request-pilot" className={styles.link} onClick={(e) => handleNavClick(e, '#request-pilot')}>
+                  <a
+                    className={styles.link}
+                    href="#request-pilot"
+                    onClick={(e) => handleNavClick(e, "#request-pilot")}
+                  >
                     Book a Pilot
                   </a>
                 </li>
@@ -91,27 +108,47 @@ export default function Footer() {
               <p className={styles.colTitle}>Platform</p>
               <ul className={styles.links}>
                 <li>
-                  <a href="#features" className={styles.link} onClick={(e) => handleNavClick(e, '#features')}>
+                  <a
+                    className={styles.link}
+                    href="#features"
+                    onClick={(e) => handleNavClick(e, "#features")}
+                  >
                     AI Assessment Engine
                   </a>
                 </li>
                 <li>
-                  <a href="#features" className={styles.link} onClick={(e) => handleNavClick(e, '#features')}>
+                  <a
+                    className={styles.link}
+                    href="#features"
+                    onClick={(e) => handleNavClick(e, "#features")}
+                  >
                     NCERT Question Bank
                   </a>
                 </li>
                 <li>
-                  <a href="#features" className={styles.link} onClick={(e) => handleNavClick(e, '#features')}>
+                  <a
+                    className={styles.link}
+                    href="#features"
+                    onClick={(e) => handleNavClick(e, "#features")}
+                  >
                     HPC Compliance Reports
                   </a>
                 </li>
                 <li>
-                  <a href="#features" className={styles.link} onClick={(e) => handleNavClick(e, '#features')}>
+                  <a
+                    className={styles.link}
+                    href="#features"
+                    onClick={(e) => handleNavClick(e, "#features")}
+                  >
                     Teacher Dashboard
                   </a>
                 </li>
                 <li>
-                  <a href="#features" className={styles.link} onClick={(e) => handleNavClick(e, '#features')}>
+                  <a
+                    className={styles.link}
+                    href="#features"
+                    onClick={(e) => handleNavClick(e, "#features")}
+                  >
                     Human Review Panel
                   </a>
                 </li>
@@ -123,12 +160,20 @@ export default function Footer() {
               <p className={styles.colTitle}>Company</p>
               <ul className={styles.links}>
                 <li>
-                  <a href="#product" className={styles.link} onClick={(e) => handleNavClick(e, '#product')}>
+                  <a
+                    className={styles.link}
+                    href="#product"
+                    onClick={(e) => handleNavClick(e, "#product")}
+                  >
                     About Proctors
                   </a>
                 </li>
                 <li>
-                  <a href="#difference" className={styles.link} onClick={(e) => handleNavClick(e, '#difference')}>
+                  <a
+                    className={styles.link}
+                    href="#difference"
+                    onClick={(e) => handleNavClick(e, "#difference")}
+                  >
                     Our Approach
                   </a>
                 </li>
@@ -143,7 +188,7 @@ export default function Footer() {
                   </span>
                 </li>
                 <li>
-                  <a href="mailto:hello@proctors.in" className={styles.link}>
+                  <a className={styles.link} href="mailto:hello@proctors.in">
                     Contact
                   </a>
                 </li>
@@ -155,22 +200,22 @@ export default function Footer() {
               <p className={styles.colTitle}>Compliance &amp; Legal</p>
               <ul className={styles.links}>
                 <li>
-                  <Link href="/privacy" className={styles.link}>
+                  <Link className={styles.link} href="/privacy">
                     Privacy Policy (DPDP Act)
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms" className={styles.link}>
+                  <Link className={styles.link} href="/terms">
                     Terms of Service
                   </Link>
                 </li>
                 <li>
-                  <Link href="/privacy#student-data" className={styles.link}>
+                  <Link className={styles.link} href="/privacy#student-data">
                     Student Data Policy
                   </Link>
                 </li>
                 <li>
-                  <Link href="/privacy#security" className={styles.link}>
+                  <Link className={styles.link} href="/privacy#security">
                     Security Overview
                   </Link>
                 </li>
@@ -182,9 +227,12 @@ export default function Footer() {
         {/* Bottom: DPDP Compliance Notice & Copyright */}
         <div className={styles.bottom}>
           <p className={styles.complianceNote}>
-            Student data stays with your school. Proctors does not sell or share student records. Data handling aligned to India&apos;s DPDP Act.
+            Student data stays with your school. Proctors does not sell or share
+            student records. Data handling aligned to India&apos;s DPDP Act.
           </p>
-          <p className={styles.copyright}>© 2026 Proctors. All rights reserved.</p>
+          <p className={styles.copyright}>
+            © 2026 Proctors. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

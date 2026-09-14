@@ -1,33 +1,38 @@
-'use client';
-import { useRef, useState, useEffect } from 'react';
-import styles from './Workflow.module.css';
-import GlassCard from '@/components/ui/GlassCard';
+"use client";
+import { useEffect, useRef, useState } from "react";
+import GlassCard from "@/components/ui/GlassCard";
+import styles from "./Workflow.module.css";
 
 const steps = [
   {
-    num: '01',
-    name: 'Learn',
-    description: "The student's chapter stays the same. Nothing new to study. No separate app to open.",
+    description:
+      "The student's chapter stays the same. Nothing new to study. No separate app to open.",
+    name: "Learn",
+    num: "01",
   },
   {
-    num: '02',
-    name: 'Assess',
-    description: 'The teacher assigns a Proctor assessment in under two minutes, linked to the chapter just taught.',
+    description:
+      "The teacher assigns a Proctor assessment in under two minutes, linked to the chapter just taught.",
+    name: "Assess",
+    num: "02",
   },
   {
-    num: '03',
-    name: 'Converse',
-    description: 'Proctor asks one curriculum-grounded question. The student responds — by voice or text. Proctor follows up once, precisely where it matters.',
+    description:
+      "Proctor asks one curriculum-grounded question. The student responds — by voice or text. Proctor follows up once, precisely where it matters.",
+    name: "Converse",
+    num: "03",
   },
   {
-    num: '04',
-    name: 'Understand',
-    description: 'The evaluation pipeline processes how the student answered — not merely what they said — mapping response quality against Bloom’s-tagged learning outcomes.',
+    description:
+      "The evaluation pipeline processes how the student answered — not merely what they said — mapping response quality against Bloom's-tagged learning outcomes.",
+    name: "Understand",
+    num: "04",
   },
   {
-    num: '05',
-    name: 'Improve',
-    description: 'The teacher receives a per-student insight report. The student, for the first time, has a record of how they explained what they know — and where their understanding needs work.',
+    description:
+      "The teacher receives a per-student insight report. The student, for the first time, has a record of how they explained what they know — and where their understanding needs work.",
+    name: "Improve",
+    num: "05",
   },
 ];
 
@@ -39,54 +44,66 @@ export default function Workflow() {
   // Measure card width on mount and resize
   useEffect(() => {
     function measure() {
-      if (!trackRef.current) return;
-      const first = trackRef.current.querySelector('[data-card]');
-      if (first) setCardWidth(first.offsetWidth + 20); // 20 = gap
+      if (!trackRef.current) {
+        return;
+      }
+      const first = trackRef.current.querySelector("[data-card]");
+      if (first) {
+        setCardWidth(first.offsetWidth + 20); // 20 = gap
+      }
     }
     measure();
-    window.addEventListener('resize', measure);
-    return () => window.removeEventListener('resize', measure);
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
   }, []);
 
   // Sync active dot while scrolling
   useEffect(() => {
     const track = trackRef.current;
-    if (!track) return;
+    if (!track) {
+      return;
+    }
     function onScroll() {
-      if (!cardWidth) return;
+      if (!cardWidth) {
+        return;
+      }
       const idx = Math.round(track.scrollLeft / cardWidth);
       setActive(Math.min(idx, steps.length - 1));
     }
-    track.addEventListener('scroll', onScroll, { passive: true });
-    return () => track.removeEventListener('scroll', onScroll);
+    track.addEventListener("scroll", onScroll, { passive: true });
+    return () => track.removeEventListener("scroll", onScroll);
   }, [cardWidth]);
 
   // Mouse wheel horizontal scroll support
   useEffect(() => {
     const track = trackRef.current;
-    if (!track) return;
+    if (!track) {
+      return;
+    }
     function onWheel(e) {
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        if (
-          (e.deltaY > 0 && track.scrollLeft < track.scrollWidth - track.clientWidth) ||
-          (e.deltaY < 0 && track.scrollLeft > 0)
-        ) {
-          track.scrollLeft += e.deltaY;
-        }
+      if (
+        Math.abs(e.deltaY) > Math.abs(e.deltaX) &&
+        ((e.deltaY > 0 &&
+          track.scrollLeft < track.scrollWidth - track.clientWidth) ||
+          (e.deltaY < 0 && track.scrollLeft > 0))
+      ) {
+        track.scrollLeft += e.deltaY;
       }
     }
-    track.addEventListener('wheel', onWheel, { passive: true });
-    return () => track.removeEventListener('wheel', onWheel);
+    track.addEventListener("wheel", onWheel, { passive: true });
+    return () => track.removeEventListener("wheel", onWheel);
   }, []);
 
   function goTo(idx) {
-    if (!trackRef.current || !cardWidth) return;
-    trackRef.current.scrollTo({ left: idx * cardWidth, behavior: 'smooth' });
+    if (!(trackRef.current && cardWidth)) {
+      return;
+    }
+    trackRef.current.scrollTo({ behavior: "smooth", left: idx * cardWidth });
     setActive(idx);
   }
 
   return (
-    <section id="how-it-works" className="section">
+    <section className="section" id="how-it-works">
       <div className="container">
         <div className={styles.header}>
           <p className="label label--accent">How It Works</p>
@@ -98,8 +115,8 @@ export default function Workflow() {
         {/* Carousel track */}
         <div className={styles.carouselOuter}>
           <div className={styles.track} ref={trackRef}>
-            {steps.map((step, i) => (
-              <GlassCard key={step.num} className={styles.stepCard} data-card>
+            {steps.map((step) => (
+              <GlassCard className={styles.stepCard} data-card key={step.num}>
                 <div className={styles.stepNum}>{step.num}</div>
                 <h3 className={styles.stepName}>{step.name}</h3>
                 <p className={styles.stepDesc}>{step.description}</p>
@@ -109,23 +126,35 @@ export default function Workflow() {
         </div>
 
         {/* Dot navigation */}
-        <div className={styles.dots} role="tablist" aria-label="Step navigation">
+        <div
+          aria-label="Step navigation"
+          className={styles.dots}
+          role="tablist"
+        >
           {steps.map((step, i) => (
             <button
-              key={i}
-              role="tab"
-              aria-selected={i === active}
               aria-label={`Go to step ${i + 1}: ${step.name}`}
-              className={`${styles.dot} ${i === active ? styles.dotActive : ''}`}
+              aria-selected={i === active}
+              className={`${styles.dot} ${i === active ? styles.dotActive : ""}`}
+              key={step.num}
               onClick={() => goTo(i)}
+              role="tab"
+              type="button"
             />
           ))}
         </div>
 
         <div className={styles.closingWrapper}>
-          <GlassCard variant="pill" hoverEffect={false} className={styles.closingLine}>
+          <GlassCard
+            className={styles.closingLine}
+            hoverEffect={false}
+            variant="pill"
+          >
             <span className={styles.closingDot} />
-            <p>The subject stays the same. The chapter stays the same. What the school gets to see does not.</p>
+            <p>
+              The subject stays the same. The chapter stays the same. What the
+              school gets to see does not.
+            </p>
           </GlassCard>
         </div>
       </div>

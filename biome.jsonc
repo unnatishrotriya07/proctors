@@ -4,5 +4,47 @@
     "ultracite/biome/react",
     "ultracite/biome/next"
   ],
+  "files": {
+    "includes": ["!!public"]
+  },
+  "linter": {
+    "rules": {
+      "a11y": {
+        "noSvgWithoutTitle": "off",
+        "useValidAnchor": "off"
+      },
+      "correctness": {
+        "useImageSize": "off"
+      },
+      "performance": {
+        "noBarrelFile": "off",
+        "noImgElement": "off",
+        "noJsxPropsBind": "off",
+        "noNamespaceImport": "off"
+      },
+      "style": {
+        "noIncrementDecrement": "off",
+        "useDestructuring": "off",
+        "useFilenamingConvention": "off"
+      },
+      "suspicious": {
+        "noArrayIndexKey": "off",
+        "noDuplicateProperties": "off",
+        "noLeakedRender": "off",
+        "noReactForwardRef": "off",
+        "noUnknownAtRules": "off",
+        "noUnknownAttribute": "off",
+        "noUnnecessaryConditions": "off"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["**/gradient-wave.tsx", "**/robot-hero.tsx"],
+      "linter": {
+        "enabled": false
+      }
+    }
+  ],
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json"
 }

@@ -1,7 +1,7 @@
 .legalWrapper {
-  min-height: 100vh;
   position: relative;
   z-index: 10;
+  min-height: 100vh;
   padding: 40px 20px 80px;
 }
 
@@ -24,25 +24,25 @@
 }
 
 .logoImg {
-  height: 24px;
   width: auto;
+  height: 24px;
   object-fit: contain;
 }
 
 .backLink {
   display: inline-flex;
-  align-items: center;
   gap: 6px;
+  align-items: center;
+  padding: 8px 16px;
   font-size: 13.5px;
   font-weight: 600;
   color: var(--text-secondary);
   text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 9999px;
   background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 9999px;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   transition: all 0.2s ease;
 }
 
@@ -54,60 +54,60 @@
 
 .contentCard {
   padding: 48px 44px;
-  border-radius: 28px;
   background: radial-gradient(
     140% 120% at 50% 0%,
     rgba(255, 255, 255, 0.92) 0%,
     rgba(255, 255, 255, 0.84) 50%,
     rgba(245, 249, 255, 0.88) 100%
   );
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.95);
-  box-shadow: 
+  border-radius: 28px;
+  box-shadow:
     0 24px 60px -12px rgba(15, 23, 42, 0.08),
     0 4px 16px -2px rgba(15, 23, 42, 0.03),
     inset 0 1.5px 2px 0 rgba(255, 255, 255, 1);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
 }
 
 .header {
-  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
   padding-bottom: 28px;
   margin-bottom: 36px;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
 }
 
 .badge {
+  display: inline-block;
+  padding: 4px 10px;
+  margin-bottom: 14px;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
+  color: var(--accent-dark);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--accent-dark);
   background: rgba(27, 159, 254, 0.12);
   border: 1px solid rgba(27, 159, 254, 0.24);
-  padding: 4px 10px;
   border-radius: 9999px;
-  display: inline-block;
-  margin-bottom: 14px;
 }
 
 .title {
+  margin-bottom: 12px;
   font-family: var(--font-heading);
   font-size: clamp(28px, 3.5vw, 38px);
   font-weight: 800;
-  color: var(--text-primary);
   line-height: 1.25;
-  margin-bottom: 12px;
+  color: var(--text-primary);
   letter-spacing: -0.02em;
 }
 
 .metaRow {
   display: flex;
-  align-items: center;
   gap: 16px;
+  align-items: center;
+  font-family: var(--font-mono);
   font-size: 13px;
   color: #64748b;
-  font-family: var(--font-mono);
 }
 
 .section {
@@ -119,19 +119,19 @@
 }
 
 .sectionTitle {
+  margin-bottom: 12px;
   font-family: var(--font-heading);
   font-size: 19px;
   font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 12px;
   line-height: 1.35;
+  color: var(--text-primary);
 }
 
 .text {
+  margin-bottom: 12px;
   font-size: 15px;
   line-height: 1.72;
   color: var(--text-secondary);
-  margin-bottom: 12px;
 }
 
 .text:last-child {
@@ -139,56 +139,56 @@
 }
 
 .list {
-  list-style: none;
-  padding: 0;
-  margin: 12px 0 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 0;
+  margin: 12px 0 0;
+  list-style: none;
 }
 
 .listItem {
   display: flex;
-  align-items: flex-start;
   gap: 10px;
+  align-items: flex-start;
   font-size: 14.5px;
   line-height: 1.6;
   color: #334155;
 }
 
 .bulletDot {
+  flex-shrink: 0;
   width: 6px;
   height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
   margin-top: 8px;
-  flex-shrink: 0;
+  background: var(--accent);
+  border-radius: 50%;
 }
 
 .callout {
-  background: rgba(240, 249, 255, 0.7);
-  border: 1px solid rgba(186, 230, 253, 0.9);
-  border-left: 3px solid var(--accent);
-  border-radius: 12px;
   padding: 16px 18px;
   margin: 16px 0;
   font-size: 14px;
   line-height: 1.6;
   color: #0369a1;
+  background: rgba(240, 249, 255, 0.7);
+  border: 1px solid rgba(186, 230, 253, 0.9);
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
 }
 
 .contactBox {
-  margin-top: 36px;
   padding-top: 24px;
-  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  margin-top: 36px;
   font-size: 14px;
-  color: #64748b;
   line-height: 1.6;
+  color: #64748b;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
 }
 
 .contactBox a {
-  color: var(--accent-dark);
   font-weight: 600;
+  color: var(--accent-dark);
   text-decoration: underline;
 }
 

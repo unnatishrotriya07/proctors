@@ -1,30 +1,35 @@
-import Link from 'next/link';
-import styles from '../legal.module.css';
-import { ArrowLeft } from 'lucide-react';
-import Footer from '../components/Footer';
-import { GradientWave } from '@/components/ui/gradient-wave';
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
+import { GradientWave } from "@/components/ui/gradient-wave";
+import Footer from "../components/Footer";
+import styles from "../legal.module.css";
 
 export const metadata = {
-  title: 'Terms of Service — Proctors',
-  description: 'Terms of Service for Proctors — AI-Powered Conversational Assessment Platform for Schools.',
+  description:
+    "Terms of Service for Proctors — AI-Powered Conversational Assessment Platform for Schools.",
+  title: "Terms of Service — Proctors",
 };
 
 export default function TermsPage() {
   return (
     <>
-      <div className="sticky-bg-wrapper" aria-hidden="true">
+      <div aria-hidden="true" className="sticky-bg-wrapper">
         <GradientWave />
       </div>
 
       <div className={styles.legalWrapper}>
         <div className={styles.container}>
           <div className={styles.topBar}>
-            <Link href="/" className={styles.brandLink} aria-label="Proctors Home">
+            <Link
+              aria-label="Proctors Home"
+              className={styles.brandLink}
+              href="/"
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo.png" alt="Proctors" className={styles.logoImg} />
+              <img alt="Proctors" className={styles.logoImg} src="/logo.png" />
             </Link>
-            <Link href="/" className={styles.backLink}>
-              <ArrowLeft className="w-4 h-4" />
+            <Link className={styles.backLink} href="/">
+              <ArrowLeft className="h-4 w-4" />
               <span>Back to Home</span>
             </Link>
           </div>
@@ -34,78 +39,128 @@ export default function TermsPage() {
               <span className={styles.badge}>Platform Terms</span>
               <h1 className={styles.title}>Terms of Service</h1>
               <div className={styles.metaRow}>
-                <span>Proctors — AI-Powered Conversational Assessment Platform for Schools</span>
+                <span>
+                  Proctors — AI-Powered Conversational Assessment Platform for
+                  Schools
+                </span>
               </div>
             </header>
 
             <section className={styles.section}>
               <h2 className={styles.sectionTitle}>Platform Overview</h2>
               <p className={styles.text}>
-                A curriculum-native AI assessment platform — built for Indian schools, scaled for classrooms of 40.
+                A curriculum-native AI assessment platform — built for Indian
+                schools, scaled for classrooms of 40.
               </p>
               <p className={styles.text}>
-                The platform sits directly on top of the curriculum your school already teaches. After a chapter is covered in class, a teacher assigns a Proctor assessment. Every student — not just the fast ones, not just the ones who raise their hand — gets a private, voice-based AI dialogue built around that exact chapter. Proctor asks, listens, follows up, and produces a per-student insight report the teacher receives the same week.
+                The platform sits directly on top of the curriculum your school
+                already teaches. After a chapter is covered in class, a teacher
+                assigns a Proctor assessment. Every student — not just the fast
+                ones, not just the ones who raise their hand — gets a private,
+                voice-based AI dialogue built around that exact chapter. Proctor
+                asks, listens, follows up, and produces a per-student insight
+                report the teacher receives the same week.
               </p>
             </section>
 
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>Standards &amp; Compliance</h2>
+              <h2 className={styles.sectionTitle}>
+                Standards &amp; Compliance
+              </h2>
               <div className={styles.callout}>
-                CBSE &amp; State Board Aligned • NEP 2020 Compliant • PARAKH / HPC Ready • NCERT-Grounded
+                CBSE &amp; State Board Aligned • NEP 2020 Compliant • PARAKH /
+                HPC Ready • NCERT-Grounded
               </div>
             </section>
 
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>Design-Partner Pilot Terms</h2>
+              <h2 className={styles.sectionTitle}>
+                Design-Partner Pilot Terms
+              </h2>
               <p className={styles.text}>
-                We&apos;re running a structured free pilot with a small cohort of design-partner schools. Pilot schools receive full platform access, hands-on onboarding support, and first-mover pricing when the paid phase begins.
+                We&apos;re running a structured free pilot with a small cohort
+                of design-partner schools. Pilot schools receive full platform
+                access, hands-on onboarding support, and first-mover pricing
+                when the paid phase begins.
               </p>
-              <p className={styles.text} style={{ fontWeight: 600, marginTop: '16px', marginBottom: '8px' }}>
+              <p
+                className={styles.text}
+                style={{
+                  fontWeight: 600,
+                  marginBottom: "8px",
+                  marginTop: "16px",
+                }}
+              >
                 What the pilot includes:
               </p>
               <ul className={styles.list}>
                 <li className={styles.listItem}>
                   <span className={styles.bulletDot} />
-                  <span>Full platform access for one subject and grade band</span>
+                  <span>
+                    Full platform access for one subject and grade band
+                  </span>
                 </li>
                 <li className={styles.listItem}>
                   <span className={styles.bulletDot} />
-                  <span>AI-generated assessments from your existing curriculum</span>
+                  <span>
+                    AI-generated assessments from your existing curriculum
+                  </span>
                 </li>
                 <li className={styles.listItem}>
                   <span className={styles.bulletDot} />
-                  <span>Per-student insight reports for your teaching team</span>
+                  <span>
+                    Per-student insight reports for your teaching team
+                  </span>
                 </li>
                 <li className={styles.listItem}>
                   <span className={styles.bulletDot} />
-                  <span>Direct access to the founding team for feedback and support</span>
+                  <span>
+                    Direct access to the founding team for feedback and support
+                  </span>
                 </li>
               </ul>
             </section>
 
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>Secure Assessment Distribution</h2>
+              <h2 className={styles.sectionTitle}>
+                Secure Assessment Distribution
+              </h2>
               <p className={styles.text}>
-                Assessments are delivered via 24-hour tokenized links with role-based access control — assigned by class or individual, with automated email invites. No student accounts to create. No app to download.
+                Assessments are delivered via 24-hour tokenized links with
+                role-based access control — assigned by class or individual,
+                with automated email invites. No student accounts to create. No
+                app to download.
               </p>
               <p className={styles.text}>
-                Students access their assessment securely from any device, with nothing to install and no credentials to remember.
+                Students access their assessment securely from any device, with
+                nothing to install and no credentials to remember.
               </p>
             </section>
 
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>Human Review &amp; Teacher Oversight</h2>
+              <h2 className={styles.sectionTitle}>
+                Human Review &amp; Teacher Oversight
+              </h2>
               <p className={styles.text}>
-                Reports below a confidence threshold are automatically flagged and routed to a teacher review queue — with raw and cleaned transcripts, audio playback, and score-override capability. Every override is logged in an audit trail.
+                Reports below a confidence threshold are automatically flagged
+                and routed to a teacher review queue — with raw and cleaned
+                transcripts, audio playback, and score-override capability.
+                Every override is logged in an audit trail.
               </p>
               <p className={styles.text}>
-                No automated report leaves without a confidence check. The teacher&apos;s judgment is always the final layer.
+                No automated report leaves without a confidence check. The
+                teacher&apos;s judgment is always the final layer.
               </p>
             </section>
 
             <div className={styles.contactBox}>
-              <p>Contact: <a href="mailto:hello@proctors.in">hello@proctors.in</a></p>
-              <p style={{ marginTop: '4px' }}>© 2026 Proctors. All rights reserved.</p>
+              <p>
+                Contact:{" "}
+                <a href="mailto:hello@proctors.in">hello@proctors.in</a>
+              </p>
+              <p style={{ marginTop: "4px" }}>
+                © 2026 Proctors. All rights reserved.
+              </p>
             </div>
           </article>
         </div>

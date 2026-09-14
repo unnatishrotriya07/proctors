@@ -1,47 +1,49 @@
-'use client';
-import { useState } from 'react';
-import styles from './Conversion.module.css';
+"use client";
+import { useState } from "react";
+import styles from "./Conversion.module.css";
 
 const roles = [
-  'Principal',
-  'Academic Director',
-  'Teacher',
-  'Trustee / School Owner',
-  'Other',
+  "Principal",
+  "Academic Director",
+  "Teacher",
+  "Trustee / School Owner",
+  "Other",
 ];
 
 export default function Conversion() {
-  const [status, setStatus] = useState('idle'); // idle | success | error
+  const [status, setStatus] = useState("idle"); // idle | success | error
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
     // Honeypot check
-    if (e.target.website.value) return;
+    if (e.target.website.value) {
+      return;
+    }
 
     setLoading(true);
     const data = new FormData(e.target);
 
     try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
+      const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
         body: data,
-        headers: { Accept: 'application/json' },
+        headers: { Accept: "application/json" },
+        method: "POST",
       });
       if (res.ok) {
-        setStatus('success');
+        setStatus("success");
       } else {
-        setStatus('error');
+        setStatus("error");
       }
     } catch {
-      setStatus('error');
+      setStatus("error");
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <section id="demo" className="section">
+    <section className="section" id="demo">
       <div className="container">
         <div className={styles.wrapper}>
           <div className={styles.content}>
@@ -55,12 +57,12 @@ export default function Conversion() {
             </p>
 
             <div className={styles.loginPrompt}>
-              Already using Proctors?{' '}
+              Already using Proctors?{" "}
               <a
-                href="https://app.proctors.in"
-                target="_blank"
-                rel="noopener noreferrer"
                 className={styles.loginLink}
+                href="https://app.proctors.in"
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 Sign in to your school account →
               </a>
@@ -68,7 +70,7 @@ export default function Conversion() {
           </div>
 
           <div className={styles.formWrap}>
-            {status === 'success' ? (
+            {status === "success" ? (
               <div className={styles.success}>
                 <div className={styles.successIcon}>✓</div>
                 <h3>Thank you.</h3>
@@ -78,113 +80,133 @@ export default function Conversion() {
                 </p>
               </div>
             ) : (
-              <form className={styles.form} onSubmit={handleSubmit} noValidate>
+              <form className={styles.form} noValidate onSubmit={handleSubmit}>
                 {/* Honeypot */}
                 <input
-                  type="text"
-                  name="website"
-                  tabIndex={-1}
                   aria-hidden="true"
-                  style={{ display: 'none' }}
+                  name="website"
+                  style={{ display: "none" }}
+                  tabIndex={-1}
+                  type="text"
                 />
 
                 <div className={styles.row}>
                   <div className={styles.field}>
-                    <label htmlFor="name" className={styles.label}>Full Name *</label>
+                    <label className={styles.label} htmlFor="name">
+                      Full Name *
+                    </label>
                     <input
+                      className={styles.input}
                       id="name"
                       name="name"
-                      type="text"
-                      required
-                      className={styles.input}
                       placeholder="Your name"
+                      required
+                      type="text"
                     />
                   </div>
                   <div className={styles.field}>
-                    <label htmlFor="school" className={styles.label}>School Name *</label>
+                    <label className={styles.label} htmlFor="school">
+                      School Name *
+                    </label>
                     <input
+                      className={styles.input}
                       id="school"
                       name="school"
-                      type="text"
-                      required
-                      className={styles.input}
                       placeholder="School name"
+                      required
+                      type="text"
                     />
                   </div>
                 </div>
 
                 <div className={styles.row}>
                   <div className={styles.field}>
-                    <label htmlFor="city" className={styles.label}>City *</label>
+                    <label className={styles.label} htmlFor="city">
+                      City *
+                    </label>
                     <input
+                      className={styles.input}
                       id="city"
                       name="city"
-                      type="text"
-                      required
-                      className={styles.input}
                       placeholder="City"
+                      required
+                      type="text"
                     />
                   </div>
                   <div className={styles.field}>
-                    <label htmlFor="role" className={styles.label}>Your Role *</label>
-                    <select id="role" name="role" required className={styles.input}>
+                    <label className={styles.label} htmlFor="role">
+                      Your Role *
+                    </label>
+                    <select
+                      className={styles.input}
+                      id="role"
+                      name="role"
+                      required
+                    >
                       <option value="">Select role</option>
                       {roles.map((r) => (
-                        <option key={r} value={r}>{r}</option>
+                        <option key={r} value={r}>
+                          {r}
+                        </option>
                       ))}
                     </select>
                   </div>
                 </div>
 
                 <div className={styles.field}>
-                  <label htmlFor="email" className={styles.label}>Work Email *</label>
+                  <label className={styles.label} htmlFor="email">
+                    Work Email *
+                  </label>
                   <input
+                    className={styles.input}
                     id="email"
                     name="email"
-                    type="email"
-                    required
-                    className={styles.input}
                     placeholder="you@school.edu"
+                    required
+                    type="email"
                   />
                 </div>
 
                 <div className={styles.field}>
-                  <label htmlFor="phone" className={styles.label}>Phone Number</label>
+                  <label className={styles.label} htmlFor="phone">
+                    Phone Number
+                  </label>
                   <input
+                    className={styles.input}
                     id="phone"
                     name="phone"
-                    type="tel"
-                    className={styles.input}
                     placeholder="+91 98765 43210"
+                    type="tel"
                   />
                 </div>
 
                 <div className={styles.consent}>
                   <input
+                    className={styles.checkbox}
                     id="consent"
                     name="consent"
-                    type="checkbox"
                     required
-                    className={styles.checkbox}
+                    type="checkbox"
                   />
-                  <label htmlFor="consent" className={styles.consentLabel}>
-                    I agree to Proctors&apos; Privacy Policy and consent to being contacted about this request.
+                  <label className={styles.consentLabel} htmlFor="consent">
+                    I agree to Proctors&apos; Privacy Policy and consent to
+                    being contacted about this request.
                   </label>
                 </div>
 
-                {status === 'error' && (
+                {status === "error" && (
                   <p className={styles.errorMsg}>
-                    Something went wrong. Please email us at{' '}
+                    Something went wrong. Please email us at{" "}
                     <a href="mailto:hello@proctors.in">hello@proctors.in</a>
                   </p>
                 )}
 
                 <button
-                  type="submit"
                   className={`btn btn--primary ${styles.submit}`}
                   disabled={loading}
+                  type="submit"
                 >
-                  {loading ? 'Sending…' : 'Request a School Demo →'}
+                  {loading ? "Sending…" : "Request a School Demo →"}
                 </button>
               </form>
             )}
