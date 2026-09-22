@@ -1,9 +1,16 @@
 "use client";
 
 import { motion, useScroll, useSpring } from "framer-motion";
-import { ArrowLeft, ArrowUp, FileText, Mail, Shield } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowUp,
+  FileText,
+  Layers,
+  Mail,
+  Shield,
+} from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "../legal.module.css";
 import Footer from "./Footer";
 
@@ -18,6 +25,7 @@ export default function LegalLayout({
 }) {
   const [activeSection, setActiveSection] = useState(sections[0]?.id || "");
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const mobileNavRef = useRef(null);
 
   // Top reading progress indicator
   const { scrollYProgress } = useScroll();
@@ -52,6 +60,23 @@ export default function LegalLayout({
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, [sections]);
+
+  // Center active pill in mobile navigation list
+  useEffect(() => {
+    if (!(activeSection && mobileNavRef.current)) {
+      return;
+    }
+    const activeBtn = mobileNavRef.current.querySelector(
+      `.${styles.mobileNavPillActive}`
+    );
+    if (activeBtn) {
+      activeBtn.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  }, [activeSection]);
 
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
@@ -140,8 +165,14 @@ export default function LegalLayout({
           {/* Mobile Table of Contents Quick Scroller */}
           {sections.length > 0 && (
             <div className={styles.mobileNavPills}>
-              <div className={styles.mobileNavLabel}>Jump to section:</div>
-              <div className={styles.mobileNavList}>
+              <div className={styles.mobileNavHeader}>
+                <div className={styles.mobileNavLabel}>Jump to section:</div>
+                <span className={styles.mobileStackHint}>
+                  <Layers className="h-3 w-3" />
+                  <span>Stacking folio</span>
+                </span>
+              </div>
+              <div className={styles.mobileNavList} ref={mobileNavRef}>
                 {sections.map((s) => (
                   <button
                     className={`${styles.mobileNavPill} ${

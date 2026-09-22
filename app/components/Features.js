@@ -4,6 +4,7 @@ import {
   Cpu,
   FileCheck2,
   Headphones,
+  Layers,
   LayoutDashboard,
   MessageSquareCode,
   ShieldCheck,
@@ -84,7 +85,13 @@ export default function Features() {
     <section className="section" id="features">
       <div className="container">
         <div className={styles.header}>
-          <p className="label label--accent">Platform Features</p>
+          <div className={styles.labelRow}>
+            <p className="label label--accent">Platform Features</p>
+            <span className={styles.mobileStackHint}>
+              <Layers className="h-3 w-3" />
+              <span>Stacking deck</span>
+            </span>
+          </div>
           <h2 className={styles.heading}>
             Everything a school needs to run AI-powered individual assessment —
             at classroom scale.
@@ -95,30 +102,36 @@ export default function Features() {
           {features.map((f, i) => {
             const Icon = f.icon;
             return (
-              <GlassCard
-                className={styles.featureCard}
+              <div
+                className={styles.cardStackWrapper}
                 key={f.title}
-                style={{ transitionDelay: `${(i % 2) * 50}ms` }}
-                variant="default"
+                style={{ "--card-index": i }}
               >
-                <div className={styles.cardTop}>
-                  <div className={styles.iconWrap}>
-                    <Icon className={styles.icon} />
+                <GlassCard
+                  className={styles.featureCard}
+                  style={{ transitionDelay: `${(i % 2) * 50}ms` }}
+                  variant="default"
+                >
+                  <div className={styles.cardTop}>
+                    <div className={styles.iconWrap}>
+                      <Icon className={styles.icon} />
+                    </div>
+                    <div className={styles.badgeGroup}>
+                      <span className={styles.featureIndex}>0{i + 1}</span>
+                      <span className={styles.subtitleBadge}>{f.subtitle}</span>
+                      <span className={styles.stackIndex}>0{i + 1} / 08</span>
+                    </div>
                   </div>
-                  <div className={styles.badgeGroup}>
-                    <span className={styles.featureIndex}>0{i + 1}</span>
-                    <span className={styles.subtitleBadge}>{f.subtitle}</span>
+
+                  <h3 className={styles.title}>{f.title}</h3>
+                  <p className={styles.desc}>{f.desc}</p>
+
+                  <div className={styles.benefitBox}>
+                    <span className={styles.benefitLabel}>What you get:</span>
+                    <p className={styles.benefitText}>{f.benefit}</p>
                   </div>
-                </div>
-
-                <h3 className={styles.title}>{f.title}</h3>
-                <p className={styles.desc}>{f.desc}</p>
-
-                <div className={styles.benefitBox}>
-                  <span className={styles.benefitLabel}>What you get:</span>
-                  <p className={styles.benefitText}>{f.benefit}</p>
-                </div>
-              </GlassCard>
+                </GlassCard>
+              </div>
             );
           })}
         </div>
