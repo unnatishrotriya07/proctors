@@ -1,4 +1,6 @@
+import "lenis/dist/lenis.css";
 import { Instrument_Sans, Inter, Work_Sans } from "next/font/google";
+import SmoothScroll from "./components/SmoothScroll";
 import "./globals.css";
 
 const instrumentSans = Instrument_Sans({
@@ -68,7 +70,9 @@ export default function RootLayout({ children }) {
       className={`${instrumentSans.variable} ${inter.variable} ${workSans.variable}`}
       lang="en"
     >
-      <body>{children}</body>
+      <body>
+        <SmoothScroll>{children}</SmoothScroll>
+      </body>
     </html>
   );
 }

@@ -188,7 +188,10 @@
   border-radius: var(--radius-md);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  transition: all 0.2s ease;
+  transition:
+    background 160ms ease,
+    border-color 160ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)),
+    box-shadow 160ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1));
 }
 
 .input:focus {
@@ -212,6 +215,10 @@
   font-weight: 700;
   cursor: pointer;
   border-radius: var(--radius-md);
+}
+
+.submitBtn:active {
+  transform: scale(0.97);
 }
 
 .errorBanner {

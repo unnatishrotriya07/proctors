@@ -43,13 +43,22 @@
   border-radius: 9999px;
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  transition: all 0.2s ease;
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    transform 160ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1));
 }
 
-.backLink:hover {
-  color: var(--accent-dark);
-  background: rgba(255, 255, 255, 0.95);
-  transform: translateX(-2px);
+@media (hover: hover) and (pointer: fine) {
+  .backLink:hover {
+    color: var(--accent-dark);
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateX(-2px);
+  }
+}
+
+.backLink:active {
+  transform: scale(0.97);
 }
 
 .contentCard {

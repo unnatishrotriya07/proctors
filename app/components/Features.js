@@ -92,12 +92,13 @@ export default function Features() {
         </div>
 
         <div className={styles.grid}>
-          {features.map((f) => {
+          {features.map((f, i) => {
             const Icon = f.icon;
             return (
               <GlassCard
                 className={styles.featureCard}
                 key={f.title}
+                style={{ transitionDelay: `${(i % 2) * 50}ms` }}
                 variant="default"
               >
                 <div className={styles.cardTop}>

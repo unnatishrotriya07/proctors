@@ -9,6 +9,8 @@ const WAVE_BARS = [
 
 export default function Hero() {
   const visualRef = useRef(null);
+  const stageRef = useRef(null);
+  const rafId = useRef(null);
 
   const handleNavClick = (e, href) => {
     if (href?.startsWith("#")) {
@@ -22,25 +24,41 @@ export default function Hero() {
   };
 
   const handleParallax = useCallback((e) => {
-    const el = visualRef.current;
-    if (!el) {
+    const visual = visualRef.current;
+    const stage = stageRef.current;
+    if (!(visual && stage)) {
       return;
     }
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       return;
     }
-    const rect = el.getBoundingClientRect();
+    const rect = visual.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
-    el.style.setProperty("--px", x.toFixed(3));
-    el.style.setProperty("--py", y.toFixed(3));
+
+    if (rafId.current) {
+      cancelAnimationFrame(rafId.current);
+    }
+    rafId.current = requestAnimationFrame(() => {
+      if (!stage) {
+        return;
+      }
+      const rotY = (x * 10).toFixed(2);
+      const rotX = (-y * 8).toFixed(2);
+      stage.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg)`;
+    });
   }, []);
 
   const resetParallax = useCallback(() => {
-    const el = visualRef.current;
-    if (el) {
-      el.style.setProperty("--px", "0");
-      el.style.setProperty("--py", "0");
+    if (rafId.current) {
+      cancelAnimationFrame(rafId.current);
+    }
+    const stage = stageRef.current;
+    if (stage) {
+      stage.style.transform = "rotateY(0deg) rotateX(0deg)";
     }
   }, []);
 
@@ -103,7 +121,7 @@ export default function Hero() {
           onMouseMove={handleParallax}
           ref={visualRef}
         >
-          <div className={styles.stage}>
+          <div className={styles.stage} ref={stageRef}>
             <div className={styles.halo} />
             <div className={styles.ring} />
             <div className={styles.console}>

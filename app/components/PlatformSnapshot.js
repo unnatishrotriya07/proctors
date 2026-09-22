@@ -64,12 +64,13 @@ export default function PlatformSnapshot() {
 
         {/* 3-Column Highlight Row (visual cards) */}
         <div className={styles.highlightGrid}>
-          {highlights.map((item) => {
+          {highlights.map((item, i) => {
             const Icon = item.icon;
             return (
               <GlassCard
                 className={styles.highlightCard}
                 key={item.title}
+                style={{ transitionDelay: `${i * 60}ms` }}
                 variant="default"
               >
                 <div className={styles.cardHeader}>

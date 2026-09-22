@@ -27,7 +27,11 @@ export default function Difference() {
         <div className={styles.comparisonWrapper}>
           <div className={styles.grid}>
             {/* Student A */}
-            <GlassCard className={styles.card} variant="grey">
+            <GlassCard
+              className={styles.card}
+              style={{ transitionDelay: "0ms" }}
+              variant="grey"
+            >
               <div className={styles.cardHeader}>
                 <div className={styles.studentBadge}>
                   <span className={styles.studentAvatar}>A</span>
@@ -58,7 +62,11 @@ export default function Difference() {
             </GlassCard>
 
             {/* Student B */}
-            <GlassCard className={styles.card} variant="blue">
+            <GlassCard
+              className={styles.card}
+              style={{ transitionDelay: "70ms" }}
+              variant="blue"
+            >
               <div className={styles.cardHeader}>
                 <div className={styles.studentBadge}>
                   <span

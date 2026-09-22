@@ -17,7 +17,10 @@
 
 .nav {
   width: 100%;
-  transition: all 0.25s ease;
+  transition:
+    background 240ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)),
+    border-color 240ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)),
+    box-shadow 240ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1));
 }
 
 .scrolled {
@@ -44,11 +47,17 @@
   flex-shrink: 0;
   align-items: center;
   text-decoration: none;
-  transition: transform 0.2s ease;
+  transition: transform 160ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1));
 }
 
-.brand:hover {
-  transform: scale(1.02);
+@media (hover: hover) and (pointer: fine) {
+  .brand:hover {
+    transform: scale(1.02);
+  }
+}
+
+.brand:active {
+  transform: scale(0.97);
 }
 
 .logoImg {
@@ -82,15 +91,25 @@
   color: var(--text-secondary);
   letter-spacing: -0.01em;
   border-radius: 9999px;
-  transition: all 0.2s ease;
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1));
 }
 
-.link:hover {
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.65);
-  box-shadow:
-    0 2px 8px rgba(15, 23, 42, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.65);
+    box-shadow:
+      0 2px 8px rgba(15, 23, 42, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  }
+}
+
+.link:active {
+  transform: scale(0.97);
 }
 
 .signIn {
@@ -103,12 +122,21 @@
   color: var(--text-secondary);
   letter-spacing: -0.01em;
   border-radius: 9999px;
-  transition: all 0.2s ease;
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    transform 160ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1));
 }
 
-.signIn:hover {
-  color: var(--accent-dark);
-  background: rgba(27, 159, 254, 0.08);
+@media (hover: hover) and (pointer: fine) {
+  .signIn:hover {
+    color: var(--accent-dark);
+    background: rgba(27, 159, 254, 0.08);
+  }
+}
+
+.signIn:active {
+  transform: scale(0.97);
 }
 
 .ctaBtn {
@@ -124,19 +152,24 @@
   box-shadow:
     0 4px 14px rgba(27, 159, 254, 0.38),
     inset 0 1px 1px rgba(255, 255, 255, 0.5);
-  transition: all 0.2s ease;
+  transition:
+    transform 160ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)),
+    background 160ms ease,
+    box-shadow 160ms ease;
 }
 
-.ctaBtn:hover {
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-  box-shadow:
-    0 6px 18px rgba(27, 159, 254, 0.48),
-    inset 0 1px 1px rgba(255, 255, 255, 0.6);
-  transform: translateY(-1px);
+@media (hover: hover) and (pointer: fine) {
+  .ctaBtn:hover {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    box-shadow:
+      0 6px 18px rgba(27, 159, 254, 0.48),
+      inset 0 1px 1px rgba(255, 255, 255, 0.6);
+    transform: translateY(-1px);
+  }
 }
 
 .ctaBtn:active {
-  transform: translateY(0);
+  transform: scale(0.97);
 }
 
 .hamburger {
@@ -159,7 +192,9 @@
   background: var(--text-primary);
   border-radius: 2px;
   transform-origin: center;
-  transition: all 0.25s ease;
+  transition:
+    transform 200ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)),
+    opacity 160ms ease;
 }
 
 .hamburger.active span:nth-child(1) {
@@ -178,6 +213,17 @@
 /* ─── Mobile Dropdown Overlay & Card ───────────────────────── */
 .mobileNavContainer {
   display: none;
+}
+
+@keyframes mobileMenuEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
@@ -217,9 +263,10 @@
     z-index: 1;
     width: 100vw;
     height: 100vh;
-    background: rgba(15, 23, 42, 0.22);
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
+    background: rgba(15, 23, 42, 0.24);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    animation: fadeIn 200ms ease forwards;
   }
 
   .mobileMenuCard {
@@ -248,8 +295,10 @@
       inset 0 1.5px 1px rgba(255, 255, 255, 1);
     -webkit-backdrop-filter: blur(24px) saturate(140%);
     backdrop-filter: blur(24px) saturate(140%);
+    transform-origin: top right;
 
-    animation: fadeUp 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: mobileMenuEnter 220ms
+      var(--ease-apple, cubic-bezier(0.16, 1, 0.3, 1)) forwards;
   }
 
   .mobileLinks {
@@ -275,13 +324,16 @@
     background: transparent;
     border: none;
     border-radius: 12px;
-    transition: all 0.15s ease;
+    transition:
+      color 140ms ease,
+      background 140ms ease,
+      transform 140ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1));
   }
 
-  .mobileLink:active,
-  .mobileLink:hover {
+  .mobileLink:active {
     color: var(--accent-dark);
     background: rgba(255, 255, 255, 0.85);
+    transform: scale(0.98);
   }
 
   .mobileCtaBtn {
@@ -295,5 +347,9 @@
     touch-action: manipulation;
     cursor: pointer;
     border-radius: 12px;
+  }
+
+  .mobileCtaBtn:active {
+    transform: scale(0.97);
   }
 }

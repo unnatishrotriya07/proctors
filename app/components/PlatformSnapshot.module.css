@@ -68,12 +68,18 @@
   padding: 24px 22px;
   border-radius: 20px;
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    transform 220ms var(--ease-apple, cubic-bezier(0.16, 1, 0.3, 1)),
+    box-shadow 220ms var(--ease-apple, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
-.highlightCard:hover {
-  transform: translateY(-3px);
+@media (hover: hover) and (pointer: fine) {
+  .highlightCard:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.highlightCard:active {
+  transform: scale(0.985);
 }
 
 .cardHeader {

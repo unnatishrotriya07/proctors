@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useRef } from "react";
 import styles from "./LiquidGlass.module.css";
 
 /**
@@ -30,23 +30,46 @@ export default function LiquidGlass({
   ...props
 }) {
   const cardRef = useRef(null);
-  const [mousePos, setMousePos] = useState({ active: false, x: 50, y: 50 });
+  const rafId = useRef(null);
 
   const handleMouseMove = useCallback(
     (e) => {
       if (!(interactive && cardRef.current)) {
         return;
       }
-      const rect = cardRef.current.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      setMousePos({ active: true, x, y });
+      if (
+        typeof window !== "undefined" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        return;
+      }
+      const el = cardRef.current;
+      const { clientX, clientY } = e;
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+      }
+      rafId.current = requestAnimationFrame(() => {
+        if (!el) {
+          return;
+        }
+        const rect = el.getBoundingClientRect();
+        const x = ((clientX - rect.left) / rect.width) * 100;
+        const y = ((clientY - rect.top) / rect.height) * 100;
+        el.style.setProperty("--mouse-x", `${x.toFixed(1)}%`);
+        el.style.setProperty("--mouse-y", `${y.toFixed(1)}%`);
+        el.style.setProperty("--spotlight-opacity", "1");
+      });
     },
     [interactive]
   );
 
   const handleMouseLeave = useCallback(() => {
-    setMousePos((prev) => ({ ...prev, active: false }));
+    if (rafId.current) {
+      cancelAnimationFrame(rafId.current);
+    }
+    if (cardRef.current) {
+      cardRef.current.style.setProperty("--spotlight-opacity", "0");
+    }
   }, []);
 
   const isHoverable = hoverEffect === undefined ? hoverable : hoverEffect;
@@ -62,9 +85,9 @@ export default function LiquidGlass({
       onMouseMove={handleMouseMove}
       ref={cardRef}
       style={{
-        "--mouse-x": `${mousePos.x}%`,
-        "--mouse-y": `${mousePos.y}%`,
-        "--spotlight-opacity": mousePos.active ? "1" : "0",
+        "--mouse-x": "50%",
+        "--mouse-y": "50%",
+        "--spotlight-opacity": "0",
         ...props.style,
       }}
       {...props}

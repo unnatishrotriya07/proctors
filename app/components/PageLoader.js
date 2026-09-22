@@ -17,18 +17,15 @@ export default function PageLoader() {
     const initTimer = setTimeout(() => {
       setLoading(true);
     }, 0);
-    // Lock scroll during initial 3-second loader
-    document.body.style.overflow = "hidden";
-
     const timer = setTimeout(() => {
       setFading(true);
       const fadeTimer = setTimeout(() => {
         setLoading(false);
         document.body.style.overflow = "";
         sessionStorage.setItem("proctors_first_visit", "true");
-      }, 500);
+      }, 250);
       return () => clearTimeout(fadeTimer);
-    }, 3000);
+    }, 400);
 
     return () => {
       clearTimeout(initTimer);
