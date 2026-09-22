@@ -105,7 +105,10 @@ export default function Features() {
                   <div className={styles.iconWrap}>
                     <Icon className={styles.icon} />
                   </div>
-                  <span className={styles.subtitleBadge}>{f.subtitle}</span>
+                  <div className={styles.badgeGroup}>
+                    <span className={styles.featureIndex}>0{i + 1}</span>
+                    <span className={styles.subtitleBadge}>{f.subtitle}</span>
+                  </div>
                 </div>
 
                 <h3 className={styles.title}>{f.title}</h3>

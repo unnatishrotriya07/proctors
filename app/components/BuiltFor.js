@@ -1,5 +1,5 @@
 "use client";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Layers } from "lucide-react";
 import GlassCard from "@/components/ui/GlassCard";
 import styles from "./BuiltFor.module.css";
 
@@ -45,30 +45,43 @@ export default function BuiltFor() {
     <section className="section" id="for-schools">
       <div className="container">
         <div className={styles.header}>
-          <p className="label label--accent">Built For</p>
+          <div className={styles.labelRow}>
+            <p className="label label--accent">Built For</p>
+            <span className={styles.mobileStackHint}>
+              <Layers className="h-3 w-3" />
+              <span>Stacking deck</span>
+            </span>
+          </div>
           <h2 className={styles.heading}>
             Clarity for leadership. Time for teachers. Confidence for students.
           </h2>
         </div>
 
         <div className={styles.grid}>
-          {audiences.map((item) => (
-            <GlassCard className={styles.card} key={item.role}>
-              <div className={styles.cardTop}>
-                <span className="badge badge--blue">{item.role}</span>
-              </div>
-              <h3 className={styles.title}>{item.subtitle}</h3>
-              <p className={styles.body}>{item.body}</p>
+          {audiences.map((item, index) => (
+            <div
+              className={styles.cardStackWrapper}
+              key={item.role}
+              style={{ "--card-index": index }}
+            >
+              <GlassCard className={styles.card}>
+                <div className={styles.cardTop}>
+                  <span className="badge badge--blue">{item.role}</span>
+                  <span className={styles.stackIndex}>0{index + 1}</span>
+                </div>
+                <h3 className={styles.title}>{item.subtitle}</h3>
+                <p className={styles.body}>{item.body}</p>
 
-              <ul className={styles.bulletsList}>
-                {item.bullets.map((b) => (
-                  <li className={styles.bulletItem} key={b}>
-                    <ArrowRight className={styles.bulletArrow} />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-            </GlassCard>
+                <ul className={styles.bulletsList}>
+                  {item.bullets.map((b) => (
+                    <li className={styles.bulletItem} key={b}>
+                      <ArrowRight className={styles.bulletArrow} />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </GlassCard>
+            </div>
           ))}
         </div>
       </div>

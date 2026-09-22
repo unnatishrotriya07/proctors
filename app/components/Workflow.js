@@ -112,11 +112,33 @@ export default function Workflow() {
           </h2>
         </div>
 
+        {/* Mobile Step Counter & Swipe Cue */}
+        <div className={styles.mobileStepHeader}>
+          <div className={styles.mobileStepMeta}>
+            <span className={styles.mobileStepBadge}>
+              Step {active + 1} of {steps.length}
+            </span>
+            <span className={styles.mobileStepTitle}>{steps[active].name}</span>
+          </div>
+          <div className={styles.mobileProgressBar}>
+            <div
+              className={styles.mobileProgressFill}
+              style={{ width: `${((active + 1) / steps.length) * 100}%` }}
+            />
+          </div>
+        </div>
+
         {/* Carousel track */}
         <div className={styles.carouselOuter}>
           <div className={styles.track} ref={trackRef}>
-            {steps.map((step) => (
-              <GlassCard className={styles.stepCard} data-card key={step.num}>
+            {steps.map((step, i) => (
+              <GlassCard
+                className={`${styles.stepCard} ${
+                  i === active ? styles.stepCardActive : ""
+                }`}
+                data-card
+                key={step.num}
+              >
                 <div className={styles.stepNum}>{step.num}</div>
                 <h3 className={styles.stepName}>{step.name}</h3>
                 <p className={styles.stepDesc}>{step.description}</p>

@@ -75,6 +75,26 @@
   height: 22px;
 }
 
+.badgeGroup {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.featureIndex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 7px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-dark);
+  background: rgba(27, 159, 254, 0.1);
+  border: 1px solid rgba(27, 159, 254, 0.22);
+  border-radius: 6px;
+}
+
 .subtitleBadge {
   padding: 4px 10px;
   font-family: var(--font-mono);

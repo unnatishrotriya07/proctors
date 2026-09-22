@@ -14,7 +14,7 @@ export default function Pricing() {
             begins. Full pricing details coming soon — apply for the pilot to
             lock in founding terms.
           </p>
-          <a className="btn btn--primary" href="#pilot">
+          <a className={`btn btn--primary ${styles.ctaBtn}`} href="#pilot">
             Apply for the Free Pilot →
           </a>
         </div>

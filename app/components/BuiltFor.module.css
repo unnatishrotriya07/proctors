@@ -4,6 +4,17 @@
   text-align: center;
 }
 
+.labelRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileStackHint {
+  display: none;
+}
+
 .heading {
   margin-top: 12px;
   font-family: var(--font-heading);
@@ -20,12 +31,19 @@
   gap: 24px;
 }
 
+.cardStackWrapper {
+  height: 100%;
+}
+
 .card {
   display: flex;
   flex-direction: column;
   height: 100%;
   padding: 32px 26px;
   border-radius: 22px;
+  transition:
+    transform 220ms var(--ease-apple, cubic-bezier(0.16, 1, 0.3, 1)),
+    box-shadow 220ms var(--ease-apple, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
 .cardTop {
@@ -33,6 +51,20 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
+}
+
+.stackIndex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 7px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-dark);
+  background: rgba(27, 159, 254, 0.1);
+  border: 1px solid rgba(27, 159, 254, 0.22);
+  border-radius: 6px;
 }
 
 .title {
@@ -83,6 +115,7 @@
   color: var(--accent);
 }
 
+/* ── Tablet ── */
 @media (max-width: 960px) {
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -90,12 +123,7 @@
   }
 }
 
-@media (max-width: 600px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-}
-
+/* ── Mobile Stacking Cards Animation ── */
 @media (max-width: 768px) {
   .header {
     margin-bottom: 28px;
@@ -105,15 +133,62 @@
     font-size: 24px;
     line-height: 1.25;
   }
-  .card {
-    padding: 22px 18px;
+
+  .mobileStackHint {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+    padding: 2px 8px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--accent-dark);
+    background: rgba(27, 159, 254, 0.1);
+    border: 1px solid rgba(27, 159, 254, 0.2);
+    border-radius: 9999px;
   }
+
+  /* Stacking Card Deck Physics */
+  .grid {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding-bottom: 32px;
+  }
+
+  .cardStackWrapper {
+    position: sticky;
+    top: calc(74px + var(--card-index, 0) * 18px);
+    z-index: calc(var(--card-index, 0) + 1);
+    height: auto;
+  }
+
+  .card {
+    padding: 24px 20px;
+    background: radial-gradient(
+      140% 120% at 50% 0%,
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(255, 255, 255, 0.92) 50%,
+      rgba(246, 250, 255, 0.97) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.98);
+    border-radius: 20px;
+    box-shadow:
+      0 18px 42px -10px rgba(15, 23, 42, 0.12),
+      0 2px 6px -1px rgba(15, 23, 42, 0.04),
+      inset 0 1.5px 2px 0 rgba(255, 255, 255, 1);
+    -webkit-backdrop-filter: blur(28px) saturate(150%);
+    backdrop-filter: blur(28px) saturate(150%);
+  }
+
   .title {
     font-size: 17px;
   }
   .body {
     margin-bottom: 16px;
     font-size: 13.5px;
+    line-height: 1.58;
   }
   .bulletItem {
     font-size: 13px;
@@ -125,13 +200,14 @@
     font-size: 21px;
   }
   .card {
-    padding: 14px 12px;
+    padding: 20px 16px;
+    border-radius: 18px;
   }
   .title {
-    font-size: 15px;
+    font-size: 15.5px;
   }
   .body {
-    font-size: 12.5px;
-    line-height: 1.48;
+    font-size: 13px;
+    line-height: 1.52;
   }
 }
