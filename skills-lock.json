@@ -67,6 +67,12 @@
       "skillPath": "skills/prototype/SKILL.md",
       "computedHash": "77be567d8c946608fdd15e61b62ab383cdf289a194dce2479828b7eda860d3ba"
     },
+    "responsive-craft": {
+      "source": "kylezantos/responsive-craft",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "cd5996664f6003446dcc34ce26ac8bec85a307feb0a89ff96f4bb7b08158e1fd"
+    },
     "review-animations": {
       "source": "emilkowalski/skills",
       "sourceType": "github",

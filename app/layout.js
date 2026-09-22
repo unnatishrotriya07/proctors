@@ -27,6 +27,7 @@ const workSans = Work_Sans({
 export const viewport = {
   initialScale: 1,
   maximumScale: 5,
+  viewportFit: "cover",
   width: "device-width",
 };
 

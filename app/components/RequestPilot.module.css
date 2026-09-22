@@ -278,6 +278,14 @@
   }
 }
 
+@media (max-width: 768px) {
+  .input {
+    min-height: 44px; /* Accessible 44px touch target */
+    padding: 11px 14px;
+    font-size: 16px; /* Accessible 44px touch target */
+  }
+}
+
 @media (max-width: 600px) {
   .twoCol {
     grid-template-columns: 1fr;

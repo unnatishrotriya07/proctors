@@ -188,3 +188,24 @@
     border-bottom: 1px solid var(--border);
   }
 }
+
+@media (max-width: 640px) {
+  .topbar {
+    padding: 14px 16px;
+  }
+  .chat {
+    padding: 20px 16px;
+  }
+  .msgAi,
+  .msgStudent {
+    max-width: 100%;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  .insight {
+    padding: 20px 16px;
+  }
+  .bottombar {
+    padding: 14px 16px;
+  }
+}

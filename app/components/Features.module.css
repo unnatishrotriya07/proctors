@@ -131,14 +131,11 @@
   color: #334155;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
     gap: 18px;
   }
-}
-
-@media (max-width: 768px) {
   .header {
     margin-bottom: 32px;
   }

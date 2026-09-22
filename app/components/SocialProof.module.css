@@ -137,14 +137,11 @@
   color: var(--accent-dark);
 }
 
-@media (max-width: 960px) {
+@media (max-width: 768px) {
   .cardsGrid {
     grid-template-columns: 1fr;
     gap: 18px;
   }
-}
-
-@media (max-width: 768px) {
   .header {
     margin-bottom: 28px;
   }

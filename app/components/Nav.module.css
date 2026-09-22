@@ -226,19 +226,20 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .navWrapper {
     top: 10px;
-    padding: 0 10px;
+    padding: 0 max(12px, env(safe-area-inset-right)) 0
+      max(12px, env(safe-area-inset-left));
   }
 
   .inner {
-    height: 48px;
-    padding: 0 8px 0 14px;
+    height: 50px;
+    padding: 0 10px 0 16px;
   }
 
   .logoImg {
-    height: 20px;
+    height: 21px;
   }
 
   .desktopNav {
@@ -263,6 +264,7 @@
     z-index: 1;
     width: 100vw;
     height: 100vh;
+    height: 100svh;
     background: rgba(15, 23, 42, 0.24);
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
@@ -271,14 +273,16 @@
 
   .mobileMenuCard {
     position: fixed;
-    top: 64px;
-    right: 12px;
-    left: 12px;
+    top: calc(64px + env(safe-area-inset-top, 0px));
+    right: max(12px, env(safe-area-inset-right));
+    left: max(12px, env(safe-area-inset-left));
     z-index: 2;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    max-height: calc(100svh - 80px);
     padding: 14px 14px 18px;
+    overflow-y: auto;
 
     background: radial-gradient(
       140% 120% at 50% 0%,

@@ -364,13 +364,66 @@
   .subhead {
     font-size: 1rem;
   }
-  .visual {
-    min-height: 440px;
-  }
   .cardAi,
   .cardStudent {
     max-width: 210px;
     font-size: 12.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 96px;
+    padding-bottom: 36px;
+  }
+  .headline {
+    font-size: clamp(2.1rem, 9.5vw, 2.85rem);
+    line-height: 1.1;
+  }
+  .subhead {
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  .actions .btn--primary,
+  .actions .btn--ghost {
+    justify-content: center;
+    width: 100%;
+    height: 48px;
+  }
+  .visual {
+    min-height: 380px;
+  }
+  .console {
+    top: 10%;
+    left: 4%;
+    width: 92%;
+    padding: 18px 14px 20px;
+  }
+  .cardAi {
+    top: 2%;
+    left: 0;
+    max-width: 165px;
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+  .cardStudent {
+    right: 0;
+    bottom: 8%;
+    max-width: 165px;
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+  .alignBadge {
+    bottom: 0;
+    left: 2%;
+    padding: 6px 12px;
+    font-size: 11px;
   }
 }
 

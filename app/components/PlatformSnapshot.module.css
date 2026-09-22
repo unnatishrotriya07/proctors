@@ -147,7 +147,7 @@
   }
 
   .highlightGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 16px;
   }
 }
@@ -165,5 +165,11 @@
   }
   .highlightCard {
     padding: 20px 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .highlightGrid {
+    grid-template-columns: 1fr;
   }
 }

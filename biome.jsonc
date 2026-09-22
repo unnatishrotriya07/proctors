@@ -40,7 +40,11 @@
   },
   "overrides": [
     {
-      "includes": ["**/gradient-wave.tsx", "**/robot-hero.tsx"],
+      "includes": [
+        "**/gradient-wave.tsx",
+        "**/robot-hero.tsx",
+        "**/.agents/**"
+      ],
       "linter": {
         "enabled": false
       }

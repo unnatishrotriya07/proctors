@@ -215,3 +215,9 @@
   -webkit-backdrop-filter: blur(14px) saturate(120%);
   backdrop-filter: blur(14px) saturate(120%);
 }
+
+@media (max-width: 768px) {
+  .liquidGlass {
+    border-radius: 18px;
+  }
+}
